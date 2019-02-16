@@ -17,10 +17,10 @@
   trigger:
     platform: time
     at: '3:00:00'
-    action:
+  action:
     - service: hassio.addon_start
-    data:
-      addon: 9dd13c5f_ftpbackup
+      data:
+        addon: 9dd13c5f_ftpbackup
 
 - id: 'System - Snapshot Weekly'
   alias: 'System - Snapshot Weekly'
