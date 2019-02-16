@@ -1,0 +1,3 @@
+# https://www.home-assistant.io/components/ring/
+username: !secret ring_username
+password: !secret ring_password

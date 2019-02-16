@@ -1,0 +1,125 @@
+automation:
+#----------------------------------------------------------------
+
+  - id: 'Upstairs Bathroom - Power Off'
+    alias: 'Upstairs Bathroom - Power Off'
+    trigger:
+      - platform: state
+        entity_id: sensor.upstairs_bathroom_state
+        to: 'inactive'
+        for:
+          hours: 0
+          minutes: 20
+          seconds: 0
+    condition:
+      - condition: state
+        entity_id: input_boolean.options_lights_auto_off
+        state: 'on'
+    action:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.upstairs_bathroom_poweroff_all
+
+  # Turn on light when motion detected
+  - id: 'Upstairs Bathroom - Lights On'
+    alias: 'Upstairs Bathroom - Lights On'
+    trigger:
+      platform: state
+      entity_id: binary_sensor.upstairs_bathroom_motion
+      to: 'on'
+    condition:
+      - condition: state
+        entity_id: input_boolean.options_lights_auto_on
+        state: 'on'
+    action:
+      - service: script.toggle_to_max
+        data:
+          light: 'light.upstairs_bathroom_sconce'  
+
+  # Turn fan on when someone is showering
+  - id: 'Upstairs Bathroom - Fan On'
+    alias: 'Upstairs Bathroom - Fan On'
+    trigger:
+      - platform: state
+        entity_id: sensor.upstairs_bathroom_state
+        to: 'showering'
+    condition:
+      - condition: state
+        entity_id: input_boolean.options_lights_auto_on
+        state: 'on'
+    action:
+      - service: homeassistant.turn_on
+        entity_id:
+          - switch.upstairs_bathroom_fan2
+
+binary_sensor:
+#----------------------------------------------------------------
+
+  - platform: template
+    sensors:
+
+      upstairs_bathroom_occupancy:
+        value_template: "{{ is_state('binary_sensor.upstairs_bathroom_motion', 'on') }}"
+
+      upstairs_bathroom_motion:
+        value_template: "{{ is_state('sensor.upstairs_bathroom_multi6_burglar', '8') }}"
+
+script:
+#----------------------------------------------------------------
+
+  upstairs_bathroom_poweroff_all:
+    alias: "Upstairs Bathroom | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.upstairs_bathroom_poweroff_lights
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - switch.upstairs_bathroom_fan2
+            - media_player.upstairs_bathroom_cast
+
+  upstairs_bathroom_poweroff_lights:
+    alias: "Upstairs Bathroom | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.upstairs_bathroom_sconce
+
+sensor:
+#----------------------------------------------------------------
+
+  - platform: template
+    sensors:
+
+      upstairs_bathroom_on:
+        value_template: >
+          {% set total = 0 %}
+
+          {% if is_state('light.upstairs_bathroom_sconce', 'on') %}
+            {% set total = total + 1 %}
+          {% endif %}
+          {% if is_state('switch.upstairs_bathroom_fan2', 'on') %}
+            {% set total = total + 1 %}
+          {% endif %}
+          {% if is_state('media_player.upstairs_bathroom_cast', 'playing') %}
+            {% set total = total + 1 %}
+          {% endif %}
+
+          {{total}}
+
+      upstairs_bathroom_state:
+        value_template: >
+          {% if states.sensor.upstairs_bathroom_multi6_temperature.state|int<65 or
+                states.sensor.upstairs_bathroom_multi6_temperature.state|int> 80 -%}
+            problem
+          {% elif (is_state('light.upstairs_bathroom_sconce', 'on') or is_state('switch.uptairs_bathroom_fan', 'on')) and states.sensor.upstairs_bathroom_multi6_relative_humidity.state|int>70 %}
+            showering
+          {% elif is_state('binary_sensor.upstairs_bathroom_occupancy', 'on')  %}
+            active
+          {% else %}
+            inactive
+          {% endif %}

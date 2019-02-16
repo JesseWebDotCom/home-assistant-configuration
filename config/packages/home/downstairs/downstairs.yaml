@@ -1,0 +1,120 @@
+binary_sensor:
+#----------------------------------------------------------------
+
+  - platform: template
+    sensors:
+
+      downstairs_occupancy:
+        friendly_name: Downstairs | Occupancy
+        value_template: "{{ is_state('binary_sensor.downstairs_bathroom_occupancy', 'on') or
+                  is_state('binary_sensor.office_occupancy', 'on') or
+                  is_state('binary_sensor.playroom_occupancy', 'on') or
+                  is_state('binary_sensor.storage_room_occupancy', 'on') or
+                  is_state('binary_sensor.garage_occupancy', 'on') or
+                  is_state('binary_sensor.ryans_room_occupancy', 'on') or
+                  is_state('binary_sensor.theater_occupancy', 'on') }}"
+
+      downstairs_problems:
+        friendly_name: Downstairs | Problems
+        value_template: "{{ is_state('sensor.downstairs_bathroom_state', 'problem') or
+                  is_state('sensor.office_state', 'problem') or
+                  is_state('sensor.playroom_state', 'problem') or
+                  is_state('sensor.storage_room_state', 'problem') or
+                  is_state('sensor.garage_state', 'problem') or
+                  is_state('sensor.boiler_room_state', 'problem') or
+                  is_state('sensor.ryans_room_state', 'problem') or
+                  is_state('sensor.theater_state', 'problem') }}"
+
+
+script:
+#----------------------------------------------------------------
+
+  downstairs_poweroff_all:
+    alias: "Downstairs | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.downstairs_poweroff_lights
+            - script.downstairs_bathroom_poweroff_all
+            - script.mudroom_poweroff_all
+            - script.office_poweroff_all
+            - script.playroom_poweroff_all
+            - script.storage_room_poweroff_all
+            - script.theater_poweroff_all
+            - script.boiler_room_poweroff_all
+            - script.ryans_room_poweroff_all
+            - script.garage_poweroff_all
+
+  downstairs_poweroff_lights:
+    alias: "Downstairs | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - script.downstairs_bathroom_poweroff_lights
+            - script.mudroom_poweroff_lights
+            - script.office_poweroff_lights
+            - script.playroom_poweroff_lights
+            - script.storage_room_poweroff_lights
+            - script.theater_poweroff_lights
+            - script.boiler_room_poweroff_lights
+            - script.garage_poweroff_lights
+            - script.ryans_room_poweroff_lights
+
+sensor:
+#----------------------------------------------------------------
+
+  - platform: template
+    sensors:
+
+      downstairs_on:
+        friendly_name: Downstairs | On
+        value_template: >-
+          {% set total = 0 %}
+
+          {% set total = total + states.sensor.mudroom_on.state|int%}
+          {% set total = total + states.sensor.playroom_on.state|int%}
+          {% set total = total + states.sensor.downstairs_bathroom_on.state|int%}
+          {% set total = total + states.sensor.office_on.state|int%}
+          {% set total = total + states.sensor.storage_room_on.state|int%}
+          {% set total = total + states.sensor.theater_on.state|int%}
+          {% set total = total + states.sensor.ryans_room_on.state|int%}
+          {% set total = total + states.sensor.garage_on.state|int%}
+          {% set total = total + states.sensor.boiler_room_on.state|int%}
+
+          {{total}}
+        icon_template: >-
+            {% if states.sensor.downstairs_on.state|int > 0 %}
+              mdi:power-plug
+            {% else %}
+              mdi:power-plug-off
+            {% endif %}
+
+
+      downstairs_open:
+        friendly_name: Downstairs | Open
+        unit_of_measurement: ' '
+        value_template: >-
+          {% set total = 0 %}
+
+          {% if is_state('cover.garage', 'open') %}
+            {% set total = total + 1 %}
+          {% endif %}
+          {% if is_state('binary_sensor.mudroom_door', 'on') %}
+            {% set total = total + 1 %}
+          {% endif %}
+          {% if is_state('binary_sensor.storage_room_door', 'on') %}
+            {% set total = total + 1 %}
+          {% endif %}
+          {% if is_state('binary_sensor.storage_room_freezer_door', 'on') %}
+            {% set total = total + 1 %}
+          {% endif %}
+
+          {{total}}
+        icon_template: >-
+            {% if states.sensor.downstairs_open.state|int > 0 %}
+              mdi:door-open
+            {% else %}
+              mdi:door
+            {% endif %}

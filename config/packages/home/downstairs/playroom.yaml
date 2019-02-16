@@ -1,0 +1,68 @@
+binary_sensor:
+#----------------------------------------------------------------
+
+  - platform: template
+    sensors:
+
+      mudroom_motion:
+        friendly_name: Mudroom | Motion
+        device_class: motion
+        value_template: "{{ is_state('sensor.mudroom_motion_burglar', '8') }}"
+
+      mudroom_occupancy:
+        friendly_name: Mudroom | Occupancy
+        device_class: occupancy
+        value_template: "{{ is_state('binary_sensor.mudroom_motion', 'on') or is_state('binary_sensor.mudroom_door', 'on') }}"
+
+script:
+#----------------------------------------------------------------
+
+  playroom_poweroff_all:
+    alias: "Playroom | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.playroom_poweroff_lights
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - media_player.playroom_atv
+
+  playroom_poweroff_lights:
+    alias: "Playroom | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.playroom_dome
+
+sensor:
+#----------------------------------------------------------------
+
+  - platform: template
+    sensors:
+      playroom_on:
+        friendly_name: Playroom | On
+        value_template: >
+          {% set total = 0 %}
+
+          {% if is_state('light.playroom_dome', 'on') %}
+            {% set total = total + 1 %}
+          {% endif %}
+          {% if is_state('media_player.playroom_ump', 'playing') %}
+            {% set total = total + 1 %}
+          {% endif %}
+
+          {{total}}
+
+      playroom_state:
+        friendly_name: Playroom | State
+        value_template: >
+          {% if is_state('light.playroom_dome', 'on') or
+                is_state('binary_sensor.mudroom_occupancy', 'on') or
+                is_state('binary_sensor.mudroom_motion', 'on') -%}
+            active
+          {%- else -%}
+            inactive
+          {%- endif %}

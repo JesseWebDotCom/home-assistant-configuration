@@ -1,0 +1,175 @@
+- platform: mjpeg
+  name: Garage
+  mjpeg_url: !secret camera_garage_url
+  still_image_url:  !secret camera_image_garage_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Playroom
+  mjpeg_url: !secret camera_playroom_url
+  still_image_url:  !secret camera_image_playroom_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Sunroom
+  mjpeg_url: !secret camera_sunroom_url
+  still_image_url:  !secret camera_image_sunroom_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Kitchen
+  mjpeg_url: !secret camera_kitchen_url
+  still_image_url:  !secret camera_image_kitchen_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Isabellas Room
+  mjpeg_url: !secret camera_isabellas_room_url
+  still_image_url:  !secret camera_image_isabellas_room_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Living Room
+  mjpeg_url: !secret camera_living_room_url
+  still_image_url:  !secret camera_image_living_room_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Dining Room
+  mjpeg_url: !secret camera_dining_room_url
+  still_image_url:  !secret camera_image_dining_room_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Theater
+  mjpeg_url: !secret camera_theater_url
+  still_image_url:  !secret camera_image_theater_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Front | PTZ
+  mjpeg_url: !secret camera_front_ptz_url
+  still_image_url:  !secret camera_image_front_ptz_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Front | Door
+  mjpeg_url: !secret camera_front_door_url
+  still_image_url:  !secret camera_image_front_door_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Front | Center
+  mjpeg_url: !secret camera_front_center_url
+  still_image_url:  !secret camera_image_front_center_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Front | Right
+  mjpeg_url: !secret camera_front_right_url
+  still_image_url:  !secret camera_image_front_right_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Driveway | Front
+  mjpeg_url: !secret camera_driveway_front_url
+  still_image_url:  !secret camera_image_driveway_front_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Driveway | Rear
+  mjpeg_url: !secret camera_driveway_rear_url
+  still_image_url:  !secret camera_image_driveway_rear_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Rear | Left
+  mjpeg_url: !secret camera_house_rear_left_url
+  still_image_url:  !secret camera_image_house_rear_left_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Rear | Center
+  mjpeg_url: !secret camera_house_rear_url
+  still_image_url:  !secret camera_image_house_rear_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Porch
+  mjpeg_url: !secret camera_porch_url
+  still_image_url:  !secret camera_image_porch_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Porch | Under
+  mjpeg_url: !secret camera_porch_under_url
+  still_image_url:  !secret camera_image_porch_under_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Pool
+  mjpeg_url: !secret camera_pool_url
+  still_image_url:  !secret camera_image_pool_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Storage Room
+  mjpeg_url: !secret camera_storage_room_url
+  still_image_url:  !secret camera_image_storage_room_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Side Stairs
+  mjpeg_url: !secret camera_side_stairs_url
+  still_image_url:  !secret camera_image_side_stairs_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic
+
+- platform: mjpeg
+  name: Upstairs | Entrance
+  mjpeg_url: !secret camera_upstairs_entrance_url
+  still_image_url:  !secret camera_image_upstairs_entrance_url
+  username: !secret camera_username
+  password: !secret camera_password
+  authentication: basic

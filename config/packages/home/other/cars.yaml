@@ -1,0 +1,166 @@
+homeassistant:
+#----------------------------------------------------------------
+  customize:
+
+    lock.volvo_xc90_door_lock:
+      friendly_name: "Volvo xc90 | Doors"
+
+    sensor.volvo_xc90_fuel_level:
+      friendly_name: "Volvo xc90 | Fuel"
+
+    sensor.i3_94_rex_charging_level_hv:
+      unit_of_measurement: "%"
+
+    device_tracker.volvo_yv4a22pk2h1184894:
+      friendly_name: Volvo | Location
+      icon: mdi:map-search-outline
+
+    device_tracker.i3_94_rex:
+      icon: mdi:map-search-outline
+
+binary_sensor:
+#----------------------------------------------------------------
+
+  - platform: template
+    sensors:
+      cars_i3_problems:
+        device_class: problem
+        value_template: "{{ states.sensor.i3_94_rex_charging_level_hv.state | float < 10 or
+                            is_state('lock.i3_94_rex_lock', 'unlocked') }}"
+
+      cars_xc90_problems:
+        device_class: problem
+        value_template: "{{ states.sensor.volvo_xc90_fuel_level.state | float < 10 or
+                            is_state('lock.volvo_xc90_door_lock', 'unlocked') }}"
+
+      cars_problems:
+        device_class: problem
+        value_template: "{{ is_state('binary_sensor.cars_i3_problems', 'on') or
+                            is_state('binary_sensor.cars_xc90_problems', 'on') }}"                            
+
+sensor:
+#----------------------------------------------------------------
+
+  - platform: template
+    sensors:
+      cars_open:
+        unit_of_measurement: ' '
+        value_template: >-
+          {% set total = 0 %}
+
+          {% if is_state('lock.volvo_xc90_door_lock', 'unlocked') %}
+            {% set total = total + 1 %}
+          {% endif %}
+          {% if is_state('lock.i3_94_rex_lock', 'unlocked') %}
+            {% set total = total + 1 %}
+          {% endif %}
+
+          {{total}}
+        icon_template: >-
+            {% if states.sensor.cars_open.state|int > 0 %}
+              mdi:door-open
+            {% else %}
+              mdi:door
+            {% endif %}
+
+      cars_xc90_state:
+        value_template: >
+          {% if is_state('binary_sensor.cars_xc90_problems', 'on') -%}
+            problem
+          {% elif is_state('binary_sensor.volvo_xc90_engine', 'on') %}
+            active
+          {% else %}
+            inactive
+          {% endif %} 
+
+      cars_i3_state:
+        value_template: >
+          {% if is_state('binary_sensor.cars_i3_problems', 'on') -%}
+            problem
+          {% elif is_state('sensor.charging_status', 'charging') %}
+            active
+          {% else %}
+            inactive
+          {% endif %}                      
+
+# automation:
+# #----------------------------------------------------------------
+
+# - alias: WEATHER (PRECIP) CARS OPEN
+#   trigger:
+#     platform: state
+#     entity_id: sensor.dark_sky_precip
+#     from: '0'
+#   condition:
+#     condition: or
+#     conditions:
+#       - condition: template
+#         value_template: "{{ is_state('binary_sensor.i3_94_rex_windows', 'on') }}"
+#       - condition: template
+#         value_template: "{{ is_state('binary_sensor.i3_94_rex_lids', 'on') }}"
+#       - condition: template
+#         value_template: "{{ is_state('binary_sensor.volvo_xc90_windows', 'on') }}"
+#       - condition: template
+#         value_template: "{{ is_state('binary_sensor.volvo_xc90_doors', 'on') }}"
+#   action:
+#     - service: notify.telegram_jesse
+#       data_template:
+#         message: >
+#           OPEN:
+#           {%- if is_state('binary_sensor.i3_94_rex_windows', 'on') -%}
+#              BMW i3 WINDOWS
+#           {% endif %}
+#           {%- if is_state('binary_sensor.i3_94_rex_lids', 'on') -%}
+#              BMW i3 DOORS
+#           {% endif %}
+#           {%- if is_state('binary_sensor.volvo_xc90_windows', 'on') -%}
+#              VOLVO XC90 WINDOWS
+#           {% endif %}
+#           {%- if is_state('binary_sensor.volvo_xc90_doors', 'on') -%}
+#              VOLVO XC90 DOORS
+#           {% endif %}
+#         title: "ALERT: {{ states.sensor.dark_sky_precip.state.upper() }}"
+
+# alert:
+# #----------------------------------------------------------------
+#   xc90_window_open:
+#     name: XC90 WINDOW IS OPEN
+#     done_message: XC90 WINDOW IS CLOSED
+#     entity_id: binary_sensor.volvo_xc90_windows
+#     state: 'on'
+#     repeat:
+#       - 15
+#       - 30
+#       - 60
+#     can_acknowledge: True  # Optional, default is True
+#     skip_first: True  # Optional, false is the default
+#     notifiers:
+#       - telegram_carinajesse
+
+#   xc90_door_open:
+#     name: XC90 DOOR IS OPEN
+#     done_message: XC90 DOOR IS CLOSED
+#     entity_id: binary_sensor.volvo_xc90_doors
+#     state: 'on'
+#     repeat:
+#       - 15
+#       - 30
+#       - 60
+#     can_acknowledge: True  # Optional, default is True
+#     skip_first: True  # Optional, false is the default
+#     notifiers:
+#       - telegram_carinajesse
+
+#   xc90_doors_unlocked:
+#     name: XC90 DOORS ARE UNLOCKED
+#     done_message: XC90 DOORS ARE LOCKED
+#     entity_id: lock.volvo_xc90_door_lock
+#     state: 'unlocked'
+#     repeat:
+#       - 15
+#       - 30
+#       - 60
+#     can_acknowledge: True  # Optional, default is True
+#     skip_first: True  # Optional, false is the default
+#     notifiers:
+#       - telegram_carinajesse

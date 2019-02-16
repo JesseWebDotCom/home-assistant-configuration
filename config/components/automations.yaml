@@ -1,0 +1,70 @@
+- id: 'System - Start HomeKit'
+  alias: 'System - Start HomeKit'
+  trigger:
+    - platform: event
+      event_type: zwave.network_ready
+    - platform: event
+      event_type: zwave.network_complete
+    - platform: event
+      event_type: zwave.network_complete_some_dead
+  action:
+    - delay: 00:02
+    - service: homekit.start    
+
+- id: 'System - Backup Daily'
+  alias: 'System - Backup Daily'
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '3:00:00'
+    action:
+    - service: hassio.addon_start
+    data:
+      addon: 9dd13c5f_ftpbackup
+
+- id: 'System - Snapshot Weekly'
+  alias: 'System - Snapshot Weekly'
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '00:00:00'
+  condition:
+  - condition: time
+    weekday:
+      - mon
+  action:
+  - service: hassio.snapshot_full
+    data_template:
+      name: >
+        {{ now().strftime('%Y%m%d') }} Weekly Backup
+
+# - id: 'System - Day Night Theming'
+#   alias: 'System - Day Night Theming'
+#   trigger:
+#     - platform: homeassistant
+#       event: start
+#     - platform: state
+#       entity_id: sun.sun
+#       to: above_horizon
+#     - platform: state
+#       entity_id: sun.sun
+#       to: below_horizon
+#   action:
+#     - service_template: frontend.set_theme
+#       data_template:
+#         name: >
+#           {% if states.sun.sun.state == "above_horizon" %}
+#             Light - Cyan
+#           {% else %}
+#             Dark - Cyan
+#           {% endif %}
+
+- id: 'System - Default Theme'
+  alias: 'System - Default Theme'
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - service: frontend.set_theme
+      data:
+        name: Dark - Cyan

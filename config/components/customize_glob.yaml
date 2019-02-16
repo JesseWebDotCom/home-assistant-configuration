@@ -1,0 +1,153 @@
+#----------------------------------------------------------------
+# Global customizations
+#
+# REPO: https://github.com/JesseWebDotCom/home-assistant-configuration
+#----------------------------------------------------------------
+
+# object standards
+# -----------------------------------------------------------------
+
+"input_boolean.*":
+  initial: off
+
+"fan.*":
+  icon: mdi:fan
+
+"media_player.*_apple_tv*":
+  icon: mdi:apple
+
+"media_player.*_cast":
+  icon: mdi:cast
+
+"media_player.plex_*":  
+  icon: mdi:plex
+
+"media_player.*_ump":
+  icon: mdi:apple
+
+"binary_sensor.*_tv":
+  icon: mdi:television-box
+
+"binary_sensor.*_door":
+  icon: mdi:door
+
+"binary_sensor.*_light":
+  device_class: light
+
+"binary_sensor.*_moisture":
+  device_class: moisture
+
+"binary_sensor.*_motion":
+  device_class: motion
+
+"binary_sensor.*_problems":
+  device_class: problem
+
+"binary_sensor.*_occupancy":
+  icon: mdi:run-fast
+  device_class: occupancy
+  delay_off:
+    minutes: 1
+
+"binary_sensor.*_security":
+  icon: mdi:security
+
+# [ LIGHTS ]
+# https://en.wikipedia.org/wiki/Light_fixture#Fixed
+
+# any light with housing in the ceiling
+"*.*_recessed":
+  icon: mdi:lightbulb
+
+# any beam of light aimed to higlight an area
+"*.*_spotlight":
+  icon: mdi:spotlight-beam
+
+ # any led strip
+"*.*_led-strip":
+  icon: mdi:led-strip 
+
+# any light with housing fixed to a ceiling
+"*.*_dome":
+  icon: mdi:lightbulb
+
+# any light that hangs on a chain
+"*.*_pendant":
+  icon: mdi:ceiling-light
+
+# any desk or floor lamp
+"*.*_lamp":
+  icon: mdi:lamp 
+
+# any lava lamp
+"*.*_lava_lamp":
+  icon: mdi:lava-lamp  
+
+# any light fixed to a wall
+"*.*_sconce":
+  icon: mdi:wall-sconce
+
+# [ OTHER ]
+"*.*_hallway":
+  icon: mdi:view-day
+
+"*.*_fan":
+  icon: mdi:fan
+
+"script.*_sleep":
+  icon: mdi:sleep
+
+"script.*_poweroff_all":
+  icon: mdi:power-standby
+
+"script.*_poweroff_lights":
+  icon: mdi:flash-circle
+
+"switch.*_speakers":
+  icon: mdi:speaker
+
+"switch.*_accessory_*":
+  icon: mdi:power-socket-us
+
+"switch.*_dash":
+  icon: mdi:gesture-tap
+
+"switch.*_water":
+  icon: mdi:water-pump
+
+
+
+# [ HIDE ]
+
+# use UMP player instead
+"media_player.*_apple_tv":
+  hidden: true
+
+# use UMP player instead
+"media_player.*_plex":
+  hidden: true
+
+# hide overlapping sensors
+"binary_sensor.*_2":
+  hidden: true
+
+"group.all_*":
+  hidden: true
+
+"input_boolean.*_state":
+  hidden: true
+
+"sensor.*_access_control":
+  hidden: true
+"sensor.*_alarm_level":
+  hidden: true
+"sensor.*_alarm_type":
+  hidden: true
+"sensor.*_clock":
+  hidden: true
+"sensor.*_emergency":
+  hidden: true
+"sensor.*_homehealth":
+  hidden: true
+"sensor.*_sourcenodeid":
+  hidden: true 

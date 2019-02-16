@@ -1,0 +1,29 @@
+# -----------------------------------------------------------------
+#
+# .gitignore for Home Assistant
+# https://github.com/JesseWebDotCom/home-assistant-configuration
+#
+# This file prevents git from publishing sensitive files
+#
+# -----------------------------------------------------------------
+
+# ignore everything by default
+*
+
+# track core files
+!.gitignore
+!readme.md
+!configuration.yaml
+!ui-lovelace.yaml
+
+# track example files
+!secrets.example.yaml
+
+# track content folders
+!config/**/*.yaml
+!custom_components/**/*.py
+!www/custom-lovelace/*
+!www/images/stock/*
+!www/images/menu/*
+!www/images/doc/*
+!www/sounds/*

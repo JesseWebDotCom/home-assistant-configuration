@@ -1,0 +1,18 @@
+# https://www.home-assistant.io/components/sabnzbd/#host
+host: !secret sabnzbd_host
+api_key: !secret sabnzbd_api_key
+name: sab
+port: !secret sabnzbd_port
+ssl: false
+sensors:
+  - current_status
+  - speed
+  - queue_size
+  - queue_remaining
+  - disk_size
+  - disk_free
+  - queue_count
+  - day_size
+  - week_size
+  - month_size
+  - total_size

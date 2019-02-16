@@ -1,0 +1,174 @@
+automation:
+#----------------------------------------------------------------
+
+  - alias: STATE (CHANGE) UPSTAIRS
+    trigger:
+      - platform: homeassistant
+        event: start
+      - platform: state
+        entity_id:
+          - light.upstairs_stairs
+          - light.upstairs_laundry
+          - light.upstairs_hallway_recessed
+          - light.upstairs_attic
+    action:
+      service_template: >
+        {% if is_state('light.upstairs_stairs', 'on') or
+              is_state('light.upstairs_laundry', 'on') or
+              is_state('light.upstairs_hallway_recessed', 'on') or
+              is_state('light.upstairs_attic', 'on') -%}
+          homeassistant.turn_on
+        {%- else -%}
+          homeassistant.turn_off
+        {%- endif %}
+      data_template:
+          entity_id: input_boolean.upstairs_state
+
+binary_sensor:
+#----------------------------------------------------------------
+
+  - platform: mqtt
+    name: "Upstairs Entrance Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/upstairs_entrance_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"  
+
+  - platform: template
+    sensors:
+
+      upstairs_problems:
+        value_template: "{{ is_state('sensor.biancas_room_state', 'problem') or
+                  is_state('sensor.dining_room_state', 'problem') or
+                  is_state('sensor.isabellas_room_state', 'problem') or
+                  is_state('sensor.kitchen_state', 'problem') or
+                  is_state('sensor.living_room_state', 'problem') or
+                  is_state('sensor.master_bathroom_state', 'problem') or
+                  is_state('sensor.master_bedroom_state', 'problem') or
+                  is_state('sensor.sunroom_state', 'problem') or
+                  is_state('sensor.upstairs_entrance_state', 'problem') or
+                  is_state('sensor.upstairs_bathroom_state', 'problem') }}"
+
+      upstairs_occupancy:
+        value_template: "{{ is_state('binary_sensor.biancas_room_occupancy', 'on') or
+                  is_state('binary_sensor.dining_room_occupancy', 'on') or
+                  is_state('binary_sensor.isabellas_room_occupancy', 'on') or
+                  is_state('binary_sensor.kitchen_occupancy', 'on') or
+                  is_state('binary_sensor.living_room_occupancy', 'on') or
+                  is_state('binary_sensor.master_bathroom_occupancy', 'on') or
+                  is_state('binary_sensor.master_bedroom_ecobee_occupancy', 'on') or
+                  is_state('binary_sensor.sunroom_occupancy', 'on') or
+                  is_state('binary_sensor.upstairs_entrance_occupancy', 'on') or
+                  is_state('binary_sensor.upstairs_bathroom_occupancy', 'on') }}"
+
+      upstairs_entrance_occupancy:
+        value_template: "{{ is_state('binary_sensor.upstairs_entrance_motion', 'on') }}"
+
+      upstairs_entrance_motion:
+        value_template: "{{ is_state('binary_sensor.blueiris_upstairs_entrance_motion', 'on') }}"
+
+input_boolean:
+#----------------------------------------------------------------
+  upstairs_state:
+    initial: off
+
+script:
+#----------------------------------------------------------------
+
+  upstairs_poweroff_all:
+    alias: "Upstairs | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.upstairs_poweroff_lights
+            - script.biancas_room_poweroff_all
+            - script.dining_room_poweroff_all
+            - script.isabellas_room_poweroff_all
+            - script.kitchen_poweroff_all
+            - script.living_room_poweroff_all
+            - script.master_bathroom_poweroff_all
+            - script.master_bedroom_poweroff_all
+            - script.sunroom_poweroff_all
+            - script.upstairs_bathroom_poweroff_all
+
+  upstairs_poweroff_lights:
+    alias: "Upstairs | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.upstairs_stairs
+            - light.upstairs_laundry
+            - light.upstairs_hallway_recessed
+            - light.upstairs_attic
+            - script.biancas_room_poweroff_lights
+            - script.dining_room_poweroff_lights
+            - script.isabellas_room_poweroff_lights
+            - script.kitchen_poweroff_lights
+            - script.living_room_poweroff_lights
+            - script.master_bathroom_poweroff_lights
+            - script.master_bedroom_poweroff_lights
+            - script.sunroom_poweroff_lights
+            - script.upstairs_bathroom_poweroff_lights
+
+sensor:
+#----------------------------------------------------------------
+
+  - platform: template
+    sensors:
+
+      upstairs_on:
+        value_template: >-
+          {% set total = 0 %}
+
+          {% if (is_state('light.upstairs_stairs', 'on')) -%}
+            {% set total = total + 1 %}
+          {% endif %}
+          {% if (is_state('light.upstairs_hallway_recessed', 'on')) -%}
+            {% set total = total + 1 %}
+          {% endif %}
+          {% if (is_state('light.upstairs_laundry', 'on')) -%}
+            {% set total = total + 1 %}
+          {% endif %}
+          {% if (is_state('light.upstairs_attic', 'on')) -%}
+            {% set total = total + 1 %}
+          {% endif %}
+
+          {% set total = total + states.sensor.biancas_room_on.state|int%}
+          {% set total = total + states.sensor.dining_room_on.state|int%}
+          {% set total = total + states.sensor.isabellas_room_on.state|int%}
+          {% set total = total + states.sensor.kitchen_on.state|int%}
+          {% set total = total + states.sensor.living_room_on.state|int%}
+          {% set total = total + states.sensor.master_bedroom_on.state|int%}
+          {% set total = total + states.sensor.master_bathroom_on.state|int%}
+          {% set total = total + states.sensor.upstairs_bathroom_on.state|int%}
+          {% set total = total + states.sensor.sunroom_on.state|int%}
+
+          {{total}}
+        icon_template: >-
+            {% if states.sensor.upstairs_on.state|int > 0 %}
+              mdi:power-plug
+            {% else %}
+              mdi:power-plug-off
+            {% endif %}
+
+      upstairs_open:
+        unit_of_measurement: ' '
+        value_template: >-
+          {% set total = 0 %}
+
+          {% if is_state('binary_sensor.front_door', 'on') %}
+            {% set total = total + 1 %}
+          {% endif %}
+          {% if is_state('binary_sensor.kitchen_door', 'on') %}
+            {% set total = total + 1 %}
+          {% endif %}
+
+          {{total}}
+        icon_template: >-
+            {% if states.sensor.upstairs_open.state|int > 0 %}
+              mdi:door-open
+            {% else %}
+              mdi:door
+            {% endif %}

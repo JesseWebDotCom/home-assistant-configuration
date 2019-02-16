@@ -1,0 +1,14 @@
+- platform: tile
+  username: !secret tile_username
+  password: !secret tile_password
+
+- platform: unifi
+  host: !secret unifi_host
+  port: !secret unifi_port
+  username: !secret unifi_username
+  password: !secret unifi_password
+  verify_ssl: False
+  site_id: default
+  track_new_devices: no
+  interval_seconds: 2
+  consider_home: 180

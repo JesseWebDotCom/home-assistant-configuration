@@ -1,0 +1,4 @@
+default: warn
+# logs:
+#   homeassistant.components.homekit: debug
+#   pyhap: debug

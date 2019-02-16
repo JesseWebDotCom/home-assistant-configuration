@@ -1,0 +1,16 @@
+# Setup Telegram to send notifications
+- platform: telegram
+  name: telegram_jesse
+  api_key: !secret telegram_chatbot_api_key
+  chat_id: !secret telegram_jesse_chat_id
+
+- platform: telegram
+  name: telegram_carina
+  api_key: !secret telegram_chatbot_api_key
+  chat_id: !secret telegram_carina_chat_id
+
+- name: telegram_carinajesse
+  platform: group
+  services:
+    - service: telegram_jesse
+    - service: telegram_carina

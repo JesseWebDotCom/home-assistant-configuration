@@ -1,0 +1,36 @@
+- type: custom:compact-custom-header
+  menu: false
+  notification: false
+  voice: false
+  options: false
+  user_agent: mobile  
+
+- type: vertical-stack
+  cards:
+
+# RESIDENTS
+#----------------------------------------------------------------
+    - type: markdown
+      content: >
+        ## [![Home](/local/images/menu/double-left_16.png)](/lovelace/home?kiosk&show_tabs)&emsp;RESIDENTS
+
+    - type: glance
+      show_name: false
+      entities:
+        - sensor.tracker_jesse
+        - sensor.tracker_carina
+        - sensor.tracker_bianca
+        - sensor.tracker_ryan
+
+# GUESTS
+#----------------------------------------------------------------
+    - type: markdown
+      content: >
+        ## [![Home](/local/images/menu/double-left_16.png)](/lovelace/home?kiosk&show_tabs)&emsp;GUESTS
+
+    - type: glance
+      entities:
+        - sensor.tracker_cida
+        - sensor.tracker_camilla
+        - sensor.tracker_mariana
+        - sensor.tracker_edgar

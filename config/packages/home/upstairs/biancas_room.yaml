@@ -1,0 +1,109 @@
+homeassistant:
+#----------------------------------------------------------------
+  customize:
+
+    media_player.biancas_room_ump:
+      friendly_name: "Biancas Room | Apple TV"
+
+    binary_sensor.bianca_s_room_ecobee_occupancy:
+      friendly_name: "Biancas Room | Occupancy"
+
+    sensor.bianca_s_room_ecobee_temperature:
+      friendly_name: "Biancas Room | Temperature"
+
+automation:
+#----------------------------------------------------------------
+
+- id: 'Biancas Room - Power Off'
+  alias: 'Biancas Room - Power Off'
+  initial_state: 'on'
+  trigger:
+    - platform: state
+      entity_id:
+        - sensor.tracker_bianca
+      to: 'Away'
+  #Only between 8AM and 9PM, and no motion
+  condition:
+    - condition: time
+      after: '8:00:00'
+    - condition: time
+      before: '21:00:00'      
+    - condition: state
+      entity_id: binary_sensor.bianca_s_room_ecobee_occupancy
+      state: 'off'        
+  action:
+    - service: script.turn_on
+      data:
+        entity_id:
+          - script.biancas_room_poweroff_all       
+
+script:
+#----------------------------------------------------------------
+
+  biancas_room_sleep:
+    alias: "Biancas Room | Sleep"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.biancas_room_dome
+      - service: homeassistant.turn_on
+        data:
+          entity_id:
+            - light.biancas_room_lava_lamp
+
+  biancas_room_poweroff_all:
+    alias: "Biancas Room | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.biancas_room_poweroff_lights
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - media_player.biancas_room_ump
+
+  biancas_room_poweroff_lights:
+    alias: "Biancas Room | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.biancas_room_dome
+            - light.biancas_room_lava_lamp
+
+sensor:
+#----------------------------------------------------------------
+
+  - platform: template
+    sensors:
+      biancas_room_on:
+        value_template: >
+          {% set total = 0 %}
+
+          {% if is_state('light.biancas_room_dome', 'on') %}
+            {% set total = total + 1 %}
+          {% endif %}
+          {% if is_state('light.biancas_room_lava_lamp', 'on') %}
+            {% set total = total + 1 %}
+          {% endif %}
+          {% if is_state('media_player.biancas_room_ump', 'playing') %}
+            {% set total = total + 1 %}
+          {% endif %}
+
+          {{total}}
+
+      # is_state('light.biancas_room_lava_lamp', 'on') or
+      biancas_room_state:
+        value_template: >
+          {% if states.sensor.bianca_s_room_ecobee_temperature.state|int> 80 or
+                states.sensor.bianca_s_room_ecobee_temperature.state|int<65 -%}
+            problem
+          {% elif is_state('light.biancas_room_dome', 'on') or
+                is_state('media_player.biancas_room_ump', 'playing') or
+                is_state('binary_sensor.bianca_s_room_ecobee_occupancy', 'on') -%}
+            active
+          {%- else -%}
+            inactive
+          {%- endif %}

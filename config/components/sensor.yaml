@@ -1,0 +1,35 @@
+# https://www.home-assistant.io/components/sensor.ring/
+- platform: ring
+
+# https://www.home-assistant.io/components/sensor.synologydsm/
+- platform: synologydsm
+  name: D8
+  host: !secret synologydsm_host_d8
+  username: !secret synologydsm_username
+  password: !secret synologydsm_password
+  monitored_conditions:
+    - volume_percentage_used
+    - volume_status
+    - volume_size_total
+
+- platform: synologydsm
+  name: D5
+  host: !secret synologydsm_host_d5
+  username: !secret synologydsm_username
+  password: !secret synologydsm_password
+  monitored_conditions:
+    - volume_percentage_used
+    - volume_status
+    - volume_size_total
+
+# https://www.home-assistant.io/components/sensor.solaredge/
+- platform: solaredge
+  api_key: ! secret solaredge_api_key
+  site_id: ! secret solaredge_api_key
+  name: SolarEdge
+  monitored_conditions:
+    - lifetime_energy
+    - energy_this_year
+    - energy_this_month
+    - energy_today
+    - current_power

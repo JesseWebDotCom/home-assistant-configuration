@@ -1,0 +1,31 @@
+# OPTIONS
+# End user options for Home Assistant (ex. turn off notifications)
+#----------------------------------------------------------------
+
+input_boolean:
+#----------------------------------------------------------------
+
+  options_lights_auto_off:
+    name: Auto Off
+    initial: on
+    icon: mdi:lightbulb
+
+  options_lights_auto_on:
+    name: Auto On
+    initial: on
+    icon: mdi:lightbulb-outline
+
+  options_notifications_chime:
+    name: Chime
+    initial: on
+    icon: mdi:bell
+
+  options_notifications_push:
+    name: Push (Phone)
+    initial: on
+    icon: mdi:cellphone-iphone
+
+  options_notifications_speech:
+    name: Speech (Speakers)
+    initial: on
+    icon: mdi:voice

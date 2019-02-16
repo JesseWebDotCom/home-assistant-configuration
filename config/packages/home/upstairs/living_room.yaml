@@ -1,0 +1,146 @@
+automation:
+#----------------------------------------------------------------
+
+  - id: 'Living Room - Fan Off 7AM'
+    alias: 'Living Room - Fan Off 7AM'
+    trigger:
+      - platform: time
+        at: '07:00'
+    condition:
+      - condition: state
+        entity_id: input_boolean.options_lights_auto_off
+        state: 'on'
+    action:
+      - service: homeassistant.turn_off
+        entity_id:
+          - fan.living_room
+
+binary_sensor:
+#----------------------------------------------------------------
+
+  - platform: mqtt
+    name: "Living Room Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/living_room_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"  
+
+  - platform: template
+    sensors:
+
+      living_room_motion:
+        value_template: "{{ is_state('binary_sensor.living_room_camera_motion', 'on') }}"
+
+      living_room_occupancy:
+        value_template: "{{ is_state('binary_sensor.living_room_motion', 'on') }}"
+
+script:
+#----------------------------------------------------------------
+  living_room_sleep:
+    alias: "Living Room | Sleep"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.living_room_pendant
+      - service: homeassistant.turn_on
+        data:
+          entity_id: fan.living_room
+      - service: fan.set_speed
+        entity_id: fan.living_room
+        data:
+          speed: low
+
+  living_room_poweroff_all:
+    alias: "Living Room | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.living_room_poweroff_lights
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - media_player.living_room_atv
+            - media_player.living_room_cast
+
+  living_room_poweroff_lights:
+    alias: "Living Room | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.living_room_pendant
+
+sensor:
+#----------------------------------------------------------------
+
+  - platform: template
+    sensors:
+      living_room_activity:
+        value_template: >
+          {% if is_state('media_player.un60d8000_un60d8000', 'on') %}
+            {{ states.remote.living_room.attributes.current_activity.replace('Watch TV', 'Tivo').replace('Play ', '').replace('Watch ', '') }}
+          {% else %}
+            off
+          {% endif %}
+        icon_template: >
+          {% if is_state('media_player.un60d8000_un60d8000', 'on') %}
+            {% if 'apple' in states.remote.living_room.attributes.current_activity.lower() %}
+                mdi:apple
+            {% elif 'dvd' in states.remote.living_room.attributes.current_activity.lower() %}
+                mdi:disc
+            {% elif 'wii-u' in states.remote.living_room.attributes.current_activity.lower() %}
+                mdi:wiiu
+            {% elif 'wii' in states.remote.living_room.attributes.current_activity.lower() %}
+                mdi:wii
+            {% elif 'xbox' in states.remote.living_room.attributes.current_activity.lower() %}
+                mdi:xbox
+            {% elif 'shield' in states.remote.living_room.attributes.current_activity.lower() %}
+                mdi:xbox-controller
+            {% elif 'tivo' in states.remote.living_room.attributes.current_activity.lower() %}
+                mdi:television-box
+            {% elif 'ps4' in states.remote.living_room.attributes.current_activity.lower() %}
+                mdi:playstation
+            {% else %}
+                mdi:television-classic
+            {% endif %}
+          {% else %}
+            mdi:television-classic-off
+          {% endif %}
+
+  - platform: template
+    sensors:
+      living_room_on:
+        value_template: >
+          {% set total = 0 %}
+
+          {% if is_state('light.living_room_pendant', 'on') %}
+            {% set total = total + 1 %}
+          {% endif %}
+          {% if is_state('fan.living_room', 'on') %}
+            {% set total = total + 1 %}
+          {% endif %}
+          {% if is_state('media_player.living_room_atv', 'playing') %}
+            {% set total = total + 1 %}
+          {% endif %}
+          {% if is_state('media_player.living_room_cast', 'playing') %}
+            {% set total = total + 1 %}
+          {% endif %}
+
+          {{total}}
+
+      living_room_state:
+        value_template: >
+          {% if states.sensor.living_room_temperature.state|int> 80 or
+                states.sensor.living_room_temperature.state|int<65 -%}
+            problem
+          {% elif is_state('light.living_room_pendant', 'on') or
+                is_state('fan.living_room', 'on') or
+                is_state('media_player.living_room_video_ump', 'playing') or
+                is_state('media_player.living_room_cast', 'playing') or
+                is_state('binary_sensor.living_room_occupancy', 'on') -%}
+            active
+          {%- else -%}
+            inactive
+          {%- endif %}

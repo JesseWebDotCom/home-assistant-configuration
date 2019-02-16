@@ -1,0 +1,133 @@
+automation:
+#----------------------------------------------------------------
+
+  - id: 'Isabellas Room - Power Off'
+    alias: 'Isabellas Room - Power Off'
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.isabellas_room_motion
+        to: 'off'
+        for:
+          hours: 0
+          minutes: 10
+          seconds: 0
+    condition:
+      - condition: state
+        entity_id: input_boolean.options_lights_auto_off
+        state: 'on'
+    action:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.isabellas_room_poweroff_all
+
+  # Turn on light when motion detected
+  - id: 'Isabellas Room - Power On'
+    alias: 'Isabellas Room - Power On'
+    trigger:
+      platform: state
+      entity_id: binary_sensor.isabellas_room_motion
+      to: 'on'
+    action:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.isabellas_room_poweron_lights
+
+binary_sensor:
+#----------------------------------------------------------------
+
+  - platform: mqtt
+    name: "Isabellas Room Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/isabellas_room_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"  
+
+  - platform: template
+    sensors:
+      isabellas_room_motion:
+        device_class: motion
+        value_template: "{{ is_state('sensor.isabellas_room_motion_burglar', '8') }}"
+
+      isabellas_room_occupancy:
+        device_class: occupancy
+        value_template: "{{ is_state('binary_sensor.isabellas_room_motion', 'on') }}"
+
+script:
+#----------------------------------------------------------------
+
+  isabellas_room_sleep:
+    alias: "Isabellas Room | Sleep"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.isabellas_room_dome
+            - switch.isabellas_room_accessory_left
+
+  isabellas_room_poweroff_all:
+    alias: "Isabellas Room | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.isabellas_room_poweroff_lights
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - media_player.isabellas_room_ump
+
+  isabellas_room_poweroff_lights:
+    alias: "Isabellas Room | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.isabellas_room_dome
+            - switch.isabellas_room_accessory_left
+
+  isabellas_room_poweron_lights:
+    alias: "Isabellas Room | Power On Lights"
+    sequence:            
+      - service: script.toggle_to_max
+        data:
+          light: 'light.isabellas_room_dome'              
+      - service: homeassistant.turn_on
+        entity_id:
+          - switch.isabellas_room_accessory_left
+
+sensor:
+#----------------------------------------------------------------
+
+  - platform: template
+    sensors:
+      isabellas_room_on:
+        value_template: >
+          {% set total = 0 %}
+
+          {% if is_state('light.isabellas_room_dome', 'on') %}
+            {% set total = total + 1 %}
+          {% endif %}
+          {% if is_state('switch.isabellas_room_accessory_left', 'on') %}
+            {% set total = total + 1 %}
+          {% endif %}
+          {% if is_state('media_player.isabellas_room_ump', 'playing') %}
+            {% set total = total + 1 %}
+          {% endif %}
+
+          {{total}}
+
+      isabellas_room_state:
+        value_template: >
+          {% if states.sensor.isabella_s_room_ecobee_temperature.state|int> 80 or
+                states.sensor.isabella_s_room_ecobee_temperature.state|int<65 -%}
+            problem
+          {% elif is_state('light.isabellas_room_dome', 'on') or
+                is_state('switch.isabellas_room_accessory_left', 'on') or
+                is_state('media_player.isabellas_room_ump', 'playing') or
+                is_state('binary_sensor.isabellas_room_occupancy', 'on') -%}
+            active
+          {%- else -%}
+            inactive
+          {%- endif %}

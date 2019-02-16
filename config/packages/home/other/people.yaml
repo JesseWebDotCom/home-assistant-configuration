@@ -1,0 +1,198 @@
+# PEOPLE
+# Indicates if famliy and key guests are present
+#----------------------------------------------------------------
+
+homeassistant:
+  customize:
+  #----------------------------------------------------------------
+
+    # FAMILY
+    #----------------------------------------------------------------
+    sensor.tracker_jesse:
+      icon: mdi:cellphone-iphone
+      entity_picture: /local/images/photos/jesse.png
+      friendly_name: Jesse
+
+    sensor.tracker_carina:
+      icon: mdi:cellphone-iphone
+      entity_picture: /local/images/photos/carina.png
+      friendly_name: Carina
+
+    sensor.tracker_bianca:
+      icon: mdi:cellphone-iphone
+      entity_picture: /local/images/photos/bianca.png
+      friendly_name: Bianca
+
+    sensor.tracker_ryan:
+      icon: mdi:cellphone-iphone
+      entity_picture: /local/images/photos/ryan.png
+      friendly_name: Ryan
+
+    # GUESTS
+    #----------------------------------------------------------------
+    sensor.tracker_camilla:
+      icon: mdi:cellphone-iphone
+      entity_picture: /local/images/photos/camilla.png
+      friendly_name: Camilla
+
+    sensor.tracker_cida:
+      icon: mdi:cellphone-iphone
+      entity_picture: /local/images/photos/cida.png
+      friendly_name: Cida
+
+    sensor.tracker_mariana:
+      icon: mdi:cellphone-iphone
+      entity_picture: /local/images/photos/mariana.png
+      friendly_name: Mariana
+
+    sensor.tracker_edgar:
+      icon: mdi:cellphone-iphone
+      entity_picture: /local/images/photos/edgar.png
+      friendly_name: Edgar
+
+sensor:
+#----------------------------------------------------------------
+
+  # Every family is "sensed" through device tracking of their phones.
+  #----------------------------------------------------------------
+  - platform: template
+    sensors:
+
+      # {% if not is_state('device_tracker.i3_94_rex', 'home') %}
+      #   {{ states. device_tracker.i3_94_rex.state.replace('not_home','Away') }}
+      # {% else %}
+      #   Away
+      # {% endif %}
+      tracker_jesse:
+        friendly_name: 'Jesse'
+        value_template: >-
+          {% if is_state('device_tracker.phone_jesse', 'home') %}
+            Home
+          {% else %}
+            Away
+          {% endif %}
+
+      # {% if not is_state('device_tracker.volvo_volvo_xc90', 'home') %}
+      #   {{ states. device_tracker.volvo_volvo_xc90.state.replace('not_home','Away') }}
+      # {% else %}
+      #   Away
+      # {% endif %}
+      tracker_carina:
+        friendly_name: 'Carina'
+        value_template: >-
+          {% if is_state('device_tracker.phone_carina', 'home') %}
+            Home
+          {% else %}
+            Away
+          {% endif %}
+
+      tracker_bianca:
+        friendly_name: 'Bianca'
+        value_template: >-
+          {% if is_state('device_tracker.phone_bianca', 'home') %}
+            Home
+          {% else %}
+            Away
+          {% endif %}
+
+      tracker_ryan:
+        friendly_name: 'Ryan'
+        value_template: >-
+          {% if is_state('device_tracker.phone_ryan', 'home') %}
+            Home
+          {% else %}
+            Away
+          {% endif %}
+
+      tracker_mariana:
+        friendly_name: 'Mariana'
+        value_template: >-
+          {% if is_state('device_tracker.phone_mariana', 'home') %}
+            Home
+          {% else %}
+            Away
+          {% endif %}
+
+      tracker_camilla:
+        friendly_name: 'Camilla'
+        value_template: >-
+          {% if is_state('device_tracker.phone_camilla', 'home') or
+                is_state('device_tracker.camillasipad', 'home') %}
+            Home
+          {% else %}
+            Away
+          {% endif %}
+
+      tracker_cida:
+        friendly_name: 'Cida'
+        value_template: >-
+          {% if is_state('device_tracker.phone_cida', 'home') or
+                is_state('device_tracker.mariasaplewatch', 'home') or
+                is_state('device_tracker.mariasipad', 'home') %}
+            Home
+          {% else %}
+            Away
+          {% endif %}
+
+      tracker_edgar:
+        friendly_name: 'Edgar'
+        value_template: >-
+          {% if is_state('device_tracker.phone_edgar', 'home') %}
+            Home
+          {% else %}
+            Away
+          {% endif %}
+
+automation:
+#----------------------------------------------------------------
+
+  # NOTIFICATIONS
+  #----------------------------------------------------------------
+
+  # Send a notification when key guests arrive
+  # - alias: NOTIFY (HOME) Guest
+  #   hide_entity: True
+  #   trigger:
+  #     - platform: state
+  #       entity_id:
+  #         - sensor.tracker_cida
+  #         - sensor.tracker_camilla
+  #         - sensor.tracker_mariana
+  #         - sensor.tracker_edgar
+  #       to: 'Home'
+  #   condition:
+  #     - condition: state
+  #       entity_id: input_boolean.options_notifications_push
+  #       state: 'on'
+  #   action:
+  #     - service: notify.telegram_carinajesse
+  #       data_template:
+  #         title: ""
+  #         message: "{{ trigger.to_state.attributes.friendly_name }} has arrived"
+
+  # Announce over all Chromecast Audios when key guests arrive
+  - alias: SPEAK (HOME) Guest
+    hide_entity: True
+    trigger:
+      - platform: state
+        entity_id:
+          - sensor.tracker_cida
+          - sensor.tracker_camilla
+          - sensor.tracker_mariana
+          - sensor.tracker_edgar
+        to: 'Home'
+    #Only speak between 8AM and 9PM
+    condition:
+      - condition: time
+        after: '8:00:00'
+      - condition: time
+        before: '21:00:00'
+      - condition: state
+        entity_id: input_boolean.options_notifications_speech
+        state: 'on'
+    action:
+      - service: tts.google_say
+        entity_id: media_player.home_cast
+        data_template:
+          message: "Attention.  {{ trigger.to_state.attributes.friendly_name }} has arrived"
+          cache: false

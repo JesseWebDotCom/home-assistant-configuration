@@ -1,0 +1,78 @@
+automation:
+#----------------------------------------------------------------
+
+  - id: 'Exterior - Front Door Light On'
+    alias: 'Exterior - Front Door Light On'
+    trigger:
+      - platform: sun
+        event: sunset
+        offset: "-00:05:00"
+    condition:
+      - condition: state
+        entity_id: input_boolean.options_lights_auto_on
+        state: 'on'
+    action:
+      - service: light.turn_on
+        entity_id: light.front_door_sconce
+        data:
+          brightness: 254
+
+  - id: 'Exterior - Lights Off 11PM'
+    alias: 'Exterior - Lights Off 11PM'
+    trigger:
+      platform: time
+      at: '23:00:00'
+    condition:
+      - condition: state
+        entity_id: input_boolean.options_lights_auto_off
+        state: 'on'
+    action:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.exterior_poweroff_all
+
+# last resort incase someone left an outside light on
+  - id: 'Exterior - Power Off'
+    alias: 'Exterior - Power Off'
+    trigger:
+      platform: sun
+      event: sunrise
+      offset: '+00:00:00'
+    condition:
+      - condition: state
+        entity_id: input_boolean.options_lights_auto_off
+        state: 'on'
+    action:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.exterior_poweroff_all
+
+script:
+#----------------------------------------------------------------
+
+  exterior_poweroff_all:
+    alias: "Exterior | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.exterior_poweroff_lights
+            
+            # - script.pool_poweroff_all
+      # - service: homeassistant.turn_off
+      #   data:
+      #     entity_id:
+      #       - switch.exterior_front_water
+      #       - switch.exterior_front_accessory
+
+  exterior_poweroff_lights:
+    alias: "Exterior | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.front_door_sconce
+            - switch.driveway_sconce
+            - switch.porch_sconce

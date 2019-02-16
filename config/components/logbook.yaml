@@ -1,0 +1,45 @@
+# https://www.home-assistant.io/components/logbook/
+exclude:
+  entities:
+    - sensor.boiler_room_leak_sensor_alarm_level
+    - sensor.boiler_room_leak_sensor_alarm_type
+    - sensor.boiler_room_leak_sensor_sourcenodeid
+    - sensor.downstairs_bathroom_multi6_alarm_level
+    - sensor.downstairs_bathroom_multi6_alarm_type
+    - sensor.downstairs_bathroom_multi6_sourcenodeid
+    - sensor.garage_door_access_control
+    - sensor.garage_door_alarm_level
+    - sensor.garage_door_alarm_type
+    - sensor.garage_door_burglar
+    - sensor.garage_door_clock
+    - sensor.garage_door_emergency
+    - sensor.garage_door_homehealth
+    - sensor.garage_door_sourcenodeid
+    - sensor.isabellas_room_motion_alarm_level
+    - sensor.isabellas_room_motion_sourcenodeid
+    - sensor.kitchen_door_alarm_level
+    - sensor.kitchen_door_alarm_type
+    - sensor.mudroom_motion_alarm_level
+    - sensor.mudroom_motion_alarm_type
+    - sensor.mudroom_motion_sourcenodeid
+    - sensor.office_leak_sensor_alarm_level
+    - sensor.office_leak_sensor_alarm_type
+    - sensor.office_leak_sensor_sourcenodeid
+    - sensor.storage_room_door_sensor_gen5_access_control
+    - sensor.storage_room_door_sensor_gen5_alarm_level
+    - sensor.storage_room_door_sensor_gen5_alarm_type
+    - sensor.storage_room_door_sensor_gen5_sourcenodeid
+    - sensor.storage_room_freezer_door_sensor_access_control
+    - sensor.storage_room_freezer_door_sensor_alarm_level
+    - sensor.storage_room_freezer_door_sensor_alarm_type
+    - sensor.storage_room_freezer_door_sensor_sourcenodeid
+    - sensor.storage_room_leak_sensor_alarm_level
+    - sensor.storage_room_leak_sensor_alarm_type
+    - sensor.storage_room_leak_sensor_sourcenodeid
+    - sensor.sunroom_motion_sourcenodeid
+    - sensor.theater_motion_alarm_level
+    - sensor.theater_motion_alarm_type
+    - sensor.theater_motion_sourcenodeid
+    - sensor.upstairs_bathroom_multi6_alarm_level
+    - sensor.upstairs_bathroom_multi6_alarm_type
+    - sensor.upstairs_bathroom_multi6_sourcenodeid

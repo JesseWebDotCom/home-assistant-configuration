@@ -1,0 +1,263 @@
+- type: custom:compact-custom-header
+  menu: false
+  notification: false
+  voice: false
+  options: false
+  user_agent: mobile  
+
+- type: vertical-stack
+  cards:
+    - type: glance
+      show_name: false
+      entities:
+        - entity: binary_sensor.home_problems
+          name: ' '
+        - entity: binary_sensor.home_occupancy
+          name: ' '
+        - entity: sensor.home_open
+          name: ' '
+        - entity: sensor.home_on
+          name: ' '
+        - entity: script.home_poweroff_all
+          name: ' '
+          tap_action: turn-on
+        - entity: binary_sensor.home_security
+          name: ' '
+        - entity: alarm_control_panel.home_alarm
+          name: ' '
+        - entity: cover.garage
+          name: ' '
+          tap_action: toggle
+
+        # exclude:
+        #   - entity_id: "sensor.temperature"
+    - type: custom:monster-card
+      show_empty: false
+      card:
+        type: entities
+        show_header_toggle: false
+        title: PROBLEMS
+        theme: "Light - Cyan"
+      filter:
+        include:
+          - entity_id: "binary_sensor.*_moisture"
+            state: "on"
+          - entity_id: "lock.*"
+            state: "unlocked"
+          - entity_id: "sensor.volvo_xc90_fuel_level"
+            state: "< 10"
+          - entity_id: "sensor.i3_charging_level_hv"
+            state: "< 10"
+          - entity_id: "sensor.*_temperature"
+            state: "> 79"
+          - entity_id: "sensor.*_temperature"
+            state: "< 63"
+
+    - type: entities
+      entities:
+        - entity: cover.garage
+          name: Garage | Door 
+          
+    - type: horizontal-stack
+      cards:
+        - entity: switch.driveway_sconce
+          hold_action:
+            action: more-info
+          name: Driveway
+          tap_action:
+            action: toggle
+          type: entity-button
+        - entity: light.front_door_sconce
+          hold_action:
+            action: more-info
+          name: Front
+          tap_action:
+            action: toggle
+          type: entity-button
+        - entity: light.upstairs_stairs
+          hold_action:
+            action: more-info
+          icon: 'mdi:stairs'
+          name: Stairs
+          tap_action:
+            action: toggle
+          type: entity-button                   
+
+    - type: horizontal-stack
+      cards:
+        - type: picture-glance
+          image:
+          camera_image: camera.front_door_2
+          navigation_path: /lovelace/exterior?kiosk&show_tabs
+          entities:
+            # - binary_sensor.front_door
+            # - binary_sensor.front_door_occupancy
+            - camera.front_door_2
+        - type: picture-glance
+          image:
+          camera_image: camera.garage
+          navigation_path: /lovelace/downstairs?kiosk&show_tabs
+          entities:
+            - cover.garage
+            - binary_sensor.garage_occupancy
+            - camera.garage
+    - type: horizontal-stack
+      cards:
+        - type: picture-glance
+          image:
+          camera_image: camera.front_ptz
+          navigation_path: /lovelace/exterior?kiosk&show_tabs
+          entities:
+            # - binary_sensor.front_ptz_occupancy
+            - camera.front_ptz
+    - type: horizontal-stack
+      cards:
+        - type: picture-glance
+          image:
+          camera_image: camera.front_center
+          navigation_path: /lovelace/exterior?kiosk&show_tabs
+          entities:
+            # - binary_sensor.front_center_occupancy
+            - camera.front_center
+        - type: picture-glance
+          image:
+          camera_image: camera.front_right
+          navigation_path: /lovelace/exterior?kiosk&show_tabs
+          entities:
+            # - binary_sensor.front_right_occupancy
+            - camera.front_right
+    - type: horizontal-stack
+      cards:
+        - type: picture-glance
+          image:
+          camera_image: camera.driveway_front
+          navigation_path: /lovelace/exterior?kiosk&show_tabs
+          entities:
+            # - binary_sensor.driveway_front_occupancy
+            - camera.driveway_front
+        - type: picture-glance
+          image:
+          camera_image: camera.driveway_rear
+          navigation_path: /lovelace/exterior?kiosk&show_tabs
+          entities:
+            # - binary_sensor.driveway_rear_occupancy
+            - camera.driveway_rear
+    - type: horizontal-stack
+      cards:
+        - type: picture-glance
+          image:
+          camera_image: camera.upstairs_entrance
+          navigation_path: /lovelace/upstairs?kiosk&show_tabs
+          entities:
+            # - binary_sensor.upstairs_enrance_occupancy
+            - camera.upstairs_entrance
+        - type: picture-glance
+          image:
+          camera_image: camera.dining_room
+          navigation_path: /lovelace/upstairs?kiosk&show_tabs
+          entities:
+            - binary_sensor.dining_room_occupancy
+            - camera.dining_room
+    - type: horizontal-stack
+      cards:
+        - type: picture-glance
+          image:
+          camera_image: camera.living_room
+          navigation_path: /lovelace/upstairs?kiosk&show_tabs
+          entities:
+            - sensor.living_room_activity
+            - binary_sensor.living_room_occupancy
+            - camera.living_room
+    - type: horizontal-stack
+      cards:
+        - type: picture-glance
+          image:
+          camera_image: camera.kitchen
+          navigation_path: /lovelace/upstairs?kiosk&show_tabs
+          entities:
+            # - binary_sensor.kitchen_door
+            - binary_sensor.kitchen_occupancy
+            - camera.kitchen
+        - type: picture-glance
+          image:
+          camera_image: camera.isabellas_room
+          navigation_path: /lovelace/upstairs?kiosk&show_tabs
+          entities:
+            - binary_sensor.isabellas_room_occupancy
+            - camera.isabellas_room
+    - type: horizontal-stack
+      cards:
+        - type: picture-glance
+          image:
+          camera_image: camera.sunroom
+          navigation_path: /lovelace/upstairs?kiosk&show_tabs
+          entities:
+            - binary_sensor.sunroom_occupancy
+            - camera.sunroom
+        - type: picture-glance
+          image:
+          camera_image: camera.playroom
+          navigation_path: /lovelace/downstairs?kiosk&show_tabs
+          entities:
+            - binary_sensor.playroom_occupancy
+            - camera.playroom
+    - type: horizontal-stack
+      cards:
+        - type: picture-glance
+          image:
+          camera_image: camera.theater
+          navigation_path: /lovelace/downstairs?kiosk&show_tabs
+          entities:
+            - binary_sensor.theater_door
+            - binary_sensor.theater_occupancy
+            - camera.theater
+        - type: picture-glance
+          image:
+          camera_image: camera.storage_room
+          navigation_path: /lovelace/downstairs?kiosk&show_tabs
+          entities:
+            - camera.storage_room
+    - type: horizontal-stack
+      cards:
+        - type: picture-glance
+          image:
+          camera_image: camera.porch
+          navigation_path: /lovelace/exterior?kiosk&show_tabs
+          entities:
+            - camera.porch
+        - type: picture-glance
+          image:
+          camera_image: camera.pool
+          navigation_path: /lovelace/exterior?kiosk&show_tabs
+          entities:
+            - camera.pool
+    - type: horizontal-stack
+      cards:
+        - type: picture-glance
+          image:
+          camera_image: camera.rear_center
+          navigation_path: /lovelace/exterior?kiosk&show_tabs
+          entities:
+            - camera.rear_center
+        - type: picture-glance
+          image:
+          camera_image: camera.rear_left
+          navigation_path: /lovelace/exterior?kiosk&show_tabs
+          entities:
+            - camera.rear_left
+    - type: horizontal-stack
+      cards:
+
+        - type: picture-glance
+          image:
+          camera_image: camera.porch_under
+          navigation_path: /lovelace/exterior?kiosk&show_tabs
+          entities:
+            - camera.porch_under
+        - type: picture-glance
+          image:
+          camera_image: camera.side_stairs
+          navigation_path: /lovelace/exterior?kiosk&show_tabs
+          entities:
+            # - binary_sensor.side_stairs_occupancy
+            - camera.side_stairs

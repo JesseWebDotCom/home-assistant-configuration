@@ -1,0 +1,436 @@
+- type: custom:compact-custom-header
+  menu: false
+  notification: false
+  voice: false
+  options: false
+  user_agent: mobile  
+
+- type: vertical-stack
+  cards:
+    # - type: markdown
+    #   content: >
+    #     ## [![Home](/local/images/menu/double-left_16.png)](/lovelace/home?kiosk&show_tabs)&emsp;DOWNSTAIRS
+      
+    - type: glance
+      show_name: false
+      entities:
+        - entity: binary_sensor.downstairs_problems
+          name: ' '
+        - entity: binary_sensor.downstairs_occupancy
+          name: ' '
+        - entity: sensor.downstairs_open
+          name: ' '
+        - entity: sensor.downstairs_on
+          name: ' '
+        - entity: script.downstairs_poweroff_all
+          name: ' '
+          tap_action: turn-on
+
+    - type: thermostat
+      entity: climate.downstairs_ecobee
+      name: Downstairs
+      theme: default          
+
+    - type: picture-glance
+      image:
+      camera_image: camera.playroom
+      entities:
+          - binary_sensor.mudroom_door
+          - binary_sensor.mudroom_occupancy
+          - script.downstairs_poweroff_lights
+          - script.downstairs_poweroff_all
+
+    - type: entity-filter
+      show_header_toggle: false
+      entities:
+        - media_player.playroom_ump
+      state_filter:
+        - "playing"
+        - "paused"
+      show_empty: false
+      card:
+        type: custom:mini-media-player
+        entity: media_player.playroom_ump
+        artwork: cover
+        hide_power: true
+        hide_volume: true
+        name: Apple TV
+        power_color: true
+        scroll_info: true
+        show_progress: true
+        show_source: true             
+
+    - type: horizontal-stack
+      cards:
+        - entity: light.mudroom_entrance_dome
+          hold_action:
+            action: more-info
+          icon: 'mdi:wall-sconce'
+          name: Entrance
+          tap_action:
+            action: toggle
+          type: entity-button
+        - entity: light.mudroom_hallway_dome
+          hold_action:
+            action: more-info
+          icon: 'mdi:view-day'
+          name: Hall
+          tap_action:
+            action: toggle
+          type: entity-button
+        - entity: switch.mudroom_closet_dome
+          hold_action:
+            action: more-info
+          icon: 'mdi:shoe-heel'
+          name: Closet
+          tap_action:
+            action: toggle
+          type: entity-button
+        - entity: light.playroom_dome
+          hold_action:
+            action: more-info
+          name: Playroom
+          tap_action:
+            action: toggle
+          type: entity-button      
+
+
+    # DOWNSTAIRS BATHROOM
+    #----------------------------------------------------------------
+    - type: markdown
+      content: >
+        ## [![Home](/local/images/menu/double-left_16.png)](/lovelace/home?kiosk&show_tabs)&emsp;DOWNSTAIRS BATHROOM
+
+    # - type: custom:monster-card
+    #   show_empty: false
+    #   card:
+    #     type: entities
+    #     show_header_toggle: false
+    #   filter:
+    #     include:
+    #       - entity_id: "sensor.downstairs_bathroom_activity"
+    #         options:
+    #           name: Someone is showering
+    #         state: "SHOWERING"
+    #       - entity_id: "sensor.downstairs_bathroom_activity"
+    #         options:
+    #           name: Someone is using the bathroom
+    #         state: "OCCUPIED"
+    #       - entity_id: media_player.downstairs_bathroom_cast
+    #         options:
+    #           name: Cast
+    #         state: "playing"
+
+    - type: picture-glance
+      entities:
+        - binary_sensor.downstairs_bathroom_occupancy
+        - script.downstairs_bathroom_poweroff_lights
+        - script.downstairs_bathroom_poweroff_all
+      state_image:
+        "active": /local/images/stock/downstairs_bathroom_active.jpg
+        "inactive": /local/images/stock/downstairs_bathroom_inactive.jpg
+        "problem": /local/images/stock/downstairs_bathroom_problem.jpg
+        "showering": /local/images/stock/downstairs_bathroom_showering.jpg
+      entity: sensor.downstairs_bathroom_state
+      
+    - type: entity-filter
+      show_header_toggle: false
+      entities:
+        - media_player.downstairs_bathroom_cast
+      state_filter:
+        - "playing"
+        - "paused"
+        - "on"
+      show_empty: false
+      card:
+        type: custom:mini-media-player
+        entity: media_player.downstairs_bathroom_cast
+        artwork: cover
+        hide_power: false
+        hide_volume: false
+        name: Music
+        power_color: true
+        scroll_info: true
+        show_progress: true
+        show_source: true
+                  
+    - type: entities
+      entities:
+        - entity: sensor.downstairs_bathroom_temperature
+          name: Temperature
+        - entity: sensor.downstairs_bathroom_relative_humidity
+          name: Humidity
+
+    - type: horizontal-stack
+      cards:
+        - entity: light.downstairs_bathroom_sconce
+          hold_action:
+            action: more-info
+          icon: 'mdi:wall-sconce'
+          name: Light
+          tap_action:
+            action: toggle
+          type: entity-button
+        - entity: switch.downstairs_bathroom_fan
+          hold_action:
+            action: more-info
+          icon: 'mdi:fan'
+          name: Fan
+          tap_action:
+            action: toggle
+          type: entity-button          
+
+    # OFFICE
+    #----------------------------------------------------------------
+    - type: markdown
+      content: >
+        ## [![Home](/local/images/menu/double-left_16.png)](/lovelace/home?kiosk&show_tabs)&emsp;OFFICE
+
+    - type: picture-glance
+      entities:
+        - binary_sensor.office_ecobee_occupancy
+        - binary_sensor.office_moisture
+        - script.office_sleep
+        - script.office_poweroff_lights
+        - script.office_poweroff_all
+      state_image:
+        "active": /local/images/stock/office_active.jpg
+        "inactive": /local/images/stock/office_inactive.jpg
+        "problem": /local/images/stock/office_problem.jpg
+      entity: sensor.office_state
+
+    - type: entity-filter
+      show_header_toggle: false
+      entities:
+        - media_player.office_ump
+      state_filter:
+        - "playing"
+        - "paused"
+      show_empty: false
+      card:
+        type: custom:mini-media-player
+        entity: media_player.office_ump
+        artwork: cover
+        hide_power: true
+        hide_volume: true
+        name: Apple TV
+        power_color: true
+        scroll_info: true
+        show_progress: true
+        show_source: true        
+
+    - type: entities
+      entities:
+        - entity: sensor.office_ecobee_temperature
+          name: Temperature
+        - entity: light.office_dome
+          name: Ceiling
+        # - entity: switch.office_fan
+        #   name: Fan
+
+    # RYANS ROOM
+    #----------------------------------------------------------------
+    - type: markdown
+      content: >
+        ## [![Home](/local/images/menu/double-left_16.png)](/lovelace/home?kiosk&show_tabs)&emsp;RYANS ROOM
+
+    - type: picture-glance
+      entities:
+          - binary_sensor.ryan_s_room_ecobee_occupancy
+          - script.ryans_room_sleep
+          - script.ryans_room_poweroff_lights
+          - script.ryans_room_poweroff_all
+      state_image:
+        "active": /local/images/stock/ryans_room_active.jpg
+        "inactive": /local/images/stock/ryans_room_inactive.jpg
+        "problem": /local/images/stock/ryans_room_problem.jpg
+      entity: sensor.ryans_room_state
+
+    - type: entity-filter
+      show_header_toggle: false
+      entities:
+        - media_player.ryan_s_room_ump
+      state_filter:
+        - "playing"
+        - "paused"
+      show_empty: false
+      card:
+        type: custom:mini-media-player
+        entity: media_player.ryan_s_room_ump
+        artwork: cover
+        hide_power: true
+        hide_volume: true
+        name: Apple TV
+        power_color: true
+        scroll_info: true
+        show_progress: true
+        show_source: true       
+
+    - type: entities
+      entities:
+        - entity: sensor.ryan_s_room_ecobee_temperature
+          name: Temperature
+        - entity: light.ryans_room_dome
+          name: Ceiling
+
+    # THEATER
+    #----------------------------------------------------------------
+    - type: markdown
+      content: >
+        ## [![Home](/local/images/menu/double-left_16.png)](/lovelace/home?kiosk&show_tabs)&emsp;THEATER
+
+    - type: thermostat
+      entity: climate.theater_ecobee
+      name: Theater
+      theme: default
+
+    - type: picture-glance
+      image:
+      camera_image: camera.theater
+      entities:
+        - binary_sensor.theater_occupancy
+        - binary_sensor.theater_door
+        - sensor.theater_activity
+        - script.theater_poweroff_lights
+        - script.theater_poweroff_all
+
+    - type: entity-filter
+      show_header_toggle: false
+      entities:
+        - media_player.theater_cast
+      state_filter:
+        - "playing"
+        - "paused"
+        - "on"
+      show_empty: false
+      card:
+        type: custom:mini-media-player
+        entity: media_player.theater_cast
+        artwork: cover
+        hide_power: false
+        hide_volume: false
+        name: Music
+        power_color: true
+        scroll_info: true
+        show_progress: true
+        show_source: true
+
+    - type: entity-filter
+      show_header_toggle: false
+      entities:
+        - media_player.theater_ump
+      state_filter:
+        - "playing"
+        - "paused"
+      show_empty: false
+      card:
+        type: custom:mini-media-player
+        entity: media_player.theater_ump
+        artwork: cover
+        hide_power: true
+        hide_volume: true
+        name: Shield
+        power_color: true
+        scroll_info: true
+        show_progress: true
+        show_source: true    
+
+    - type: horizontal-stack
+      cards:
+        - entity: light.theater_wall_sconce
+          hold_action:
+            action: more-info
+          icon: 'mdi:wall-sconce'
+          name: Wall
+          tap_action:
+            action: toggle
+          type: entity-button
+        - entity: switch.theater_posters
+          hold_action:
+            action: more-info
+          name: Posters
+          tap_action:
+            action: toggle
+          type: entity-button
+        - entity: switch.theater_candy
+          hold_action:
+            action: more-info
+          name: Candy
+          tap_action:
+            action: toggle
+          type: entity-button
+        - entity: light.yeelight_strip2_04cf8c7d60e9
+          hold_action:
+            action: more-info
+          name: Strip
+          tap_action:
+            action: toggle
+          type: entity-button             
+
+    # STORAGE ROOM
+    #----------------------------------------------------------------
+    - type: markdown
+      content: >
+        ## [![Home](/local/images/menu/double-left_16.png)](/lovelace/home?kiosk&show_tabs)&emsp;STORAGE ROOM
+
+    - type: picture-glance
+      image:
+      camera_image: camera.storage_room
+      entities:
+          - binary_sensor.storage_room_occupancy
+          - binary_sensor.storage_room_moisture
+          - binary_sensor.storage_room_door
+          - script.storage_room_poweroff_lights
+          - script.storage_room_poweroff_all
+    - type: entities
+      entities:
+        - entity: binary_sensor.storage_room_freezer_door
+          name: Freezer Door
+        - entity: binary_sensor.storage_room_moisture
+          name: Moisture
+          
+        # - entity: light.storage_room_ceiling
+        #   name: Ceiling
+
+    # GARAGE
+    #----------------------------------------------------------------
+    - type: markdown
+      content: >
+        ## [![Home](/local/images/menu/double-left_16.png)](/lovelace/home?kiosk&show_tabs)&emsp;GARAGE
+
+    - type: picture-glance
+      image:
+      camera_image: camera.garage
+      entities:
+        - binary_sensor.garage_occupancy
+        - script.garage_poweroff_lights
+        - script.garage_poweroff_all
+
+    - type: entities
+      entities:
+        - entity: cover.garage
+          name: Door
+        - entity: switch.garage_dome
+          name: Light
+
+    # BOILER ROOM
+    #----------------------------------------------------------------
+    - type: markdown
+      content: >
+        ## [![Home](/local/images/menu/double-left_16.png)](/lovelace/home?kiosk&show_tabs)&emsp;BOILER ROOM
+
+    - type: picture-glance
+      entities:
+        - binary_sensor.boiler_room_moisture
+        - script.boiler_room_poweroff_lights
+        - script.boiler_room_poweroff_all
+      state_image:
+        "active": /local/images/stock/boiler_room_active.jpg
+        "inactive": /local/images/stock/boiler_room_inactive.jpg
+        "problem": /local/images/stock/boiler_room_problem.jpg
+      entity: sensor.boiler_room_state
+
+    - type: entities
+      entities:
+        - entity: switch.boiler_room_pendant
+          name: Ceiling

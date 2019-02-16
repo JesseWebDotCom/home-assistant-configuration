@@ -1,0 +1,3 @@
+# https://www.home-assistant.io/components/sense/
+email: !secret sense_email
+password: !secret sense_password
