@@ -51,9 +51,5 @@ telegram_bot: !include config/components/telegram_bot.yaml
 tts: !include config/components/tts.yaml
 updater:
 volvooncall: !include config/components/volvooncall.yaml
-zwave: 
-  usb_path: /dev/ttyUSB0
-  network_key: !secret zwave_network_key
-zha: 
-  usb_path: /dev/ttyUSB1
-  database_path: /config/zigbee.db
+zwave: !include config/components/zwave.yaml
+zha: !include config/components/zha.yaml
