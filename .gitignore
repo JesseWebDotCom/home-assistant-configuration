@@ -7,23 +7,25 @@
 #
 # -----------------------------------------------------------------
 
-# ignore everything by default
+# Ignore everything
 *
 
-# track core files
+# include git files
 !.gitignore
 !readme.md
+
+# include core files
 !configuration.yaml
 !ui-lovelace.yaml
 
-# track example files
+# include example files
 !secrets.example.yaml
 
-# track content folders
+# include certain directories and contained files
 !config/**/*.yaml
 !custom_components/**/*.py
-!www/custom-lovelace/*
-!www/images/stock/*
-!www/images/menu/*
-!www/images/doc/*
-!www/sounds/*
+!www/custom-lovelace/**
+!www/images/stock/**
+!www/images/menu/**
+!www/images/doc/**
+!www/sounds/**
