@@ -1,4 +1,12 @@
 themes:
+  critical:
+      primary-text-color: "white"
+      paper-card-background-color: "darkred"
+
+  warning:
+      primary-text-color: "white"
+      paper-card-background-color: "#666600"
+      
   Dark - Cyan:
     paper-card-header-color: "#FFFFFF"
 

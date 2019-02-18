@@ -26,6 +26,52 @@
           name: ' '
           tap_action: turn-on
 
+    - type: custom:monster-card
+      show_empty: false
+      card:
+        type: entities
+        show_header_toggle: false
+        title: CRITICAL
+        theme: "critical"
+      filter:
+        include:
+          - entity_id: "binary_sensor.*_moisture"
+            state: "on"
+          - entity_id: "sensor.*_temperature"
+            state: "> 79"
+          - entity_id: "sensor.*_temperature"
+            state: "< 63"
+        exclude:
+          - entity_id: "sensor.juicenet_*"   
+          - entity_id: sensor.bianca_s_room_ecobee_temperature
+          - entity_id: sensor.isabella_s_room_ecobee_temperature
+          - entity_id: sensor.kitchen_sensor_ecobee_temperature
+          - entity_id: sensor.living_room_ecobee_temperature
+          - entity_id: sensor.master_bedroom_ecobee_temperature
+          - entity_id: sensor.upstairs_bathroom_multi6_temperature
+          - entity_id: sensor.upstairs_ecobee_temperature     
+
+    - type: custom:monster-card
+      show_empty: false
+      card:
+        type: entities
+        show_header_toggle: false
+        title: WARNING
+        theme: "warning"
+      filter:
+        include:
+          - entity_id: "sensor.*_temperature"
+            state: "unknown"      
+        exclude:
+          - entity_id: "sensor.juicenet_*"   
+          - entity_id: sensor.bianca_s_room_ecobee_temperature
+          - entity_id: sensor.isabella_s_room_ecobee_temperature
+          - entity_id: sensor.kitchen_sensor_ecobee_temperature
+          - entity_id: sensor.living_room_ecobee_temperature
+          - entity_id: sensor.master_bedroom_ecobee_temperature
+          - entity_id: sensor.upstairs_bathroom_multi6_temperature
+          - entity_id: sensor.upstairs_ecobee_temperature               
+
     - type: thermostat
       entity: climate.downstairs_ecobee
       name: Downstairs

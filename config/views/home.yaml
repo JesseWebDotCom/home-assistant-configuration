@@ -29,29 +29,41 @@
           name: ' '
           tap_action: toggle
 
-        # exclude:
-        #   - entity_id: "sensor.temperature"
     - type: custom:monster-card
       show_empty: false
       card:
         type: entities
         show_header_toggle: false
-        title: PROBLEMS
-        theme: "Light - Cyan"
+        title: CRITICAL
+        theme: "critical"
       filter:
         include:
           - entity_id: "binary_sensor.*_moisture"
             state: "on"
+          - entity_id: "sensor.*_temperature"
+            state: "> 79"
+          - entity_id: "sensor.*_temperature"
+            state: "< 63"
+        exclude:
+          - entity_id: "sensor.juicenet_*"            
+
+    - type: custom:monster-card
+      show_empty: false
+      card:
+        type: entities
+        show_header_toggle: false
+        title: WARNING
+        theme: "warning"
+      filter:
+        include:
+          - entity_id: "sensor.*_temperature"
+            state: "unknown"
           - entity_id: "lock.*"
             state: "unlocked"
           - entity_id: "sensor.volvo_xc90_fuel_level"
             state: "< 10"
           - entity_id: "sensor.i3_charging_level_hv"
-            state: "< 10"
-          - entity_id: "sensor.*_temperature"
-            state: "> 79"
-          - entity_id: "sensor.*_temperature"
-            state: "< 63"
+            state: "< 10"      
 
     - type: entities
       entities:

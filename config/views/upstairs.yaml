@@ -26,6 +26,46 @@
           name: ' '
           tap_action: turn-on
 
+    - type: custom:monster-card
+      show_empty: false
+      card:
+        type: entities
+        show_header_toggle: false
+        title: CRITICAL
+        theme: "critical"
+      filter:
+        include:
+          - entity_id: "sensor.*_temperature"
+            state: "> 79"
+          - entity_id: "sensor.*_temperature"
+            state: "< 63"
+        exclude:
+          - entity_id: "sensor.juicenet_*"
+          - entity_id: sensor.downstairs_bathroom_temperature
+          - entity_id: sensor.downstairs_ecobee_temperature
+          - entity_id: sensor.office_ecobee_temperature
+          - entity_id: sensor.ryan_s_room_ecobee_temperature
+          - entity_id: sensor.theater_ecobee_temperature  
+
+    - type: custom:monster-card
+      show_empty: false
+      card:
+        type: entities
+        show_header_toggle: false
+        title: WARNING
+        theme: "warning"
+      filter:
+        include:
+          - entity_id: "sensor.*_temperature"
+            state: "unknown"      
+        exclude:
+          - entity_id: "sensor.juicenet_*"
+          - entity_id: sensor.downstairs_bathroom_temperature
+          - entity_id: sensor.downstairs_ecobee_temperature
+          - entity_id: sensor.office_ecobee_temperature
+          - entity_id: sensor.ryan_s_room_ecobee_temperature
+          - entity_id: sensor.theater_ecobee_temperature  
+
     - type: thermostat
       entity: climate.upstairs_ecobee
       name: Upstairs
@@ -48,10 +88,7 @@
           icon: 'mdi:stairs'
           name: Stairs
           tap_action:
-            action: call-service
-            service: script.toggle_to_max
-            service_data:
-              light: 'light.upstairs_stairs'
+            action: toggle
           type: entity-button
         - entity: light.upstairs_hallway_recessed
           hold_action:
@@ -59,10 +96,7 @@
           icon: 'mdi:view-day'
           name: Hall
           tap_action:
-            action: call-service
-            service: script.toggle_to_max
-            service_data:
-              light: 'light.upstairs_hallway_recessed'
+            action: toggle
           type: entity-button
         - entity: light.upstairs_laundry
           hold_action:
@@ -70,10 +104,7 @@
           icon: 'mdi:washing-machine'
           name: Laundry
           tap_action:
-            action: call-service
-            service: script.toggle_to_max
-            service_data:
-              light: 'light.upstairs_laundry'
+            action: toggle
           type: entity-button
         - entity: light.upstairs_attic
           hold_action:
@@ -81,10 +112,7 @@
           icon: 'mdi:publish'
           name: Attic
           tap_action:
-            action: call-service
-            service: script.toggle_to_max
-            service_data:
-              light: 'light.upstairs_attic'   
+            action: toggle 
           type: entity-button    
 
     # LIVING ROOM

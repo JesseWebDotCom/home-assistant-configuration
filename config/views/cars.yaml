@@ -19,6 +19,22 @@
         - entity: sensor.cars_open
           name: ' '
 
+    - type: custom:monster-card
+      show_empty: false
+      card:
+        type: entities
+        show_header_toggle: false
+        title: WARNING
+        theme: "warning"
+      filter:
+        include:
+          - entity_id: "lock.*"
+            state: "unlocked"
+          - entity_id: "sensor.volvo_xc90_fuel_level"
+            state: "< 10"
+          - entity_id: "sensor.i3_charging_level_hv"
+            state: "< 10"
+
 # CARINA
 #----------------------------------------------------------------
     - type: markdown

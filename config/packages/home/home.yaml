@@ -13,7 +13,7 @@ alarm_control_panel:
       delay_time: 0
 
 automation:
-#----------------------------------------------------------------
+#----------------------------------------------------------------            
 
   # - alias: NOTIFY (LOW) BATTERY
   #   trigger:
@@ -294,37 +294,6 @@ script:
             - script.upstairs_poweroff_all
             - script.downstairs_poweroff_all
             # - script.exterior_poweroff_all
-
-  # turn lights fully on or off
-  toggle_to_off:
-    sequence:
-      - condition: template
-        value_template: '{{ is_state(light, "on") }}'  
-      - service: light.turn_on
-        data_template:
-          entity_id: "{{ light }}"
-          brightness_pct: 0       
-      - service: homeassistant.turn_off
-        data_template:
-          entity_id: "{{ light }}"
-
-  toggle_to_on:
-    sequence:
-      - condition: template
-        value_template: '{{ is_state(light, "off") and (as_timestamp(now()) - as_timestamp(states.light[light|replace("light.","")].last_changed) > 1) }}'
-      - service: light.turn_on
-        data_template:
-          entity_id: "{{ light }}"
-          brightness_pct: 100
-
-  toggle_to_max:
-    sequence:
-      - service: script.toggle_to_off
-        data_template:
-          light: "{{ light }}"
-      - service: script.toggle_to_on
-        data_template:
-          light: "{{ light }}"
 
 sensor:
 #----------------------------------------------------------------
