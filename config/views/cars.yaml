@@ -49,6 +49,265 @@
         "problem": /local/images/stock/xc90_problem.jpg
       entity: sensor.cars_xc90_state
 
+    - type: horizontal-stack
+      cards:
+        - type: "custom:button-card"
+          entity: binary_sensor.volvo_xc90_service
+          color_off: rgb(31, 31, 40)
+          color: darkred   
+          show_state: no
+          name: Service
+          action: more_info
+          color_type: card
+          size: 30px 
+          icon: mdi:wrench
+          style:
+            - color: white                      
+
+        - type: "custom:button-card"
+          entity: binary_sensor.volvo_xc90_bulbs
+          color_off: rgb(31, 31, 40)
+          color: darkred   
+          show_state: no
+          name: Bulbs
+          action: more_info
+          color_type: card
+          size: 30px      
+          icon: mdi:lightbulb
+          style:
+            - color: white
+
+        - type: "custom:button-card"
+          entity: binary_sensor.volvo_xc90_hood
+          color_off: rgb(31, 31, 40)
+          color: darkred   
+          show_state: no
+          name: Hood
+          action: more_info
+          color_type: card
+          size: 30px      
+          icon: mdi:angle-acute
+          style:
+            - color: white         
+                                            
+        - type: "custom:button-card"
+          entity: binary_sensor.volvo_xc90_washer_fluid
+          color_off: rgb(31, 31, 40)
+          color: darkred   
+          show_state: no
+          name: Washer
+          action: more_info
+          color_type: card
+          size: 30px      
+          icon: mdi:water
+          style:
+            - color: white
+
+        - type: "custom:button-card"
+          entity: binary_sensor.volvo_xc90_brake_fluid
+          color_off: rgb(31, 31, 40)
+          color: darkred   
+          show_state: no
+          name: Brakes
+          action: more_info
+          color_type: card
+          size: 30px
+          icon: mdi:stop-circle
+          style:
+            - color: white                                      
+
+    - type: horizontal-stack
+      cards:
+        - type: "custom:button-card"
+          entity: binary_sensor.volvo_xc90_windows
+          color_off: rgb(31, 31, 40)
+          color: darkred   
+          show_state: no
+          name: Windows
+          action: more_info
+          color_type: card
+          size: 30px 
+          icon: mdi:window-closed
+          style:
+            - color: white                              
+
+        - type: "custom:button-card"
+          entity: binary_sensor.volvo_xc90_front_left_window
+          color_off: rgb(31, 31, 40)
+          color: darkred   
+          show_state: no
+          name: F Left
+          action: more_info
+          color_type: card
+          size: 30px 
+          icon: mdi:window-closed
+          style:
+            - color: white                      
+
+        - type: "custom:button-card"
+          entity: binary_sensor.volvo_xc90_front_right_window
+          color_off: rgb(31, 31, 40)
+          color: darkred   
+          show_state: no
+          name: F Right
+          action: more_info
+          color_type: card
+          size: 30px 
+          icon: mdi:window-closed
+          style:
+            - color: white                              
+
+        - type: "custom:button-card"
+          entity: binary_sensor.volvo_xc90_rear_left_window
+          color_off: rgb(31, 31, 40)
+          color: darkred   
+          show_state: no
+          name: R Left
+          action: more_info
+          color_type: card
+          size: 30px  
+          icon: mdi:window-closed
+          style:
+            - color: white                             
+
+        - type: "custom:button-card"
+          entity: binary_sensor.volvo_xc90_rear_right_window
+          color_off: rgb(31, 31, 40)
+          color: darkred   
+          show_state: no
+          name: R Right
+          action: more_info
+          color_type: card
+          size: 30px
+          icon: mdi:window-closed
+          style:
+            - color: white                             
+
+    - type: horizontal-stack
+      cards:
+        - type: "custom:button-card"
+          entity: binary_sensor.volvo_xc90_doors
+          color_off: rgb(31, 31, 40)
+          color: darkred   
+          show_state: no
+          name: Doors
+          action: more_info
+          color_type: card
+          size: 30px  
+          icon: mdi:car-door
+          style:
+            - color: white  
+
+        - type: "custom:button-card"
+          entity: binary_sensor.volvo_xc90_front_left_door
+          color_off: rgb(31, 31, 40)
+          color: darkred   
+          show_state: no
+          name: F Left
+          action: more_info
+          color_type: card
+          size: 30px 
+          icon: mdi:car-door
+          style:
+            - color: white                      
+
+        - type: "custom:button-card"
+          entity: binary_sensor.volvo_xc90_front_right_door
+          color_off: rgb(31, 31, 40)
+          color: darkred   
+          show_state: no
+          name: F Right
+          action: more_info
+          color_type: card
+          size: 30px 
+          icon: mdi:car-door
+          style:
+            - color: white                              
+
+        - type: "custom:button-card"
+          entity: binary_sensor.volvo_xc90_rear_left_door
+          color_off: rgb(31, 31, 40)
+          color: darkred   
+          show_state: no
+          name: R Left
+          action: more_info
+          color_type: card
+          size: 30px  
+          icon: mdi:car-door
+          style:
+            - color: white                             
+
+        - type: "custom:button-card"
+          entity: binary_sensor.volvo_xc90_rear_right_door
+          color_off: rgb(31, 31, 40)
+          color: darkred   
+          show_state: no
+          name: R Right
+          action: more_info
+          color_type: card
+          size: 30px
+          icon: mdi:car-door
+          style:
+            - color: white   
+
+    - type: horizontal-stack
+      cards:
+        - type: "custom:button-card"
+          color_type: blank-card
+          size: 30px             
+
+        - type: "custom:button-card"
+          entity: binary_sensor.volvo_xc90_front_left_tyre
+          color_off: rgb(31, 31, 40)
+          color: darkred   
+          show_state: no
+          name: F Left
+          action: more_info
+          color_type: card
+          size: 30px 
+          icon: mdi:album
+          style:
+            - color: white                      
+
+        - type: "custom:button-card"
+          entity: binary_sensor.volvo_xc90_front_right_tyre
+          color_off: rgb(31, 31, 40)
+          color: darkred   
+          show_state: no
+          name: F Right
+          action: more_info
+          color_type: card
+          size: 30px 
+          icon: mdi:album
+          style:
+            - color: white                              
+
+        - type: "custom:button-card"
+          entity: binary_sensor.volvo_xc90_rear_left_tyre
+          color_off: rgb(31, 31, 40)
+          color: darkred   
+          show_state: no
+          name: R Left
+          action: more_info
+          color_type: card
+          size: 30px  
+          icon: mdi:album
+          style:
+            - color: white                             
+
+        - type: "custom:button-card"
+          entity: binary_sensor.volvo_xc90_rear_right_tyre
+          color_off: rgb(31, 31, 40)
+          color: darkred   
+          show_state: no
+          name: R Right
+          action: more_info
+          color_type: card
+          size: 30px
+          icon: mdi:album
+          style:
+            - color: white                                                         
+
     - type: custom:monster-card
       show_empty: false
       card:
@@ -56,7 +315,7 @@
         show_header_toggle: false
       filter:
         include:
-          - entity_id: device_tracker.volvo_volvo_xc90
+          - entity_id: device_tracker.volvo_yv4a22pk2h1184894
             options:
               name: Location
           - entity_id: sensor.volvo_xc90_fuel_level

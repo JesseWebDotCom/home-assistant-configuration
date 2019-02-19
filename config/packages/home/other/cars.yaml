@@ -8,6 +8,82 @@ homeassistant:
     sensor.volvo_xc90_fuel_level:
       friendly_name: "Volvo xc90 | Fuel"
 
+    binary_sensor.volvo_xc90_service:
+      friendly_name: "Volvo xc90 | Service"
+      icon: mdi:wrench
+
+    binary_sensor.volvo_xc90_bulbs:
+      friendly_name: "Volvo xc90 | Bulbs"
+      icon: mdi:lightbulb
+
+    binary_sensor.volvo_xc90_hood:
+      friendly_name: "Volvo xc90 | Hood"
+      icon: mdi:angle-acute
+
+    binary_sensor.volvo_xc90_washer_fluid:
+      friendly_name: "Volvo xc90 | Washer"
+      icon: mdi:water
+
+    binary_sensor.volvo_xc90_brake_fluid:
+      friendly_name: "Volvo xc90 | Brakes"
+      icon: mdi:stop-circle
+
+    binary_sensor.volvo_xc90_windows:
+      friendly_name: "Volvo xc90 | Windows"
+      icon: mdi:window-closed
+
+    binary_sensor.volvo_xc90_front_left_window:
+      friendly_name: "Volvo xc90 | F-L Window"              
+      icon: mdi:window-closed
+
+    binary_sensor.volvo_xc90_front_right_window:
+      friendly_name: "Volvo xc90 | F-R Window" 
+      icon: mdi:window-closed
+
+    binary_sensor.volvo_xc90_rear_left_window:
+      friendly_name: "Volvo xc90 | R-L Window"
+      icon: mdi:window-closed
+
+    binary_sensor.volvo_xc90_rear_right_window:
+      friendly_name: "Volvo xc90 | R-R Window"
+      icon: mdi:window-closed
+
+    binary_sensor.volvo_xc90_doors:
+      friendly_name: "Volvo xc90 | Door"
+      icon: mdi:car-door
+    
+    binary_sensor.volvo_xc90_front_left_door:
+      friendly_name: "Volvo xc90 | F-L Door"
+      icon: mdi:car-door
+
+    binary_sensor.volvo_xc90_front_right_door:
+      friendly_name: "Volvo xc90 | F-R Door"
+      icon: mdi:car-door
+
+    binary_sensor.volvo_xc90_rear_left_door:
+      friendly_name: "Volvo xc90 | R-L Door"
+      icon: mdi:car-door
+
+    binary_sensor.volvo_xc90_rear_right_door:
+      friendly_name: "Volvo xc90 | R-R Door"
+      icon: mdi:car-door
+
+    binary_sensor.volvo_xc90_front_left_tyre:
+      friendly_name: "Volvo xc90 | F-L Tire"
+      icon: mdi:album
+
+    binary_sensor.volvo_xc90_front_right_tyre:
+      friendly_name: "Volvo xc90 | F-R Tire"
+      icon: mdi:album
+
+    binary_sensor.volvo_xc90_rear_left_tyre:
+      friendly_name: "Volvo xc90 | R-L Tire"
+      icon: mdi:album
+
+    binary_sensor.volvo_xc90_rear_right_tyre:
+      friendly_name: "Volvo xc90 | R-R Tire"
+      icon: mdi:album
+
     sensor.i3_94_rex_charging_level_hv:
       unit_of_measurement: "%"
 

@@ -9,6 +9,8 @@ resources:
     type: js
   - url: /local/custom-lovelace/compact-custom-header/compact-custom-header.js?v0
     type: js
+  - url: /local/custom-lovelace/button-card/button-card.js
+    type: module       
 
 name: Home
 views:
