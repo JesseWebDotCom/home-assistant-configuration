@@ -1,39 +1,6 @@
 automation:
 #----------------------------------------------------------------
 
-  - id: 'Isabellas Room - Power Off'
-    alias: 'Isabellas Room - Power Off'
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.isabellas_room_motion
-        to: 'off'
-        for:
-          hours: 0
-          minutes: 10
-          seconds: 0
-    condition:
-      - condition: state
-        entity_id: input_boolean.options_lights_auto_off
-        state: 'on'
-    action:
-      - service: script.turn_on
-        data:
-          entity_id:
-            - script.isabellas_room_poweroff_all
-
-  # Turn on light when motion detected
-  - id: 'Isabellas Room - Power On'
-    alias: 'Isabellas Room - Power On'
-    trigger:
-      platform: state
-      entity_id: binary_sensor.isabellas_room_motion
-      to: 'on'
-    action:
-      - service: script.turn_on
-        data:
-          entity_id:
-            - script.isabellas_room_poweron_lights
-
 binary_sensor:
 #----------------------------------------------------------------
 
@@ -89,10 +56,11 @@ script:
 
   isabellas_room_poweron_lights:
     alias: "Isabellas Room | Power On Lights"
-    sequence:            
-      - service: script.toggle_to_max
+    sequence:     
+      - service: light.turn_on
+        entity_id: light.isabellas_room_dome
         data:
-          light: 'light.isabellas_room_dome'              
+          brightness_pct: 100            
       - service: homeassistant.turn_on
         entity_id:
           - switch.isabellas_room_accessory_left

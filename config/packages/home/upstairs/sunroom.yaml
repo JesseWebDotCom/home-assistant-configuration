@@ -1,37 +1,6 @@
 automation:
 #----------------------------------------------------------------
 
-  - id: 'Sunroom - Lights Off'
-    alias: 'Sunroom - Power Off'
-    trigger:
-      - platform: state
-        entity_id: binary_sensor.sunroom_room_motion
-        to: 'off'
-        for:
-          hours: 0
-          minutes: 10
-          seconds: 0
-    condition:
-      - condition: state
-        entity_id: input_boolean.options_lights_auto_off
-        state: 'on'
-    action:
-      - service: script.turn_on
-        data:
-          entity_id:
-            - script.sunroom_poweroff_all
-
-  # Turn on light when motion detected
-  - id: 'Sunroom | Lights On'
-    alias: 'Sunroom | Lights On'
-    trigger:
-      platform: state
-      entity_id: binary_sensor.sunroom_room_motion
-      to: 'on'
-    action:
-      - service: script.turn_on
-        entity_id: script.sunroom_poweron_lights
-
 binary_sensor:
 #----------------------------------------------------------------
   - platform: mqtt
@@ -85,9 +54,10 @@ script:
   sunroom_poweron_lights:
     alias: "Sunroom | Power Off Lights"
     sequence:
-      - service: script.toggle_to_max
+      - service: light.turn_on
+        entity_id: light.sunroom_left_sconce
         data:
-          light: 'light.sunroom_left_sconce'    
+          brightness_pct: 100    
       - service: homeassistant.turn_on
         entity_id:
           - switch.sunroom_center_sconce

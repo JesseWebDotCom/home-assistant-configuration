@@ -1,55 +1,6 @@
 automation:
 #----------------------------------------------------------------
 
-  - id: 'Downstairs Bathroom - Power Off'
-    alias: 'Downstairs Bathroom - Power Off'
-    trigger:
-      - platform: state
-        entity_id: sensor.downstairs_bathroom_state
-        to: 'inactive'
-        for:
-          hours: 0
-          minutes: 20
-          seconds: 0
-    condition:
-      - condition: state
-        entity_id: input_boolean.options_lights_auto_off
-        state: 'on'
-    action:
-      - service: script.turn_on
-        data:
-          entity_id:
-            - script.downstairs_bathroom_poweroff_all
-
-  # Turn on light when motion detected
-  - id: 'Downstairs Bathroom - Lights On'
-    alias: 'Downstairs Bathroom - Lights On'
-    trigger:
-      platform: state
-      entity_id: binary_sensor.downstairs_bathroom_motion
-      to: 'on'
-    action:
-      - service: script.turn_on
-        data:
-          entity_id:
-            - script.downstairs_bathroom_poweron_lights
-
-  # Turn fan on when someone is showering
-  - id: 'Downstairs Bathroom - Fan On'
-    alias: 'Downstairs Bathroom - Fan On'
-    trigger:
-      - platform: state
-        entity_id: sensor.downstairs_bathroom_state
-        to: 'showering'
-    condition:
-      - condition: state
-        entity_id: input_boolean.options_lights_auto_on
-        state: 'on'
-    action:
-      - service: homeassistant.turn_on
-        entity_id:
-          - switch.downstairs_bathroom_fan
-
 binary_sensor:
 #----------------------------------------------------------------
 
@@ -91,9 +42,10 @@ script:
   downstairs_bathroom_poweron_lights:
     alias: "Downstairs Bathroom | Power On Lights"
     sequence:
-      - service: script.toggle_to_max
+      - service: light.turn_on
+        entity_id: light.downstairs_bathroom_sconce
         data:
-          light: 'light.downstairs_bathroom_sconce' 
+          brightness_pct: 100
 
 sensor:
 #----------------------------------------------------------------

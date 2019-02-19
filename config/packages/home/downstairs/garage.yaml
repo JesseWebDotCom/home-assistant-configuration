@@ -1,53 +1,6 @@
 automation:
 #----------------------------------------------------------------
 
-  # Turn off lights when Garage Closed
-  - id: 'Garage Door - Ligts Off'
-    alias: 'Garage Door - Ligts Off'
-    hide_entity: True
-    trigger:
-      - platform: state
-        entity_id: cover.garage
-        to: 'closed'
-        for:
-          hours: 0
-          minutes: 10
-          seconds: 0
-    condition:
-      - condition: state
-        entity_id: input_boolean.options_lights_auto_off
-        state: 'on'
-    action:
-      - service: homeassistant.turn_off
-        entity_id:
-          - switch.garage_dome
-          - switch.driveway_sconce
-          - light.mudroom_entrance_dome
-
-  # Turn on lights when Garage Opens
-  - id: 'Garage Door - Lights On'
-    alias: 'Garage Door - Lights On'
-    hide_entity: True
-    trigger:
-      - platform: state
-        entity_id: cover.garage
-        from: 'closed'
-    condition:
-      - condition: state
-        entity_id: input_boolean.options_lights_auto_on
-        state: 'on'
-      - condition: state
-        entity_id: sun.sun
-        state: 'below_horizon'
-    action:
-      - service: script.toggle_to_max
-        data:
-          light: 'light.mudroom_entrance_dome'
-      - service: homeassistant.turn_on
-        entity_id:
-          - switch.garage_dome
-          - switch.driveway_sconce
-
 binary_sensor:
 #----------------------------------------------------------------
 

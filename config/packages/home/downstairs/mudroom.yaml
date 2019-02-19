@@ -1,39 +1,6 @@
 automation:
 #----------------------------------------------------------------
 
-  - id: 'Mudroom - Lights Off'
-    alias: 'Mudroom - Lights Off'
-    trigger:
-      - platform: state
-        entity_id: sensor.mudroom_state
-        to: 'inactive'
-        for:
-          hours: 0
-          minutes: 5
-          seconds: 0
-    condition:
-      - condition: state
-        entity_id: input_boolean.options_lights_auto_off
-        state: 'on'
-    action:
-      - service: script.turn_on
-        data:
-          entity_id:
-            - script.mudroom_poweroff_all
-
-  # Turn on light when motion detected
-  - id: 'Mudroom - Lights On'
-    alias: 'Mudroom - Lights On'
-    trigger:
-      platform: state
-      entity_id: binary_sensor.mudroom_motion
-      to: 'on'
-    action:
-      - service: script.turn_on
-        data:
-          entity_id:
-            - script.mudroom_poweron_lights
-
 binary_sensor:
 #----------------------------------------------------------------
 
@@ -68,12 +35,14 @@ script:
   mudroom_poweron_lights:
     alias: "Mudroom | Power On Lights"
     sequence:
-      - service: script.toggle_to_max
+      - service: light.turn_on
+        entity_id: light.mudroom_entrance_dome
         data:
-          light: 'light.mudroom_entrance_dome'         
-      - service: script.toggle_to_max
+          brightness_pct: 100
+      - service: light.turn_on
+        entity_id: light.mudroom_hallway_dome
         data:
-          light: 'light.mudroom_hallway_dome'         
+          brightness_pct: 100          
 
 sensor:
 #----------------------------------------------------------------
