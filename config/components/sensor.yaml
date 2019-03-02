@@ -3,7 +3,6 @@
 
 # https://www.home-assistant.io/components/sensor.synologydsm/
 - platform: synologydsm
-  name: D8
   host: !secret synologydsm_host_d8
   username: !secret synologydsm_username
   password: !secret synologydsm_password
@@ -13,7 +12,6 @@
     - volume_size_total
 
 - platform: synologydsm
-  name: D5
   host: !secret synologydsm_host_d5
   username: !secret synologydsm_username
   password: !secret synologydsm_password
