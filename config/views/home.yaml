@@ -58,6 +58,12 @@
         include:
           - entity_id: "sensor.*_temperature"
             state: "unknown"
+          - entity_id: "zwave.*"
+            attributes:
+              battery_level: "< 10" 
+            options:
+              secondary_info: battery_level
+              icon: mdi:battery-alert               
           - entity_id: "lock.*"
             state: "unlocked"
           - entity_id: "sensor.volvo_xc90_fuel_level"
