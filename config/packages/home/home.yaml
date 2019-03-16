@@ -295,6 +295,20 @@ script:
             - script.downstairs_poweroff_all
             # - script.exterior_poweroff_all
 
+  telegram_front_door_photo:
+    alias: 'Front Door | Telegram'
+    sequence:
+      - service: notify.telegram_jesse
+        data_template:
+          title: "{{ title }}"
+          message: "{{ message }}"
+          data:
+            video:
+              - url: '{{ states.sensor.camera_front_door_last_clip.state }}'
+                username: !secret camera_username
+                password: !secret camera_password
+                caption: "{{ caption }}"                                   
+
 sensor:
 #----------------------------------------------------------------
 
@@ -335,3 +349,11 @@ sensor:
             {% else %}
               mdi:door
             {% endif %}
+
+
+
+# sensor.samjin_button_010050d2_1_1026 = temp
+# binary_sensor.samjin_button_010050d2_1_1280 = single button click
+# when pressed, switch to on (and stayed there)
+
+# zha.zha_samjin_button_010050d2 (battery_level / 2)

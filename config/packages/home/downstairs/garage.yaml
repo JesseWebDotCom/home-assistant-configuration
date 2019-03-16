@@ -17,6 +17,7 @@ binary_sensor:
     state_topic: "blue_iris/binary_sensor/garage_motion/state"
     payload_on: "ON"
     payload_off: "OFF"  
+
 script:
 #----------------------------------------------------------------
 
@@ -39,6 +40,20 @@ script:
         data:
           entity_id:
             - switch.garage_dome
+
+  telegram_garage_photo:
+    alias: 'Garage | Telegram'
+    sequence:
+      - service: notify.telegram_jesse
+        data_template:
+          title: "{{ title }}"
+          message: "{{ message }}"
+          data: 
+            video:
+              - url: '{{ states.sensor.camera_garage_last_clip.state }}'
+                username: !secret camera_username
+                password: !secret camera_password
+                caption: "{{ caption }}"   
 
 sensor:
 #----------------------------------------------------------------
