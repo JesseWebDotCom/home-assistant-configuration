@@ -15,6 +15,10 @@ homeassistant:
       icon: mdi:led-strip
       friendly_name: Theater | Lightstrip
 
+    light.yeelight_strip2_04cf8c7d57f1:
+      icon: mdi:candycane
+      friendly_name: Theater | Candy   
+
 automation:
 #----------------------------------------------------------------           
 
@@ -24,28 +28,27 @@ binary_sensor:
   - platform: template
     sensors:
 
+      # if battery motion sensor is offline, use camera motion
       theater_motion:
-        friendly_name: Theater | Motion
-        value_template: "{{ is_state('sensor.theater_motion_burglar', '8') }}"
-
-  # if battery motion sensor is offline, use camera motion
-      theater_motion_combined:
+        friendly_name: "Theater | Motion"
         device_class: motion
         value_template: >-
-          {% if is_state('binary_sensor.theater_motion', 'on') or 
-              is_state('binary_sensor.theater_motion', 'off') %}
-            {{ states('binary_sensor.theater_motion') }}
+          {% if is_state('sensor.theater_motion_burglar', '8') %}
+            true
+          {% elif is_state('sensor.theater_motion_burglar', '0') %}
+            false
           {% else %}
             {{ states('binary_sensor.theater_camera_motion') }}
           {% endif %}        
 
       theater_aisle_motion:
         friendly_name: Theater | Aisle Motion
+        device_class: motion
         value_template: "{{ is_state('sensor.theater_aisle_motion_burglar', '8') }}"
 
       theater_occupancy:
         friendly_name: Theater | Occupancy
-        value_template: "{{ is_state('binary_sensor.theater_motion_combined', 'on') or
+        value_template: "{{ is_state('binary_sensor.theater_motion', 'on') or
                             is_state('binary_sensor.theater_aisle_motion', 'on') }}"
 
   - platform: mqtt
@@ -88,7 +91,7 @@ script:
           entity_id:
             - light.theater_wall_sconce
             - switch.theater_posters
-            - switch.theater_candy
+            - light.yeelight_strip2_04cf8c7d57f1
             - light.yeelight_strip2_04cf8c7d60e9
 
   theater_poweron_lights:
@@ -101,24 +104,30 @@ script:
       - service: switch.turn_on
         entity_id:
           - switch.theater_posters
-          - switch.theater_candy
       - service: light.turn_on
         data:
-          entity_id: light.yeelight_strip2_04cf8c7d60e9
+          entity_id:
+            - light.yeelight_strip2_04cf8c7d57f1
+            - light.yeelight_strip2_04cf8c7d60e9
           brightness_pct: 100
-          color_name: blue
+          effect: LSD          
 
   theater_poweron_aisle_lights:
     alias: 'Theater - Aisle On'
     sequence:            
-      - service: switch.turn_on
-        entity_id:
-          - switch.theater_candy
       - service: light.turn_on
         data:
-          entity_id: light.yeelight_strip2_04cf8c7d60e9
+          entity_id:
+            - light.yeelight_strip2_04cf8c7d57f1
           brightness_pct: 1
-          color_name: red  
+          color_name: yellow  
+      - service: light.turn_on
+        data:
+          entity_id:
+            - light.yeelight_strip2_04cf8c7d57f1
+            - light.yeelight_strip2_04cf8c7d60e9
+          brightness_pct: 1
+          color_name: red            
 
   theater_poweroff_aisle_lights:
     alias: 'Theater - Aisle Off'
@@ -126,7 +135,7 @@ script:
       - service: homeassistant.turn_off
         data:
           entity_id:
-            - switch.theater_candy
+            - light.yeelight_strip2_04cf8c7d57f1
             - light.yeelight_strip2_04cf8c7d60e9                  
 
 sensor:
@@ -170,3 +179,8 @@ sensor:
           {%- else -%}
             inactive
           {%- endif %}
+     
+      theater_hub_activity:
+        friendly_name: Theater | Hub (Activity)
+        value_template: >
+          {{ states.remote.theater.attributes.current_activity }}
