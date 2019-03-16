@@ -45,6 +45,7 @@ ring: !include config/components/ring.yaml
 sabnzbd: !include config/components/sabnzbd.yaml
 sense: !include config/components/sense.yaml
 sensor: !include config/components/sensor.yaml
+sleepiq: !include config/components/sleepiq.yaml
 sun:
 system_health:
 telegram_bot: !include config/components/telegram_bot.yaml
