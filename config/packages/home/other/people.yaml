@@ -58,30 +58,28 @@ sensor:
   - platform: template
     sensors:
 
-      # {% if not is_state('device_tracker.i3_94_rex', 'home') %}
-      #   {{ states. device_tracker.i3_94_rex.state.replace('not_home','Away') }}
-      # {% else %}
-      #   Away
-      # {% endif %}
       tracker_jesse:
         friendly_name: 'Jesse'
         value_template: >-
-          {% if is_state('device_tracker.phone_jesse', 'home') %}
-            Home
+          {% if state_attr('device_tracker.phone_jesse' , 'scanner') == 'UnifiScanner' %}
+            {% if is_state('device_tracker.phone_jesse', 'home') %}
+              Home
+            {% else %}
+              Away
+            {% endif %}
           {% else %}
             Away
           {% endif %}
 
-      # {% if not is_state('device_tracker.volvo_volvo_xc90', 'home') %}
-      #   {{ states. device_tracker.volvo_volvo_xc90.state.replace('not_home','Away') }}
-      # {% else %}
-      #   Away
-      # {% endif %}
       tracker_carina:
         friendly_name: 'Carina'
         value_template: >-
-          {% if is_state('device_tracker.phone_carina', 'home') %}
-            Home
+          {% if state_attr('device_tracker.phone_carina' , 'scanner') == 'UnifiScanner' %}
+            {% if is_state('device_tracker.phone_carina', 'home') %}
+              Home
+            {% else %}
+              Away
+            {% endif %}
           {% else %}
             Away
           {% endif %}
@@ -89,8 +87,12 @@ sensor:
       tracker_bianca:
         friendly_name: 'Bianca'
         value_template: >-
-          {% if is_state('device_tracker.phone_bianca', 'home') %}
-            Home
+          {% if state_attr('device_tracker.phone_bianca' , 'scanner') == 'UnifiScanner' %}
+            {% if is_state('device_tracker.phone_bianca', 'home') %}
+              Home
+            {% else %}
+              Away
+            {% endif %}
           {% else %}
             Away
           {% endif %}
@@ -98,8 +100,12 @@ sensor:
       tracker_ryan:
         friendly_name: 'Ryan'
         value_template: >-
-          {% if is_state('device_tracker.phone_ryan', 'home') %}
-            Home
+          {% if state_attr('device_tracker.phone_ryan' , 'scanner') == 'UnifiScanner' %}
+            {% if is_state('device_tracker.phone_ryan', 'home') %}
+              Home
+            {% else %}
+              Away
+            {% endif %}
           {% else %}
             Away
           {% endif %}
@@ -107,8 +113,12 @@ sensor:
       tracker_mariana:
         friendly_name: 'Mariana'
         value_template: >-
-          {% if is_state('device_tracker.phone_mariana', 'home') %}
-            Home
+          {% if state_attr('device_tracker.phone_mariana' , 'scanner') == 'UnifiScanner' %}
+            {% if is_state('device_tracker.phone_mariana', 'home') %}
+              Home
+            {% else %}
+              Away
+            {% endif %}
           {% else %}
             Away
           {% endif %}
@@ -116,9 +126,18 @@ sensor:
       tracker_camilla:
         friendly_name: 'Camilla'
         value_template: >-
-          {% if is_state('device_tracker.phone_camilla', 'home') or
-                is_state('device_tracker.camillasipad', 'home') %}
-            Home
+          {% if state_attr('device_tracker.phone_camilla' , 'scanner') == 'UnifiScanner' %}
+            {% if is_state('device_tracker.phone_camilla', 'home') %}
+              Home
+            {% else %}
+              Away
+            {% endif %}
+          {% elif state_attr('device_tracker.camillasipad' , 'scanner') == 'UnifiScanner' %}
+            {% if is_state('device_tracker.camillasipad', 'home') %}
+              Home
+            {% else %}
+              Away
+            {% endif %}
           {% else %}
             Away
           {% endif %}
@@ -126,10 +145,18 @@ sensor:
       tracker_cida:
         friendly_name: 'Cida'
         value_template: >-
-          {% if is_state('device_tracker.phone_cida', 'home') or
-                is_state('device_tracker.mariasaplewatch', 'home') or
-                is_state('device_tracker.mariasipad', 'home') %}
-            Home
+          {% if state_attr('device_tracker.phone_cida' , 'scanner') == 'UnifiScanner' %}
+            {% if is_state('device_tracker.phone_cida', 'home') %}
+              Home
+            {% else %}
+              Away
+            {% endif %}
+          {% elif state_attr('device_tracker.mariasaplewatch' , 'scanner') == 'UnifiScanner' %}
+            {% if is_state('device_tracker.mariasaplewatch', 'home') %}
+              Home
+            {% else %}
+              Away
+            {% endif %}
           {% else %}
             Away
           {% endif %}
@@ -137,8 +164,12 @@ sensor:
       tracker_edgar:
         friendly_name: 'Edgar'
         value_template: >-
-          {% if is_state('device_tracker.phone_edgar', 'home') %}
-            Home
+          {% if state_attr('device_tracker.phone_edgar' , 'scanner') == 'UnifiScanner' %}
+            {% if is_state('device_tracker.phone_edgar', 'home') %}
+              Home
+            {% else %}
+              Away
+            {% endif %}
           {% else %}
             Away
           {% endif %}
