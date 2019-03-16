@@ -34,3 +34,84 @@
         - sensor.tracker_camilla
         - sensor.tracker_mariana
         - sensor.tracker_edgar
+
+    - type: entity-filter
+      show_header_toggle: false
+      entities:
+        - media_player.camilla_living_room_plex
+      state_filter:
+        - "playing"
+        - "paused"
+      show_empty: false
+      card:
+        type: custom:mini-media-player
+        entity: media_player.camilla_living_room_plex
+        artwork: cover
+        hide_power: true
+        hide_volume: true
+        name: Camilla | Living Room
+        power_color: true
+        scroll_info: true
+        show_progress: true
+        show_source: true  
+
+    - type: entity-filter
+      show_header_toggle: false
+      entities:
+        - media_player.camilla_bedroom_plex
+      state_filter:
+        - "playing"
+        - "paused"
+      show_empty: false
+      card:
+        type: custom:mini-media-player
+        entity: media_player.camilla_bedroom_plex
+        artwork: cover
+        hide_power: true
+        hide_volume: true
+        name: Camilla | Bedroom
+        power_color: true
+        scroll_info: true
+        show_progress: true
+        show_source: true  
+
+    - type: entity-filter
+      show_header_toggle: false
+      entities:
+        - media_player.mariana_apple_tv_plex
+      state_filter:
+        - "playing"
+        - "paused"
+      show_empty: false
+      card:
+        type: custom:mini-media-player
+        entity: media_player.mariana_apple_tv_plex
+        artwork: cover
+        hide_power: true
+        hide_volume: true
+        name: Mariana | Bedroom
+        power_color: true
+        scroll_info: true
+        show_progress: true
+        show_source: true  
+
+    - type: entity-filter
+      show_header_toggle: false
+      entities:
+        - media_player.bogar_living_room_plex
+      state_filter:
+        - "playing"
+        - "paused"
+      show_empty: false
+      card:
+        type: custom:mini-media-player
+        entity: media_player.bogar_living_room_plex
+        artwork: cover
+        hide_power: true
+        hide_volume: true
+        name: Bogar | Living Room
+        power_color: true
+        scroll_info: true
+        show_progress: true
+        show_source: true        
+
