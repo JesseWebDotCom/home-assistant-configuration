@@ -379,7 +379,27 @@
         power_color: true
         scroll_info: true
         show_progress: true
-        show_source: true    
+        show_source: true 
+
+    - type: entity-filter
+      show_header_toggle: false
+      entities:
+        - media_player.playstation_4
+      state_filter:
+        - "playing"
+        - "paused"
+      show_empty: false
+      card:
+        type: custom:mini-media-player
+        entity: media_player.playstation_4
+        artwork: cover
+        hide_power: true
+        hide_volume: true
+        name: PS4
+        power_color: true
+        scroll_info: true
+        show_progress: true
+        show_source: true             
 
     - type: horizontal-stack
       cards:
@@ -398,7 +418,7 @@
           tap_action:
             action: toggle
           type: entity-button
-        - entity: switch.theater_candy
+        - entity: light.yeelight_strip2_04cf8c7d57f1
           hold_action:
             action: more-info
           name: Candy
