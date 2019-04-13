@@ -165,9 +165,9 @@ There are my custom home assistant components (load them as you would any other 
 
 | Name | Description |
 |------|-------------|
-| My_Plex | A copy of HA's media_player.plex component to prevent community updates from breaking my automations |
-| My_Universal | This custom component (using a slightly modified universal media player) combines Apple TV and Plex media players into a single player.  Since the Apple TV component can't show Plex data properly (ex. Library, movie year, tv show episode art, etc), this component show's data from the Plex media.player when Plex is playing and data from the Apple TV media.player otherwise.  This also simplifies you life with a single player instead of 2. |
-| My_Unifi | This is HA's Unifi component PLUS it shows ALL Ubiquiti connected devices - clients, AP, switches, gateways, etc.  You can now leverage this device tracker to know when any of your networked Ubiquiti infrastructure goes offline |
+| [My_Plex](https://github.com/JesseWebDotCom/home-assistant-configuration/tree/master/custom_components/my_plex) | A copy of HA's media_player.plex component to prevent community updates from breaking my automations |
+| [My_Universal](https://github.com/JesseWebDotCom/home-assistant-configuration/tree/master/custom_components/my_universal) | This custom component (using a slightly modified universal media player) combines Apple TV and Plex media players into a single player.  Since the Apple TV component can't show Plex data properly (ex. Library, movie year, tv show episode art, etc), this component show's data from the Plex media.player when Plex is playing and data from the Apple TV media.player otherwise.  This also simplifies you life with a single player instead of 2. |
+| [My_Unifi](https://github.com/JesseWebDotCom/home-assistant-configuration/tree/master/custom_components/my_unifi) | This is HA's Unifi component PLUS it shows ALL Ubiquiti connected devices - clients, AP, switches, gateways, etc.  You can now leverage this device tracker to know when any of your networked Ubiquiti infrastructure goes offline |
 
 ## Getting Smarter
 Visit the following sites to get smarter on HA:
