@@ -18,6 +18,7 @@ This is my personal home automation configuration using Home Assistant (http://h
     - [Update the BIOS](#update-the-bios)
     - [Image the NUC](#image-the-nuc)
     - [ZWave](#zwave)
+  - [Custom Components](#custom-components)
   - [Getting Smarter](#getting-smarter)
   - [Misc Tips](#misc-tips)
     - [HOMEKIT](#homekit)
@@ -158,6 +159,15 @@ Device | Configuration | Details
 [Aeotec MultiSensor 6](https://www.amazon.com/gp/product/B0151Z8ZQY/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B0151Z8ZQY&linkId=24d3c72d09df4c49aef399d0836c2eb8)  |  Temperature Sensor Interval = 120 Seconds | Parameter 111 = 120
 [Aeotec Recessed Door Sensor](https://www.amazon.com/gp/product/B0151Z49BO/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B0151Z49BO&linkId=bf87da2400f219a73c7069df63801449)  |  Report types = Binary and Basic Reports | Parameter 121 = 272
 [Aeotec Water Sensor](https://www.amazon.com/Aeotec-Water-Sensor-Z-Wave-Flood/dp/B00H3TJ3P4) | Report types = Sensor Binary and Battery Report | Parameter 121 = 17
+
+## Custom Components
+There are my custom home assistant components (load them as you would any other Home Assistant custom component):
+
+| Name | Description |
+|------|-------------|
+| My_Plex | A copy of HA's media_player.plex component to prevent community updates from breaking my automations |
+| My_Universal | This custom component (using a slightly modified universal media player) combines Apple TV and Plex media players into a single player.  Since the Apple TV component can't show Plex data properly (ex. Library, movie year, tv show episode art, etc), this component show's data from the Plex media.player when Plex is playing and data from the Apple TV media.player otherwise.  This also simplifies you life with a single player instead of 2. |
+| My_Unifi | This is HA's Unifi component PLUS it shows ALL Ubiquiti connected devices - clients, AP, switches, gateways, etc.  You can now leverage this device tracker to know when any of your networked Ubiquiti infrastructure goes offline |
 
 ## Getting Smarter
 Visit the following sites to get smarter on HA:
