@@ -18,6 +18,7 @@ This is my personal home automation configuration using Home Assistant (http://h
     - [Update the BIOS](#update-the-bios)
     - [Image the NUC](#image-the-nuc)
     - [ZWave](#zwave)
+    - [TensorFlow](#tensorflow)
   - [Custom Components](#custom-components)
   - [Getting Smarter](#getting-smarter)
   - [Misc Tips](#misc-tips)
@@ -159,6 +160,29 @@ Device | Configuration | Details
 [Aeotec MultiSensor 6](https://www.amazon.com/gp/product/B0151Z8ZQY/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B0151Z8ZQY&linkId=24d3c72d09df4c49aef399d0836c2eb8)  |  Temperature Sensor Interval = 120 Seconds | Parameter 111 = 120
 [Aeotec Recessed Door Sensor](https://www.amazon.com/gp/product/B0151Z49BO/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B0151Z49BO&linkId=bf87da2400f219a73c7069df63801449)  |  Report types = Binary and Basic Reports | Parameter 121 = 272
 [Aeotec Water Sensor](https://www.amazon.com/Aeotec-Water-Sensor-Z-Wave-Flood/dp/B00H3TJ3P4) | Report types = Sensor Binary and Battery Report | Parameter 121 = 17
+
+### Tensorflow
+1. Install and run the tensorflow addon.
+   1. Add the [tensorflow Hass.io add-ons repository](https://github.com/hunterjm/hassio-addons) to your Hass.io instance
+   2. Install the "TensorFlow Installer" add-on
+   3. Start the "TensorFlow Installer" add-on
+   4. Check the logs of the "TensorFlow Installer" add-on to see if everything went well
+   5. Restart Home Assistant for changes to take effect
+2. Download and extract this: https://github.com/robmarkcole/tensorflow_files_for_home_assistant_component
+3. Put the tensorflow folder on /config dir
+4. Download and extract this: http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v2_coco_2018_03_29.tar.gz
+5. Rename the folder “ssd_mobilenet_v2_coco_2018_03_29” to “model”
+6. Put the ‘model’ folder into /config/tensorflow dir
+7. Add this to configuration.yaml:
+```
+image_processing:
+ - platform: tensorflow
+   scan_interval: 1
+   source:
+     - entity_id: camera.front_door
+   model:
+     graph: /config/tensorflow/model/frozen_inference_graph.pb
+```
 
 ## Custom Components
 There are my custom home assistant components (load them as you would any other Home Assistant custom component):
