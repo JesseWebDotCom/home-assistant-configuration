@@ -26,7 +26,7 @@ script:
       - service: homeassistant.turn_off
         data:
           entity_id:
-            - switch.upstairs_bathroom_fan2
+            - switch.upstairs_bathroom_fan
             - media_player.upstairs_bathroom_cast
 
   upstairs_bathroom_poweroff_lights:
@@ -50,7 +50,7 @@ sensor:
           {% if is_state('light.upstairs_bathroom_sconce', 'on') %}
             {% set total = total + 1 %}
           {% endif %}
-          {% if is_state('switch.upstairs_bathroom_fan2', 'on') %}
+          {% if is_state('switch.upstairs_bathroom_fan', 'on') %}
             {% set total = total + 1 %}
           {% endif %}
           {% if is_state('media_player.upstairs_bathroom_cast', 'playing') %}
