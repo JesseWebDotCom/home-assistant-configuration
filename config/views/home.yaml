@@ -1,9 +1,11 @@
 - type: custom:compact-custom-header
-  menu: false
-  notification: false
-  voice: false
-  options: false
-  user_agent: mobile  
+  main_config: true  
+  header: true
+  menu: hide
+  notifications: hide
+  voice: hide
+  options: hide
+  chevrons: false
 
 - type: vertical-stack
   cards:
@@ -44,6 +46,22 @@
             state: "> 79"
           - entity_id: "sensor.*_temperature"
             state: "< 63"
+          - entity_id: "device_tracker.f0_9f_c2_c7_0d_24"
+            state: "not_home"
+          - entity_id: "device_tracker.outdoors"
+            state: "not_home"
+          - entity_id: "device_tracker.master_bedroom"
+            state: "not_home"
+          - entity_id: "device_tracker.bianca"
+            state: "not_home"
+          - entity_id: "device_tracker.theater"
+            state: "not_home"
+          - entity_id: "device_tracker.ryan"
+            state: "not_home"
+          - entity_id: "device_tracker.computer_room"
+            state: "not_home"
+          - entity_id: "device_tracker.living_room"
+            state: "not_home"
         exclude:
           - entity_id: "sensor.juicenet_*"            
 
