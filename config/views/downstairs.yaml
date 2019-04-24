@@ -1,9 +1,4 @@
 - type: custom:compact-custom-header
-  menu: false
-  notification: false
-  voice: false
-  options: false
-  user_agent: mobile  
 
 - type: vertical-stack
   cards:
@@ -41,6 +36,12 @@
             state: "> 79"
           - entity_id: "sensor.*_temperature"
             state: "< 63"
+          - entity_id: "device_tracker.theater"
+            state: "not_home"
+          - entity_id: "device_tracker.ryan"
+            state: "not_home"
+          - entity_id: "device_tracker.computer_room"
+            state: "not_home"            
         exclude:
           - entity_id: "sensor.juicenet_*"   
           - entity_id: sensor.bianca_s_room_ecobee_temperature
@@ -335,8 +336,8 @@
       camera_image: camera.theater
       entities:
         - binary_sensor.theater_occupancy
-        - binary_sensor.theater_door
-        - sensor.theater_activity
+        # - binary_sensor.theater_door
+        # - sensor.theater_activity
         - script.theater_poweroff_lights
         - script.theater_poweroff_all
 
@@ -384,14 +385,14 @@
     - type: entity-filter
       show_header_toggle: false
       entities:
-        - media_player.playstation_4
+        - media_player.playstation_4_2
       state_filter:
         - "playing"
         - "paused"
       show_empty: false
       card:
         type: custom:mini-media-player
-        entity: media_player.playstation_4
+        entity: media_player.playstation_4_2
         artwork: cover
         hide_power: true
         hide_volume: true
@@ -418,17 +419,17 @@
           tap_action:
             action: toggle
           type: entity-button
-        - entity: light.yeelight_strip2_04cf8c7d57f1
+        - entity: light.theater_candy
           hold_action:
             action: more-info
           name: Candy
           tap_action:
             action: toggle
           type: entity-button
-        - entity: light.yeelight_strip2_04cf8c7d60e9
+        - entity: light.theater_aisle
           hold_action:
             action: more-info
-          name: Strip
+          name: Aisle
           tap_action:
             action: toggle
           type: entity-button             
