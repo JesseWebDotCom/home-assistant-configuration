@@ -1,9 +1,4 @@
 - type: custom:compact-custom-header
-  menu: false
-  notification: false
-  voice: false
-  options: false
-  user_agent: mobile  
 
 - type: vertical-stack
   cards:
@@ -33,3 +28,5 @@
         - entity: input_boolean.options_notifications_chime
         - entity: input_boolean.options_notifications_push
         - entity: input_boolean.options_notifications_speech
+
+    - type: custom:tracker-card
