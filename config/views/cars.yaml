@@ -1,9 +1,4 @@
 - type: custom:compact-custom-header
-  menu: false
-  notification: false
-  voice: false
-  options: false
-  user_agent: mobile  
 
 - type: vertical-stack
   cards:
