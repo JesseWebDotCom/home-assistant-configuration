@@ -1,15 +1,7 @@
 - type: custom:compact-custom-header
-  menu: false
-  notification: false
-  voice: false
-  options: false
-  user_agent: mobile  
   
 - type: vertical-stack
   cards:
-    - type: markdown
-      content: >
-        ## [![Home](/local/images/menu/double-left_16.png)](/lovelace/home?kiosk&show_tabs)&emsp;UPSTAIRS
 
     - type: glance
       show_name: false
@@ -39,6 +31,14 @@
             state: "> 79"
           - entity_id: "sensor.*_temperature"
             state: "< 63"
+          - entity_id: "device_tracker.f0_9f_c2_c7_0d_24"
+            state: "not_home"
+          - entity_id: "device_tracker.master_bedroom"
+            state: "not_home"
+          - entity_id: "device_tracker.bianca"
+            state: "not_home"
+          - entity_id: "device_tracker.living_room"
+            state: "not_home"            
         exclude:
           - entity_id: "sensor.juicenet_*"
           - entity_id: sensor.downstairs_bathroom_temperature
@@ -354,7 +354,7 @@
 
     - type: horizontal-stack
       cards:
-        - entity: switch.kitchen_recessed2
+        - entity: switch.kitchen_recessed
           hold_action:
             action: more-info
           name: Ceiling
@@ -424,7 +424,7 @@
           tap_action:
             action: toggle
           type: entity-button
-        - entity: switch.upstairs_bathroom_fan2
+        - entity: switch.upstairs_bathroom_fan
           hold_action:
             action: more-info
           icon: 'mdi:fan'
@@ -456,14 +456,14 @@
     - type: entity-filter
       show_header_toggle: false
       entities:
-        - media_player.isabellas_room_ump
+        - media_player.isabella_s_room_ump
       state_filter:
         - "playing"
         - "paused"
       show_empty: false
       card:
         type: custom:mini-media-player
-        entity: media_player.isabellas_room_ump
+        entity: media_player.isabella_s_room_ump
         artwork: cover
         hide_power: true
         hide_volume: true
@@ -682,7 +682,11 @@
     - type: entities
       entities:
         - entity: sensor.master_bedroom_ecobee_temperature
-          name: Temperature          
+          name: Temperature    
+        - entity: binary_sensor.sleepnumber_carina_carina_is_in_bed
+          name: 'Bed | Carina'
+        - entity: binary_sensor.sleepnumber_carina_jesse_is_in_bed      
+          name: 'Bed | Jesse'
 
     # MASTER BATHROOM
     #----------------------------------------------------------------
