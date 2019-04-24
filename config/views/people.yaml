@@ -1,9 +1,4 @@
 - type: custom:compact-custom-header
-  menu: false
-  notification: false
-  voice: false
-  options: false
-  user_agent: mobile  
 
 - type: vertical-stack
   cards:
@@ -38,6 +33,26 @@
     - type: entity-filter
       show_header_toggle: false
       entities:
+        - media_player.camillas_ipad_pro_plex
+      state_filter:
+        - "playing"
+        - "paused"
+      show_empty: false
+      card:
+        type: custom:mini-media-player
+        entity: media_player.camillas_ipad_pro_plex
+        artwork: cover
+        hide_power: true
+        hide_volume: true
+        name: Camilla | iPad Pro
+        power_color: true
+        scroll_info: true
+        show_progress: true
+        show_source: true  
+
+    - type: entity-filter
+      show_header_toggle: false
+      entities:
         - media_player.camilla_living_room_plex
       state_filter:
         - "playing"
@@ -53,7 +68,7 @@
         power_color: true
         scroll_info: true
         show_progress: true
-        show_source: true  
+        show_source: true          
 
     - type: entity-filter
       show_header_toggle: false
