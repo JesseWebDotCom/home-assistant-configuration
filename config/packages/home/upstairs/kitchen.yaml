@@ -45,7 +45,7 @@ script:
       - service: homeassistant.turn_off
         data:
           entity_id:
-            - switch.kitchen_recessed2
+            - switch.kitchen_recessed
             - switch.kitchen_pendant
 
 sensor:
@@ -57,7 +57,7 @@ sensor:
         value_template: >
           {% set total = 0 %}
 
-          {% if is_state('switch.kitchen_recessed2', 'on') %}
+          {% if is_state('switch.kitchen_recessed', 'on') %}
             {% set total = total + 1 %}
           {% endif %}
           {% if is_state('switch.kitchen_pendant', 'on') %}
@@ -84,7 +84,7 @@ sensor:
           {% if states.sensor.kitchen_sensor_ecobee_temperature.state|int > 80 or
                 states.sensor.kitchen_sensor_ecobee_temperature.state|int < 65 -%}
             problem
-          {% elif is_state('switch.kitchen_recessed2', 'on') or
+          {% elif is_state('switch.kitchen_recessed', 'on') or
                 is_state('switch.kitchen_pendant', 'on') or
                 is_state('binary_sensor.kitchen_occupancy', 'on') or
                 is_state('binary_sensor.kitchen_microwave', 'on') or
