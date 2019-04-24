@@ -11,13 +11,13 @@ homeassistant:
     media_player.theater_ump:
       icon: mdi:shield
 
-    light.yeelight_strip2_04cf8c7d60e9:
+    light.theater_aisle:
       icon: mdi:led-strip
       friendly_name: Theater | Lightstrip
 
-    light.yeelight_strip2_04cf8c7d57f1:
+    light.theater_candy:
       icon: mdi:candycane
-      friendly_name: Theater | Candy   
+      friendly_name: Theater | Candy      
 
 automation:
 #----------------------------------------------------------------           
@@ -91,8 +91,8 @@ script:
           entity_id:
             - light.theater_wall_sconce
             - switch.theater_posters
-            - light.yeelight_strip2_04cf8c7d57f1
-            - light.yeelight_strip2_04cf8c7d60e9
+            - light.theater_candy
+            - light.theater_aisle
 
   theater_poweron_lights:
     alias: "Theater | Power On Lights"
@@ -107,8 +107,8 @@ script:
       - service: light.turn_on
         data:
           entity_id:
-            - light.yeelight_strip2_04cf8c7d57f1
-            - light.yeelight_strip2_04cf8c7d60e9
+            - light.theater_candy
+            - light.theater_aisle
           brightness_pct: 100
           effect: LSD          
 
@@ -118,14 +118,14 @@ script:
       - service: light.turn_on
         data:
           entity_id:
-            - light.yeelight_strip2_04cf8c7d57f1
+            - light.theater_candy
           brightness_pct: 1
           color_name: yellow  
       - service: light.turn_on
         data:
           entity_id:
-            - light.yeelight_strip2_04cf8c7d57f1
-            - light.yeelight_strip2_04cf8c7d60e9
+            - light.theater_candy
+            - light.theater_aisle
           brightness_pct: 1
           color_name: red            
 
@@ -135,8 +135,8 @@ script:
       - service: homeassistant.turn_off
         data:
           entity_id:
-            - light.yeelight_strip2_04cf8c7d57f1
-            - light.yeelight_strip2_04cf8c7d60e9                  
+            - light.theater_candy
+            - light.theater_aisle                  
 
 sensor:
 #----------------------------------------------------------------
@@ -149,7 +149,7 @@ sensor:
         value_template: >
           {% set total = 0 %}
 
-          {% if is_state('light.yeelight_strip2_04cf8c7d60e9', 'on') %}
+          {% if is_state('light.theater_aisle', 'on') %}
             {% set total = total + 1 %}
           {% endif %}
           {% if is_state('light.theater_wall_sconce', 'on') %}
