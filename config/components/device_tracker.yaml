@@ -2,11 +2,21 @@
   username: !secret tile_username
   password: !secret tile_password
 
-- platform: unifi
+- platform: my_unifi
   host: !secret unifi_host
   port: !secret unifi_port
   username: !secret unifi_username
   password: !secret unifi_password
   verify_ssl: False
   site_id: default
-  detection_time: 180
+  track_new_devices: no
+  interval_seconds: 2
+  consider_home: 180
+  monitored_conditions:
+    - ap_mac
+    - essid
+    - last_seen
+    - first_seen
+    - ip
+    - hostname
+    - is_guest
