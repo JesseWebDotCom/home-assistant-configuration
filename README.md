@@ -162,7 +162,7 @@ Device | Configuration | Details
 [Aeotec Water Sensor](https://www.amazon.com/Aeotec-Water-Sensor-Z-Wave-Flood/dp/B00H3TJ3P4) | Report types = Sensor Binary and Battery Report | Parameter 121 = 17
 
 ### Tensorflow
-1. Install and run the tensorflow addon.
+1. Install and run the tensorflow addon:
    1. Add the [tensorflow Hass.io add-ons repository](https://github.com/hunterjm/hassio-addons) to your Hass.io instance
    2. Install the "TensorFlow Installer" add-on
    3. Start the "TensorFlow Installer" add-on
@@ -173,7 +173,7 @@ Device | Configuration | Details
 4. Download and extract this: http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v2_coco_2018_03_29.tar.gz
 5. Rename the folder “ssd_mobilenet_v2_coco_2018_03_29” to “model”
 6. Put the ‘model’ folder into /config/tensorflow dir
-7. Add this to configuration.yaml:
+7. Add the following to configuration.yaml (modifying _scan interval to # of seconds tensorflow should update and an entity_id for each of your cameras):
 ```
 image_processing:
  - platform: tensorflow
