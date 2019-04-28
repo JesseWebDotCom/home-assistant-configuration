@@ -15,6 +15,7 @@
 - platform: my_universal
   name: Living Room | UMP
   icon: mdi:video
+  auto_name: true
   children:
     - media_player.living_room_apple_tv
     - media_player.living_room_plex
@@ -22,6 +23,7 @@
 - platform: my_universal
   name: Kitchen | UMP
   icon: mdi:video
+  auto_name: true
   children:
     - media_player.kitchen_apple_tv
     - media_player.kitchen_plex
@@ -29,6 +31,7 @@
 - platform: my_universal
   name: Isabella's Room | UMP
   icon: mdi:video
+  auto_name: true
   children:
     - media_player.isabellas_room_apple_tv
     - media_player.isabellas_room_plex
@@ -36,6 +39,7 @@
 - platform: my_universal
   name: Bianca's Room | UMP
   icon: mdi:video
+  auto_name: true
   children:
     - media_player.biancas_room_apple_tv
     - media_player.biancas_room_plex
@@ -43,6 +47,7 @@
 - platform: my_universal
   name: Master Bedroom | UMP
   icon: mdi:video
+  auto_name: true
   children:
     - media_player.master_bedroom_apple_tv
     - media_player.master_bedroom_plex
@@ -50,6 +55,7 @@
 - platform: my_universal
   name: Ryan's Room | UMP
   icon: mdi:video
+  auto_name: true
   children:
     - media_player.ryans_room_apple_tv
     - media_player.ryans_room_plex
@@ -57,6 +63,7 @@
 - platform: my_universal
   name: Office | UMP
   icon: mdi:video
+  auto_name: true
   children:
     - media_player.office_apple_tv
     - media_player.office_plex
@@ -64,6 +71,7 @@
 - platform: my_universal
   name: Theater | UMP
   icon: mdi:video
+  auto_name: true
   children:
     - media_player.theater_plex
     - media_player.theater_plex
@@ -71,6 +79,7 @@
 - platform: my_universal
   name: Playroom | UMP
   icon: mdi:video
+  auto_name: true
   children:
     - media_player.playroom_plex
-    - media_player.playroom_plex    
+    - media_player.playroom_plex
