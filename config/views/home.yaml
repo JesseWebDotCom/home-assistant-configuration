@@ -63,7 +63,8 @@
           - entity_id: "device_tracker.living_room"
             state: "not_home"
         exclude:
-          - entity_id: "sensor.juicenet_*"            
+          - entity_id: "sensor.juicenet_*"        
+          - entity_id: sensor.cpu_temperature    
 
     - type: custom:monster-card
       show_empty: false
@@ -124,12 +125,14 @@
         - type: picture-glance
           image:
           camera_image: camera.front_door_2
+          camera_view: live
           navigation_path: /lovelace/exterior?kiosk&show_tabs
           entities:
             - binary_sensor.front_door_camera_motion
         - type: picture-glance
           image:
           camera_image: camera.garage
+          camera_view: live
           navigation_path: /lovelace/downstairs?kiosk&show_tabs
           entities:
             - cover.garage
@@ -139,6 +142,7 @@
         - type: picture-glance
           image:
           camera_image: camera.front_ptz
+          # camera_view: live
           navigation_path: /lovelace/exterior?kiosk&show_tabs
           entities:
             - binary_sensor.front_ptz_camera_motion
@@ -147,12 +151,14 @@
         - type: picture-glance
           image:
           camera_image: camera.front_center
+          # camera_view: live
           navigation_path: /lovelace/exterior?kiosk&show_tabs
           entities:
             - binary_sensor.front_center_camera_motion
         - type: picture-glance
           image:
           camera_image: camera.front_right
+          # camera_view: live
           navigation_path: /lovelace/exterior?kiosk&show_tabs
           entities:
             - binary_sensor.front_right_camera_motion
@@ -161,12 +167,14 @@
         - type: picture-glance
           image:
           camera_image: camera.driveway_front
+          camera_view: live
           navigation_path: /lovelace/exterior?kiosk&show_tabs
           entities:
             - binary_sensor.driveway_front_camera_motion
         - type: picture-glance
           image:
           camera_image: camera.driveway_rear
+          camera_view: live
           navigation_path: /lovelace/exterior?kiosk&show_tabs
           entities:
             - binary_sensor.driveway_rear_camera_motion
@@ -175,12 +183,14 @@
         - type: picture-glance
           image:
           camera_image: camera.upstairs_entrance
+          # camera_view: live
           navigation_path: /lovelace/upstairs?kiosk&show_tabs
           entities:
             - binary_sensor.upstairs_entrance_occupancy
         - type: picture-glance
           image:
           camera_image: camera.dining_room
+          camera_view: live
           navigation_path: /lovelace/upstairs?kiosk&show_tabs
           entities:
             - binary_sensor.dining_room_occupancy
@@ -189,6 +199,7 @@
         - type: picture-glance
           image:
           camera_image: camera.living_room
+          # camera_view: live
           navigation_path: /lovelace/upstairs?kiosk&show_tabs
           entities:
             - binary_sensor.living_room_occupancy
@@ -197,6 +208,7 @@
         - type: picture-glance
           image:
           camera_image: camera.kitchen
+          # camera_view: live
           navigation_path: /lovelace/upstairs?kiosk&show_tabs
           entities:
             - binary_sensor.kitchen_door
@@ -204,6 +216,7 @@
         - type: picture-glance
           image:
           camera_image: camera.isabellas_room
+          # camera_view: live
           navigation_path: /lovelace/upstairs?kiosk&show_tabs
           entities:
             - binary_sensor.isabellas_room_occupancy
@@ -212,12 +225,14 @@
         - type: picture-glance
           image:
           camera_image: camera.sunroom
+          # camera_view: live
           navigation_path: /lovelace/upstairs?kiosk&show_tabs
           entities:
             - binary_sensor.sunroom_occupancy
         - type: picture-glance
           image:
           camera_image: camera.playroom
+          # camera_view: live
           navigation_path: /lovelace/downstairs?kiosk&show_tabs
           entities:
             - binary_sensor.playroom_occupancy
@@ -226,6 +241,7 @@
         - type: picture-glance
           image:
           camera_image: camera.theater
+          # camera_view: live
           navigation_path: /lovelace/downstairs?kiosk&show_tabs
           entities:
             - binary_sensor.theater_door
@@ -233,6 +249,7 @@
         - type: picture-glance
           image:
           camera_image: camera.storage_room
+          # camera_view: live
           navigation_path: /lovelace/downstairs?kiosk&show_tabs
           entities:
             - binary_sensor.storage_room_door
@@ -242,12 +259,14 @@
         - type: picture-glance
           image:
           camera_image: camera.porch
+          # camera_view: live
           navigation_path: /lovelace/exterior?kiosk&show_tabs
           entities:
             - binary_sensor.porch_camera_motion
         - type: picture-glance
           image:
           camera_image: camera.pool
+          # camera_view: live
           navigation_path: /lovelace/exterior?kiosk&show_tabs
           entities:
             - binary_sensor.pool_camera_motion
@@ -256,12 +275,14 @@
         - type: picture-glance
           image:
           camera_image: camera.rear_center
+          # camera_view: live
           navigation_path: /lovelace/exterior?kiosk&show_tabs
           entities:
             - binary_sensor.house_rear_camera_motion
         - type: picture-glance
           image:
           camera_image: camera.rear_left
+          # camera_view: live
           navigation_path: /lovelace/exterior?kiosk&show_tabs
           entities:
             - binary_sensor.rear_left_camera_motion
@@ -271,12 +292,14 @@
         - type: picture-glance
           image:
           camera_image: camera.porch_under
+          # camera_view: live
           navigation_path: /lovelace/exterior?kiosk&show_tabs
           entities:
             - binary_sensor.porch_under_camera_motion
         - type: picture-glance
           image:
           camera_image: camera.side_stairs
+          # camera_view: live
           navigation_path: /lovelace/exterior?kiosk&show_tabs
           entities:
             - binary_sensor.side_stairs_camera_motion
