@@ -73,6 +73,20 @@ script:
             - light.biancas_room_dome
             - light.biancas_room_lava_lamp
 
+  biancas_room_reboot_wap:
+    alias: "Biancas Room | Reboot WAP"
+    sequence:
+      - service: switch.turn_off
+        data:
+          entity_id:
+            - switch.biancas_room_dual_right   
+      - delay:
+          seconds: 5
+      - service: switch.turn_on
+        data:
+          entity_id:
+            - switch.biancas_room_dual_right                       
+
 sensor:
 #----------------------------------------------------------------
 
