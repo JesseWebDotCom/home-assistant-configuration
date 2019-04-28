@@ -41,6 +41,7 @@
             state: "not_home"            
         exclude:
           - entity_id: "sensor.juicenet_*"
+          - entity_id: sensor.cpu_temperature
           - entity_id: sensor.downstairs_bathroom_temperature
           - entity_id: sensor.downstairs_ecobee_temperature
           - entity_id: sensor.office_ecobee_temperature
@@ -74,6 +75,7 @@
     - type: picture-glance
       image:
       camera_image: camera.upstairs_entrance
+      # camera_view: live
       entities:
           - binary_sensor.front_door
           - binary_sensor.upstairs_entrance_camera_motion
@@ -124,6 +126,7 @@
     - type: picture-glance
       image:
       camera_image: camera.living_room
+      # camera_view: live
       entities:
           - binary_sensor.living_room_occupancy
           - script.living_room_sleep
@@ -143,13 +146,10 @@
         type: custom:mini-media-player
         entity: media_player.living_room_cast
         artwork: cover
-        hide_power: false
-        hide_volume: false
         name: Music
-        power_color: true
-        scroll_info: true
-        show_progress: true
-        show_source: true
+        hide:
+          power_color: false          
+        info: scroll          
 
     - type: entity-filter
       show_header_toggle: false
@@ -163,13 +163,15 @@
         type: custom:mini-media-player
         entity: media_player.living_room_ump
         artwork: cover
-        hide_power: true
-        hide_volume: true
-        name: Apple TV
-        power_color: true
-        scroll_info: true
-        show_progress: true
-        show_source: true  
+        # name: Apple TV
+        hide:
+          volume: true
+          power_color: false          
+        idle_view:
+          after: 30
+          when_idle: false
+          when_standby: false
+        info: scroll
 
     - type: horizontal-stack
       cards:
@@ -210,6 +212,7 @@
         - type: picture-glance
           image:
           camera_image: camera.dining_room
+          # camera_view: live
           entities:
               - binary_sensor.dining_room_occupancy
               - script.dining_room_poweroff_lights
@@ -232,13 +235,10 @@
         type: custom:mini-media-player
         entity: media_player.dining_room_cast
         artwork: cover
-        hide_power: false
-        hide_volume: false
         name: Music
-        power_color: true
-        scroll_info: true
-        show_progress: true
-        show_source: true              
+        hide:
+          power_color: false          
+        info: scroll              
 
     # KITCHEN
     #----------------------------------------------------------------
@@ -249,6 +249,7 @@
     - type: picture-glance
       image:
       camera_image: camera.kitchen
+      # camera_view: live
       entities:
         - binary_sensor.kitchen_occupancy
         - binary_sensor.kitchen_door
@@ -268,13 +269,10 @@
         type: custom:mini-media-player
         entity: media_player.kitchen_cast
         artwork: cover
-        hide_power: false
-        hide_volume: false
         name: Music
-        power_color: true
-        scroll_info: true
-        show_progress: true
-        show_source: true
+        hide:
+          power_color: false          
+        info: scroll     
 
     - type: entity-filter
       show_header_toggle: false
@@ -289,13 +287,10 @@
         type: custom:mini-media-player
         entity: media_player.kitchen_table_cast
         artwork: cover
-        hide_power: false
-        hide_volume: false
         name: Music
-        power_color: true
-        scroll_info: true
-        show_progress: true
-        show_source: true        
+        hide:
+          power_color: false          
+        info: scroll         
 
     - type: entity-filter
       show_header_toggle: false
@@ -310,13 +305,10 @@
         type: custom:mini-media-player
         entity: media_player.kitchen_sink_cast
         artwork: cover
-        hide_power: false
-        hide_volume: false
         name: Music
-        power_color: true
-        scroll_info: true
-        show_progress: true
-        show_source: true
+        hide:
+          power_color: false          
+        info: scroll     
 
     - type: entity-filter
       show_header_toggle: false
@@ -330,13 +322,14 @@
         type: custom:mini-media-player
         entity: media_player.kitchen_ump
         artwork: cover
-        hide_power: true
-        hide_volume: true
-        name: Apple TV
-        power_color: true
-        scroll_info: true
-        show_progress: true
-        show_source: true              
+        hide:
+          volume: true
+          power_color: false          
+        idle_view:
+          after: 30
+          when_idle: false
+          when_standby: false
+        info: scroll       
 
     - type: entity-filter
       show_header_toggle: false
@@ -399,13 +392,10 @@
         type: custom:mini-media-player
         entity: media_player.upstairs_bathroom_cast
         artwork: cover
-        hide_power: false
-        hide_volume: false
         name: Music
-        power_color: true
-        scroll_info: true
-        show_progress: true
-        show_source: true
+        hide:
+          power_color: false          
+        info: scroll     
 
     - type: entities
       entities:
@@ -443,6 +433,7 @@
     - type: picture-glance
       image:
       camera_image: camera.isabellas_room
+      # camera_view: live
       entities:
           - binary_sensor.isabellas_room_occupancy
           - script.isabellas_room_sleep
@@ -465,13 +456,14 @@
         type: custom:mini-media-player
         entity: media_player.isabella_s_room_ump
         artwork: cover
-        hide_power: true
-        hide_volume: true
-        name: Apple TV
-        power_color: true
-        scroll_info: true
-        show_progress: true
-        show_source: true 
+        hide:
+          volume: true
+          power_color: false          
+        idle_view:
+          after: 30
+          when_idle: false
+          when_standby: false
+        info: scroll
 
     - type: horizontal-stack
       cards:
@@ -520,18 +512,21 @@
         type: custom:mini-media-player
         entity: media_player.bianca_s_room_ump
         artwork: cover
-        hide_power: true
-        hide_volume: true
-        name: Apple TV
-        power_color: true
-        scroll_info: true
-        show_progress: true
-        show_source: true 
+        hide:
+          volume: true
+          power_color: false          
+        idle_view:
+          after: 30
+          when_idle: false
+          when_standby: false
+        info: scroll
 
     - type: entities
       entities:
         - entity: sensor.bianca_s_room_ecobee_temperature
           name: Temperature
+        - entity: script.biancas_room_reboot_wap
+          name: Fix WIFI
 
     - type: horizontal-stack
       cards:
@@ -583,13 +578,10 @@
         type: custom:mini-media-player
         entity: media_player.master_bedroom_cast
         artwork: cover
-        hide_power: false
-        hide_volume: false
         name: Music
-        power_color: true
-        scroll_info: true
-        show_progress: true
-        show_source: true
+        hide:
+          power_color: false          
+        info: scroll     
 
     - type: entity-filter
       show_header_toggle: false
@@ -603,13 +595,14 @@
         type: custom:mini-media-player
         entity: media_player.master_bedroom_ump
         artwork: cover
-        hide_power: true
-        hide_volume: true
-        name: Apple TV
-        power_color: true
-        scroll_info: true
-        show_progress: true
-        show_source: true
+        hide:
+          volume: true
+          power_color: false          
+        idle_view:
+          after: 30
+          when_idle: false
+          when_standby: false
+        info: scroll
 
     - type: horizontal-stack
       cards:
@@ -728,13 +721,10 @@
         type: custom:mini-media-player
         entity: media_player.master_bathroom_cast
         artwork: cover
-        hide_power: false
-        hide_volume: false
         name: Music
-        power_color: true
-        scroll_info: true
-        show_progress: true
-        show_source: true
+        hide:
+          power_color: false          
+        info: scroll     
 
     - type: entity-filter
       show_header_toggle: false
@@ -754,6 +744,7 @@
     - type: picture-glance
       image:
       camera_image: camera.sunroom
+      # camera_view: live
       entities:
         - binary_sensor.sunroom_occupancy
         - script.sunroom_poweroff_lights
@@ -772,12 +763,10 @@
         type: custom:mini-media-player
         entity: media_player.sunroom_cast
         artwork: cover
-        hide_power: false
-        hide_volume: false
         name: Music
-        power_color: true
-        scroll_info: true
-        show_progress: true
+        hide:
+          power_color: false          
+        info: scroll     
         show_source: true        
 
     - type: horizontal-stack
