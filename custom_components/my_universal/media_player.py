@@ -1,4 +1,4 @@
-"""
+"""  
 Combination of multiple media players into one for a universal controller.
 
 For more details about this platform, please refer to the documentation at
@@ -47,12 +47,15 @@ CONF_COMMANDS = 'commands'
 CONF_SERVICE = 'service'
 CONF_SERVICE_DATA = 'service_data'
 
+CONF_AUTO_NAME = 'auto_name'
+
 OFF_STATES = [STATE_IDLE, STATE_OFF, STATE_UNAVAILABLE]
 
 ATTRS_SCHEMA = cv.schema_with_slug_keys(cv.string)
 CMD_SCHEMA = cv.schema_with_slug_keys(cv.SERVICE_SCHEMA)
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
+    vol.Optional(CONF_AUTO_NAME, default=False): cv.boolean,
     vol.Required(CONF_NAME): cv.string,
     vol.Optional(CONF_CHILDREN, default=[]): cv.entity_ids,
     vol.Optional(CONF_COMMANDS, default={}): CMD_SCHEMA,
@@ -68,6 +71,7 @@ async def async_setup_platform(hass, config, async_add_entities,
     player = UniversalMediaPlayer(
         hass,
         config.get(CONF_NAME),
+        config.get(CONF_AUTO_NAME),
         config.get(CONF_CHILDREN),
         config.get(CONF_COMMANDS),
         config.get(CONF_ATTRS),
@@ -80,11 +84,12 @@ async def async_setup_platform(hass, config, async_add_entities,
 class UniversalMediaPlayer(MediaPlayerDevice):
     """Representation of an universal media player."""
 
-    def __init__(self, hass, name, children,
+    def __init__(self, hass, name, auto_name, children,
                  commands, attributes, state_template=None):
         """Initialize the Universal media device."""
         self.hass = hass
         self._name = name
+        self._auto_name = auto_name
         self._children = children
         self._cmds = commands
         self._attrs = {}
@@ -205,7 +210,24 @@ class UniversalMediaPlayer(MediaPlayerDevice):
     @property
     def name(self):
         """Return the name of universal player."""
-        return self._name
+
+        if self._auto_name:
+            try:
+                if (self.media_content_type is not None):
+                    if (self.media_content_type == 'tvshow') and (self.media_series_title is not None):
+                        return self.media_series_title
+                    elif (self.media_content_type == 'movie') and (self.app_name is not None):
+                        return self.app_name
+                    elif (self.media_content_type == 'music') and (self.media_album_name is not None):
+                        return self.media_album_name
+                    else:
+                        return self._name
+                else:
+                    return self._name
+            except:
+                return self._name
+        else:
+            return self._name
 
     @property
     def state(self):
