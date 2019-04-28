@@ -32,7 +32,7 @@ binary_sensor:
         value_template: "{{ is_state('binary_sensor.living_room_camera_motion', 'on') }}"
 
       living_room_occupancy:
-        value_template: "{{ is_state('binary_sensor.living_room_motion', 'on') }}"
+        value_template: "{{ is_state('binary_sensor.living_room_motion', 'on') or is_state('binary_sensor.living_room_ecobee_occupancy', 'on') }}"
 
 script:
 #----------------------------------------------------------------
