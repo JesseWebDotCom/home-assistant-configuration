@@ -48,6 +48,7 @@ CONF_SERVICE = 'service'
 CONF_SERVICE_DATA = 'service_data'
 
 CONF_AUTO_NAME = 'auto_name'
+CONF_AUTO_ICON = 'auto_icon'
 
 OFF_STATES = [STATE_IDLE, STATE_OFF, STATE_UNAVAILABLE]
 
@@ -56,6 +57,7 @@ CMD_SCHEMA = cv.schema_with_slug_keys(cv.SERVICE_SCHEMA)
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_AUTO_NAME, default=False): cv.boolean,
+    vol.Optional(CONF_AUTO_ICON, default=False): cv.boolean,
     vol.Required(CONF_NAME): cv.string,
     vol.Optional(CONF_CHILDREN, default=[]): cv.entity_ids,
     vol.Optional(CONF_COMMANDS, default={}): CMD_SCHEMA,
@@ -72,6 +74,7 @@ async def async_setup_platform(hass, config, async_add_entities,
         hass,
         config.get(CONF_NAME),
         config.get(CONF_AUTO_NAME),
+        config.get(CONF_AUTO_ICON),
         config.get(CONF_CHILDREN),
         config.get(CONF_COMMANDS),
         config.get(CONF_ATTRS),
@@ -84,12 +87,13 @@ async def async_setup_platform(hass, config, async_add_entities,
 class UniversalMediaPlayer(MediaPlayerDevice):
     """Representation of an universal media player."""
 
-    def __init__(self, hass, name, auto_name, children,
+    def __init__(self, hass, name, auto_name, auto_icon, children,
                  commands, attributes, state_template=None):
         """Initialize the Universal media device."""
         self.hass = hass
         self._name = name
         self._auto_name = auto_name
+        self._auto_icon = auto_icon
         self._children = children
         self._cmds = commands
         self._attrs = {}
@@ -186,9 +190,18 @@ class UniversalMediaPlayer(MediaPlayerDevice):
             plex_state = plex_state.state
 
         if (plex_state == "playing" or plex_state == "paused"):
+            if self._auto_icon:
+                self._icon = 'mdi:plex'
             return (self._entity_lkp(self._children[1], attr_name))
         else:
+            if self._auto_icon:
+                self._icon = 'mdi:apple'
             return (self._entity_lkp(self._children[0], attr_name))
+
+    @property
+    def icon(self):
+        """Return the icon to use in the frontend, if any."""
+        return self._icon
 
     @property
     def should_poll(self):
