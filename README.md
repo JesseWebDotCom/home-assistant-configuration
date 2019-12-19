@@ -19,7 +19,6 @@ This is my personal home automation configuration using Home Assistant (http://h
     - [Image the NUC](#image-the-nuc)
     - [ZWave](#zwave)
     - [TensorFlow](#tensorflow)
-  - [Custom Components](#custom-components)
   - [Getting Smarter](#getting-smarter)
   - [Misc Tips](#misc-tips)
     - [HOMEKIT](#homekit)
@@ -52,7 +51,6 @@ Some of the features and benefits of my entire home setup (automation, entertain
 * **Video**
   * _**Game Time / Movie Night**_ | Sit back, use your TV remote to watch TV or play a game, and have the lights dim or turn off.  Have them turn on when you turn off the TV.
   * _**Smart Motion Lighting**_ | Lights turn on and off whenever motion is detected - but not when you are playing a game or watching a movie.
-  * _**Unified Apple TV / Plex Player (Custom)**_ | Takes the best meta-data from the Apple TV and Plex components and displays them as a single media player.
 
 ### ![Savings](www/images/doc/money.png) Savings
 * **Lighting**
@@ -75,12 +73,14 @@ Some of my devices integrated, accessed, and or controlled by the HA server:
   * [ChromeCast Audio v1](https://www.google.com/chromecast/speakers/)
   * [Pyle PDIC Speakers](https://www.amazon.com/gp/product/B00LRTLYIA/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B00LRTLYIA&linkId=c30676c46d8baf9d458bbb27ad0168a9)
   * [Pyle PFA300 Amp](https://www.amazon.com/gp/product/B0071HZ5LE/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B0071HZ5LE&linkId=a49e6464f65ec04e99262e100e6198d6)
-* Buttons
-  * [Amazon Dash](https://www.amazon.com/gp/product/B01LBT5R4C/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B01LBT5R4C&linkId=89ecdac528c243779ac957e03043c8f8)
+* Assistants (Speakers, Hubs)
+  * [Google Mini] (https://store.google.com/us/product/google_home_mini)
+  * [Google Nest Hub] (https://store.google.com/us/product/google_nest_hub)
 * Cars
   * BMW i3
   * Volvo xc90 
-* Door/Window Sensors
+* Door/Window
+  * [Google Nest Hello Video Doorbell] (https://store.google.com/us/product/nest_hello_doorbell)
   * [Aeotec by Aeon Labs ZW089 Recessed Door Sensor, Small, White](https://www.amazon.com/gp/product/B0151Z49BO/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B0151Z49BO&linkId=bf87da2400f219a73c7069df63801449)
   * [Ecolink Door/Window Sensor](https://www.amazon.com/gp/product/B00HPIYJWU/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B00HPIYJWU&linkId=b1a47dbe6a4844bd6648aa50e8bb637a)
   * [Dome Door/Window Sensor](https://www.amazon.com/Dome-Automation-Miniature-Z-Wave-DMWD1/dp/B01JGMZNNG/ref=sr_1_2?keywords=Dome+DMWD1&qid=1550276960&s=electronics&sr=1-2)
@@ -119,8 +119,8 @@ Some of my devices integrated, accessed, and or controlled by the HA server:
   * [Logitech Harmony Ultimate Home Black - With Harmony Home Hub](http://www.bestbuy.com/site/logitech-harmony-ultimate-home-black/8203175.p?skuId=8203175)
 * Surveillance
   * [Blue Iris Software](https://www.amazon.com/gp/product/B005DMX1OM/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B005DMX1OM&linkId=b77e3eb5ffa4d7ba52814fc3bb25874a)
-  * [Foscam FI9900P Outdoor HD 1080P Wireless Plug and Play IP Camera (Silver)](https://www.amazon.com/gp/product/B011US2ADK/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B011US2ADK&linkId=82bc2e5264feeaf442867e318ad2c893)
-  * [Foscam FI9928P Outdoor PTZ (4x Optical Zoom) HD 1080P WiFi Security Camera](https://www.amazon.com/gp/product/B01MUNOP3V/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B01MUNOP3V&linkId=8d5ef0cd3143f7bf1f81043178514488) 
+  * [Reolink 5MP PoE Camera RLC-410-5MP] (https://www.amazon.com/gp/product/B07DFKTKGG/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
+  * [Reolink PoE Camera 5MP Super HD 4X Optical Zoom RLC-511] (https://www.amazon.com/gp/product/B07GNFSWCS/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
   * [Foscam C1 Indoor HD 720P Wireless IP Camera with Night Vision](https://www.amazon.com/gp/product/B00T7NX6SY/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B00T7NX6SY&linkId=706e619ae45dbafcaed04ef76106ca22)
 * Valves
   * [WaterCop Z-Wave Shut-Off Valve Actuator and 3/4" Valve Smart Leak Prevention Kit](https://www.amazon.com/gp/product/B07C91B69P/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B07C91B69P&linkId=585d18af2c7d1f5509b783b00e5deabc)
@@ -183,15 +183,6 @@ image_processing:
    model:
      graph: /config/tensorflow/model/frozen_inference_graph.pb
 ```
-
-## Custom Components
-There are my custom home assistant components (load them as you would any other Home Assistant custom component):
-
-| Name | Description |
-|------|-------------|
-| [My_Plex](https://github.com/JesseWebDotCom/home-assistant-configuration/tree/master/custom_components/my_plex) | A copy of HA's media_player.plex component to prevent community updates from breaking my automations |
-| [My_Universal](https://github.com/JesseWebDotCom/home-assistant-configuration/tree/master/custom_components/my_universal) | This custom component (using a slightly modified universal media player) combines Apple TV and Plex media players into a single player.  Since the Apple TV component can't show Plex data properly (ex. Library, movie year, tv show episode art, etc), this component show's data from the Plex media.player when Plex is playing and data from the Apple TV media.player otherwise.  This also simplifies you life with a single player instead of 2. |
-| [My_Unifi](https://github.com/JesseWebDotCom/home-assistant-configuration/tree/master/custom_components/my_unifi) | This is HA's Unifi component PLUS it shows ALL Ubiquiti connected devices - clients, AP, switches, gateways, etc.  You can now leverage this device tracker to know when any of your networked Ubiquiti infrastructure goes offline |
 
 ## Getting Smarter
 Visit the following sites to get smarter on HA:

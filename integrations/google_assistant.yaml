@@ -1,0 +1,284 @@
+# https://www.home-assistant.io/integrations/google_assistant/
+
+google_assistant:
+  project_id: !secret google_assistant_project_id
+  api_key: !secret google_assistant_api_key
+  secure_devices_pin: !secret google_assistant_secure_devices_pin
+  expose_by_default: false
+  entity_config:
+    # ADD MANUALLY THORUGH GOOGLE HOME IPHONE APP
+    # climate.downstairs_ecobee:
+    #   name: Downstairs
+    #   expose: true
+    #   room: Downstairs
+    #   aliases:
+    #     - Ecobee
+    #     - Thermostat
+    # climate.theater_ecobee:
+    #   name: Theater
+    #   expose: true
+    #   room: Theater
+    #   aliases:
+    #     - Ecobee
+    #     - Thermostat
+    # climate.upstairs_ecobee:
+    #   name: Upstairs
+    #   expose: true
+    #   room: Upstairs
+    #   aliases:
+    #     - Ecobee
+    #     - Thermostat
+    cover.garage_door:
+      name: Garage Door
+      expose: true
+      room: Garage
+    fan.living_room:
+      name: Fan
+      expose: true
+      room: Living Room
+    fan.master_bedroom_front:
+      name: Front Fan
+      expose: true
+      room: Master Bedroom
+    fan.master_bedroom_rear:
+      name: Rear Fan
+      expose: true
+      room: Master Bedroom
+    light.biancas_room_dome:
+      name: Ceiling Light
+      expose: true
+      room: Bianca's Room
+    light.biancas_room_lava_lamp:
+      name: Lava Lamp
+      expose: true
+      room: Bianca's Room
+      aliases:
+        - Lamp
+    # ADD MANUALLY THORUGH GOOGLE HOME IPHONE APP       
+    # light.biancas_room_strip:
+    #   name: Strip
+    #   expose: true
+    #   room: Bianca's Room
+    #   aliases:
+    #     - Light Strip
+    light.dining_room_pendant:
+      name: Light
+      expose: true
+      room: Dining Room
+    light.downstairs_bathroom_sconce:
+      name: Light
+      expose: true
+      room: Downstairs Bathroom
+    light.front_door_sconce:
+      name: Light
+      expose: true
+      room: Front Door
+    light.isabellas_room_dome:
+      name: Ceiling Light
+      expose: true
+      room: Isabella's Room
+    light.living_room_pendant:
+      name: Light
+      expose: true
+      room: Living Room
+    light.master_bedroom_carina_lamp:
+      name: Carina's Lamp
+      expose: true
+      room: Master Bedroom
+      aliases:
+        - Left Lamp
+    light.master_bedroom_front_pendant:
+      name: Front Light
+      expose: true
+      room: Master Bedroom
+    light.master_bedroom_jesse_lamp:
+      name: Jesse's Lamp
+      expose: true
+      room: Master Bedroom
+      aliases:
+        - Right Lamp
+    light.master_bedroom_rear_pendant:
+      name: Rear Light
+      expose: true
+      room: Master Bedroom
+    light.master_bathroom_recessed:
+      name: Light
+      expose: true
+      room: Master Bathroom      
+    light.master_bedroom_wall_sconce:
+      name: Wall Light
+      expose: true
+      room: Master Bedroom
+    light.mudroom_entrance_dome:
+      name: Entrance Light
+      expose: true
+      room: Mudroom
+      aliases:
+        - Front Light
+    light.mudroom_hallway_dome:
+      name: Hall Light
+      expose: true
+      room: Mudroom
+      aliases:
+        - Hallway Light
+    light.office_dome:
+      name: Light
+      expose: true
+      room: Office
+    light.playroom_dome:
+      name: Light
+      expose: true
+      room: Playroom
+    light.pool_spotlight:
+      name: Overhead Lights
+      expose: true
+      room: Pool
+      aliases:
+        - Spotlight
+    light.ryans_room_dome:
+      name: Light
+      expose: true
+      room: Ryan's Room
+    light.storage_room_ceiling:
+      name: Light
+      expose: true
+      room: Storage Room
+    light.sunroom_left_sconce:
+      name: Left Light
+      expose: true
+      room: Sunroom
+    light.theater_wall_sconce:
+      name: Wall Light
+      expose: true
+      room: Theater
+    light.upstairs_attic:
+      name: Light
+      expose: true
+      room: Attic
+    light.upstairs_bathroom_sconce:
+      name: Light
+      expose: true
+      room: Upstairs Bathroom
+    light.upstairs_hallway_recessed:
+      name: Hall Light
+      expose: true
+      room: Upstairs
+      aliases:
+        - Hallway Light
+    light.upstairs_laundry:
+      name: Laundry Light
+      expose: true
+      room: Upstairs
+    light.upstairs_stairs:
+      name: Stairs Light
+      expose: true
+      room: Upstairs
+    #lock.i3_94_rex_lock:
+    #  name: BMW
+    #  expose: true
+    #  room: Garage
+    #lock.volvo_xc90_door_lock:
+    #  name: Volvo
+    #  expose: true
+    #  room: Garage
+    switch.boiler_room_pendant:
+      name: Light
+      expose: true
+      room: Boiler Room
+    switch.downstairs_bathroom_fan:
+      name: Fan
+      expose: true
+      room: Downstairs Bathroom
+    switch.driveway_sconce:
+      name: Light
+      expose: true
+      room: Driveway
+    switch.outside_front_water:
+      name: Hose
+      expose: true
+      room: Outside
+      aliases:
+        - Front Hose
+        - Front Water
+    switch.garage_dome:
+      name: Light
+      expose: true
+      room: Garage
+    #switch.gazebo_fan:
+    #  name: Gazebo Fan
+    #  expose: true
+    #  room: Pool
+    #  aliases:
+    #    - Fan
+    #switch.gazebo_lights:
+    #  name: Gazebo Lights
+    #  expose: true
+    #  room: Pool
+    #  aliases:
+    #    - Light
+    switch.isabellas_room_accessory_right:
+      name: Desk Lights
+      expose: true
+      room: Isabella's Room
+      aliases:
+        - Bed Lights     
+    switch.kitchen_pendant:
+      name: Table Lights
+      expose: true
+      room: Kitchen
+    switch.kitchen_recessed:
+      name: Ceiling Lights
+      expose: true
+      room: Kitchen
+    switch.master_bedroom_ac:
+      name: AC
+      expose: true
+      room: Master Bedroom
+      aliases:
+        - Air Conditioner
+    switch.mudroom_closet_dome:
+      name: Closet Light
+      expose: true
+      room: Mudroom
+    #switch.pool_pump:
+    #  name: Pump
+    #  expose: true
+    #  room: Pool
+    switch.porch_sconce:
+      name: Light
+      expose: true
+      room: Porch
+    switch.sunroom_center_sconce:
+      name: Center Light
+      expose: true
+      room: Sunroom
+    switch.sunroom_right_sconce:
+      name: Right Light
+      expose: true
+      room: Sunroom
+    # ADD MANUALLY THORUGH GOOGLE HOME IPHONE APP      
+    # switch.theater_candy:
+    #   name: Candy
+    #   expose: true
+    #   room: Theater
+    #   aliases:
+    #     - Candy Light
+    switch.theater_posters:
+      name: Posters
+      expose: true
+      room: Theater
+      aliases:
+        - Poster Light
+        - Movie Posters
+    switch.upstairs_bathroom_fan:
+      name: Fan
+      expose: true
+      room: Upstairs Bathroom
+    #switch.volvo_xc90_engine:
+    #  name: Volvo Engine
+    #  expose: true
+    #  room: Garage
+    #switch.volvo_xc90_heater:
+    #  name: Volvo Heater
+    #  expose: true
+    #  room: Garage    

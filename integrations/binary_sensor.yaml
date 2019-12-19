@@ -1,0 +1,198 @@
+# https://www.home-assistant.io/integrations/binary_sensor/
+
+binary_sensor: 
+  - platform: mqtt
+    name: "House Rear Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/house_rear_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"
+
+  - platform: mqtt
+    name: "Driveway Rear Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/driveway_rear_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"    
+
+  - platform: mqtt
+    name: "Driveway Front Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/driveway_front_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"   
+
+  - platform: mqtt
+    name: "Front Left Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/front_left_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"   
+
+  - platform: mqtt
+    name: "Sunroom Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/sunroom_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"  
+
+  - platform: mqtt
+    name: "Front Center Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/front_center_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"   
+
+  - platform: mqtt
+    name: "Front Right Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/front_right_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"  
+
+  - platform: mqtt
+    name: "Porch Under Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/porch_under_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"           
+
+  - platform: mqtt
+    name: "Rear Left Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/rear_left_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"   
+
+  - platform: mqtt
+    name: "Porch Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/porch_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"   
+
+  - platform: mqtt
+    name: "Side Stairs Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/side_stairs_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"  
+
+  - platform: mqtt
+    name: "Pool Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/pool_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"       
+
+  - platform: mqtt
+    name: "Front PTZ Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/front_ptz_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"   
+
+  - platform: mqtt
+    name: "Front Door Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/front_door_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"  
+
+  - platform: mqtt
+    name: "Theater Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/theater_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"
+
+  - platform: mqtt
+    name: "Storage Room Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/storage_room_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"    
+
+  - platform: mqtt
+    name: "Garage Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/garage_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"    
+
+  - platform: mqtt
+    name: "Living Room Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/living_room_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"    
+
+  - platform: mqtt
+    name: "Kitchen Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/kitchen_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"
+
+  - platform: mqtt
+    name: "Upstairs Entrance Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/upstairs_entrance_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"      
+
+  - platform: mqtt
+    name: "Dining Room Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/dining_room_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"    
+
+  - platform: mqtt
+    name: "Isabellas Room Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/isabellas_room_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"    
+
+  - platform: mqtt
+    name: "Playroom Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/playroom_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"    
+
+  - platform: template
+    sensors:
+      master_bathroom_motion:
+        device_class: motion
+        friendly_name: Master Bathroom | Motion
+        value_template: "{{ is_state('sensor.master_bathroom_multisensor_burglar', '8') }}"      
+      downstairs_bathroom_motion:
+        device_class: motion
+        friendly_name: Downstairs Bathroom | Motion
+        value_template: "{{ is_state('sensor.downstairs_bathroom_multisensor_burglar', '8') }}"
+      upstairs_bathroom_motion:
+        device_class: motion
+        friendly_name: Upstairs Bathroom | Motion        
+        value_template: "{{ is_state('sensor.upstairs_bathroom_multisensor_burglar', '8') }}"
+      mudroom_motion:
+        device_class: motion
+        friendly_name: Mudroom | Motion        
+        value_template: "{{ is_state('sensor.mudroom_motion_burglar', '8') }}"
+      sunroom_motion:
+        device_class: motion
+        friendly_name: Sunroom | Motion        
+        value_template: "{{ is_state('sensor.sunroom_motion_burglar', '8') }}"
+      theater_room_motion:
+        device_class: motion
+        friendly_name: Theater | Motion (Room)        
+        value_template: "{{ is_state('sensor.theater_room_motion_burglar', '8') or is_state('sensor.theater_aisle_motion_burglar', '8') }}"
+      theater_aisle_motion:
+        device_class: motion
+        friendly_name: Theater | Motion (Aisle)
+        value_template: "{{ is_state('sensor.theater_aisle_motion_burglar', '8') }}"
+      isabella_s_room_motion:
+        device_class: motion
+        friendly_name: Isabella's Room | Motion
+        value_template: "{{ is_state('sensor.isabella_s_room_motion_burglar', '8') }}"        

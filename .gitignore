@@ -7,25 +7,45 @@
 #
 # -----------------------------------------------------------------
 
-# Ignore everything
-*
+# Generic ignores
+*.log
+*.db
+*.db-shm
+*.db-wal
+*.pyc
+._*
+__pycache__
 
-# include git files
-!.gitignore
-!readme.md
+# Directory (contents) ignores
+.cloud
+.storage
+custom_components
+deps
+esphome
+node-red
+tensorflow
+tts
+www
 
-# include core files
-!configuration.yaml
-!ui-lovelace.yaml
+# Specific file ignores
+.ios.conf
+.ps4-games.json
+.uuid
+ip_bans.yaml
+known_devices.yaml
+options.xml
+OZW_Log.txt
+pyozw.sqlite
+secrets.yaml
+zwcfg_*
+harmony_*.conf
+zwscene.xml
 
-# include example files
-!secrets.example.yaml
+# ESPHome ignores
+esphome/secrets.yaml
+esphome/**/
 
-# include certain directories and contained files
-!config/**/*.yaml
-!custom_components/**/*.py
-!www/custom-lovelace/**
-!www/images/stock/**
-!www/images/menu/**
-!www/images/doc/**
-!www/sounds/**
+# Ignore add-on files
+
+
+# Ignore files created by IDE's

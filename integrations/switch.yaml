@@ -1,0 +1,24 @@
+# https://www.home-assistant.io/integrations/switch/
+
+switch:
+  - platform: template
+    switches:
+      outside_front_water:
+        friendly_name: Outside | Front Water
+        icon_template: >-
+          {% if is_state('switch.outside_front_water_valve', 'off') %}
+            mdi:water-pump
+          {% else %}
+            mdi:water-pump-off
+          {% endif %}        
+        value_template: "{{ is_state('switch.outside_front_water_valve', 'off') }}"
+        turn_on:
+          - service: homeassistant.turn_off
+            data:
+              entity_id:
+                - switch.outside_front_water_valve
+        turn_off:
+          - service: homeassistant.turn_on
+            data:
+              entity_id:
+                - switch.outside_front_water_valve

@@ -1,0 +1,7 @@
+# https://www.home-assistant.io/components/bmw_connected_drive/
+
+bmw_connected_drive:
+  name:
+    username: !secret bmw_connected_drive_username
+    password: !secret bmw_connected_drive_password
+    region: "north_america"

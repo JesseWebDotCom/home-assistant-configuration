@@ -1,0 +1,161 @@
+# https://www.home-assistant.io/integrations/image_processing/
+
+image_processing:
+  - platform: tensorflow
+    scan_interval: 3
+    source:
+      - entity_id: camera.front_door
+    file_out:
+      - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_latest.jpg"          
+      - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_{{ now().strftime('%Y%m%d_%H%M%S') }}.jpg"          
+    model:
+      graph: /config/tensorflow/model/frozen_inference_graph.pb
+      categories:
+        - category: box
+          area:
+            # Exclude top 10% of image
+            top: 0.1      
+        - category: person
+          area:
+            # Exclude top 10% of image
+            top: 0.1
+        - category: car
+          area:
+            # Exclude top 10% of image
+            top: 0.1
+        - category: truck
+          area:
+            # Exclude top 10% of image
+            top: 0.1
+        - category: bus
+          area:
+            # Exclude top 10% of image
+            top: 0.1     
+        - category: motorcycle
+          area:
+            # Exclude top 10% of image
+            top: 0.1   
+        - category: cat
+          area:
+            top: 0.1               
+        - category: dog
+          area:
+            top: 0.1               
+        - category: bear
+          area:
+            top: 0.1  
+            
+  - platform: tensorflow
+    scan_interval: 3
+    source:
+      - entity_id: camera.front_ptz
+    file_out:
+      - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_latest.jpg"          
+      - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_{{ now().strftime('%Y%m%d_%H%M%S') }}.jpg"      
+    model:
+      graph: /config/tensorflow/model/frozen_inference_graph.pb
+      categories:
+        - category: box
+          area:
+            top: 0.2
+        - category: person
+          area:
+            top: 0.2
+        - category: car
+          area:
+            top: 0.2
+        - category: truck
+          area:
+            top: 0.2
+        - category: bus
+          area:
+            top: 0.2
+        - category: motorcycle
+          area:
+            top: 0.2
+        - category: cat
+          area:
+            top: 0.2
+        - category: dog
+          area:
+            top: 0.2
+        - category: bear
+          area:
+            top: 0.2
+
+  - platform: tensorflow
+    scan_interval: 3
+    source:
+      - entity_id: camera.driveway_front   
+      - entity_id: camera.driveway_rear 
+    file_out:
+      - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_latest.jpg"          
+      - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_{{ now().strftime('%Y%m%d_%H%M%S') }}.jpg"      
+    model:
+      graph: /config/tensorflow/model/frozen_inference_graph.pb
+      categories:  
+        - person
+        - cat
+        - dog
+        - bear              
+
+  - platform: tensorflow
+    scan_interval: 3
+    source:
+      - entity_id: camera.front_center
+      - entity_id: camera.front_right
+      - entity_id: camera.front_left     
+    file_out:
+      - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_latest.jpg"          
+      - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_{{ now().strftime('%Y%m%d_%H%M%S') }}.jpg"      
+    model:
+      graph: /config/tensorflow/model/frozen_inference_graph.pb
+      categories:  
+        - person
+        - car
+        - truck
+        - bus
+        - motorcycle
+        - cat
+        - dog
+        - bear   
+
+  - platform: tensorflow
+    scan_interval: 40000
+    source:
+      - entity_id: camera.porch
+      - entity_id: camera.rear_center
+      - entity_id: camera.rear_left
+      - entity_id: camera.porch_under
+      - entity_id: camera.side_stairs     
+    file_out:
+      - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_latest.jpg"          
+      - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_{{ now().strftime('%Y%m%d_%H%M%S') }}.jpg"      
+    model:
+      graph: /config/tensorflow/model/frozen_inference_graph.pb
+      categories:  
+        - person
+        - cat
+        - dog
+        - bear          
+
+  - platform: tensorflow
+    scan_interval: 40000
+    source:
+      - entity_id: camera.dining_room
+      - entity_id: camera.garage
+      - entity_id: camera.isabellas_room
+      - entity_id: camera.kitchen
+      - entity_id: camera.living_room
+      - entity_id: camera.playroom
+      - entity_id: camera.storage_room
+      - entity_id: camera.sunroom
+      - entity_id: camera.upstairs_entrance
+      - entity_id: camera.theater   
+    file_out:
+      - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_latest.jpg"          
+      - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_{{ now().strftime('%Y%m%d_%H%M%S') }}.jpg"      
+    model:
+      graph: /config/tensorflow/model/frozen_inference_graph.pb
+      categories:  
+        - person      

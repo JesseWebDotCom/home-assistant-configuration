@@ -1,8 +1,0 @@
-{
-    "domain": "my_universal",
-    "name": "My_Universal",
-    "documentation": "https://www.home-assistant.io/components/universal",
-    "requirements": [],
-    "dependencies": [],
-    "codeowners": []
-  }

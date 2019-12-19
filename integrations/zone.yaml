@@ -1,0 +1,7 @@
+# https://www.home-assistant.io/components/zone/
+
+zone:
+    latitude: !secret zone_0_latitude
+    longitude: !secret zone_0_longitude
+    radius: !secret zone_0_radius
+    icon: !secret zone_0_icon

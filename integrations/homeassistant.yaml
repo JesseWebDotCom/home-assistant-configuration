@@ -1,0 +1,154 @@
+# https://www.home-assistant.io/docs/configuration/basic/
+
+homeassistant:
+  customize:
+    "switch.theater_posters":
+      icon: mdi:account-box
+    "light.theater_candy":
+      icon: mdi:candycane
+    "light.theater_aisle":
+      icon: mdi:filmstrip
+
+    sensor.volvo_xc90_odometer:
+      unit_of_measurement: mi
+    sensor.volvo_xc90_range:
+      unit_of_measurement: mi
+    sensor.volvo_xc90_trip_meter_1:
+      unit_of_measurement: mi
+    sensor.volvo_xc90_trip_meter_2:
+      unit_of_measurement: mi
+
+    person.jesse:
+      entity_picture: /local/images/person/jesse.png
+    person.carina:
+      entity_picture: /local/images/person/carina.png
+    person.ryan:
+      entity_picture: /local/images/person/ryan.png
+    person.bianca:
+      entity_picture: /local/images/person/bianca.png
+    person.cida:
+      entity_picture: /local/images/person/cida.png
+    person.camilla:
+      entity_picture: /local/images/person/camilla.png
+    person.mariana:
+      entity_picture: /local/images/person/mariana.png
+    person.edgar:
+      entity_picture: /local/images/person/edgar.png
+
+  # [ PATTERNS ]
+  # Customize entities matching a pattern
+  customize_glob:
+
+    "sensor.*_relative_humidity":
+      device_class: humidity
+
+    "binary_sensor.*_water_sensor_sensor":
+      device_class: moisture
+
+    "switch.*_accessory_*":
+      icon: mdi:power-plug
+
+    "binary_sensor.*_door_sensor":
+      device_class: door
+
+    "media_player.plex_*":  
+      icon: mdi:plex  
+
+    "media_player.*_speaker":
+      icon: mdi:cast
+
+    "media_player.*_speakers":
+      icon: mdi:cast
+
+    "media_player.*_hub":
+      icon: mdi:cast
+
+    "fan.*":
+      icon: mdi:fan
+
+    "binary_sensor.sleepnumber_*_is_in_bed":
+      icon: mdi:hotel
+
+    # [ LIGHTS ]
+    # https://en.wikipedia.org/wiki/Light_fixture#Fixed
+
+    # any light with housing in the ceiling
+    "*.*_recessed":
+      icon: mdi:lightbulb
+
+    # any beam of light aimed to higlight an area
+    "*.*_spotlight":
+      icon: mdi:spotlight-beam
+
+    # any led strip
+    "*.*_led-strip":
+      icon: mdi:led-strip 
+
+    # any light with housing fixed to a ceiling
+    "*.*_dome":
+      icon: mdi:lightbulb
+
+    # any light that hangs on a chain
+    "*.*_pendant":
+      icon: mdi:ceiling-light
+
+    # any desk or floor lamp
+    "*.*_lamp":
+      icon: mdi:lamp 
+
+    # any lava lamp
+    "*.*_lava_lamp":
+      icon: mdi:lava-lamp  
+
+    # any light fixed to a wall
+    "*.*_sconce":
+      icon: mdi:wall-sconce
+
+    "*.*_strip":
+      icon: mdi:led-strip
+
+    # [ OTHER ]
+    "switch.*_fan":
+      icon: mdi:fan
+
+    "switch.*_ac":
+      icon: mdi:air-conditioner      
+
+    # [ HIDE ]
+    # Hide items we don't want to normally see
+    "switch.outside_front_water_valve":
+      hidden: true
+
+    "weather.*_ecobee":
+      hidden: true
+    "weather.home":
+      hidden: true
+
+    "zwave.*":
+      hidden: true
+    "sensor.*_access_control":
+      hidden: true
+    "sensor.*_alarm_level":
+      hidden: true
+    "sensor.*_alarm_type":
+      hidden: true
+    "sensor.*_clock":
+      hidden: true
+    "sensor.*_emergency":
+      hidden: true
+    "sensor.*_homehealth":
+      hidden: true
+    "sensor.*_sourcenodeid":
+      hidden: true 
+    "sensor.*_burglar":
+      hidden: true
+    "sensor.*_system":
+      hidden: true      
+    "sensor.*_luminance":
+      hidden: true
+    "sensor.*_magnitude":
+      hidden: true
+    "sensor.*_ultraviolet":
+      hidden: true
+    "sensor.*_power_management":
+      hidden: true

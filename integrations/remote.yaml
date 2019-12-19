@@ -1,0 +1,10 @@
+# https://www.home-assistant.io/integrations/harmony/
+
+remote:
+  - platform: harmony
+    name: Theater | Harmony Hub
+    host: !secret remote_harmony_theater_host
+
+  - platform: harmony
+    name: Living Room | Harmony Hub
+    host: !secret remote_harmony_living_room_host

@@ -1,0 +1,8 @@
+# https://www.home-assistant.io/components/volvooncall/
+
+volvooncall:
+  username: !secret volvooncall_username
+  password: !secret volvooncall_password
+  region: na
+  name:
+    yv4a22pk2h1184894: 'volvo_xc90'    

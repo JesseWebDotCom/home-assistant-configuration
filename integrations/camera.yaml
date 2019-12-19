@@ -1,0 +1,118 @@
+# https://www.home-assistant.io/integrations/camera/
+
+camera:
+  # Required for Google cast
+  - platform: generic
+    name: Garage
+    stream_source: !secret camera_stream_garage_url
+    still_image_url: !secret camera_image_garage_url
+
+  - platform: generic
+    name: Playroom
+    stream_source: !secret camera_stream_playroom_url
+    still_image_url: !secret camera_image_playroom_url
+
+  - platform: generic
+    name: Sunroom
+    stream_source: !secret camera_stream_sunroom_url
+    still_image_url: !secret camera_image_sunroom_url
+
+  - platform: generic
+    name: Kitchen
+    stream_source: !secret camera_stream_kitchen_url
+    still_image_url: !secret camera_image_kitchen_url
+
+  - platform: generic
+    name: Isabellas Room
+    stream_source: !secret camera_stream_isabellas_room_url
+    still_image_url: !secret camera_image_isabellas_room_url
+
+  - platform: generic
+    name: Living Room
+    stream_source: !secret camera_stream_living_room_url
+    still_image_url: !secret camera_image_living_room_url
+
+  - platform: generic
+    name: Dining Room
+    stream_source: !secret camera_stream_dining_room_url
+    still_image_url: !secret camera_image_dining_room_url
+
+  - platform: generic
+    name: Theater
+    stream_source: !secret camera_stream_theater_url
+    still_image_url: !secret camera_image_theater_url
+
+  - platform: generic
+    name: Front | PTZ
+    stream_source: !secret camera_stream_front_ptz_url
+    still_image_url: !secret camera_image_front_ptz_url
+
+  - platform: generic
+    name: Front | Door
+    stream_source: !secret camera_stream_front_door_url
+    still_image_url: !secret camera_image_front_door_url
+
+  - platform: generic
+    name: Front | Center
+    stream_source: !secret camera_stream_front_center_url
+    still_image_url: !secret camera_image_front_center_url
+
+  - platform: generic
+    name: Front | Right
+    stream_source: !secret camera_stream_front_right_url
+    still_image_url: !secret camera_image_front_right_url
+
+  - platform: generic
+    name: Front | Left
+    stream_source: !secret camera_stream_front_left_url
+    still_image_url: !secret camera_image_front_left_url
+
+  - platform: generic
+    name: Driveway | Front
+    stream_source: !secret camera_stream_driveway_front_url
+    still_image_url: !secret camera_image_driveway_front_url
+
+  - platform: generic
+    name: Driveway | Rear
+    stream_source: !secret camera_stream_driveway_rear_url
+    still_image_url: !secret camera_image_driveway_rear_url
+
+  - platform: generic
+    name: Rear | Left
+    stream_source: !secret camera_stream_house_rear_left_url
+    still_image_url: !secret camera_image_house_rear_left_url
+
+  - platform: generic
+    name: Rear | Center
+    stream_source: !secret camera_stream_house_rear_url
+    still_image_url: !secret camera_image_house_rear_url
+
+  - platform: generic
+    name: Porch
+    stream_source: !secret camera_stream_porch_url
+    still_image_url: !secret camera_image_porch_url
+
+  - platform: generic
+    name: Porch | Under
+    stream_source: !secret camera_stream_porch_under_url
+    still_image_url: !secret camera_image_porch_under_url
+
+  - platform: generic
+    name: Pool
+    stream_source: !secret camera_stream_pool_url
+    still_image_url: !secret camera_image_pool_url
+
+  - platform: generic
+    name: Storage Room
+    stream_source: !secret camera_stream_storage_room_url
+    still_image_url: !secret camera_image_storage_room_url
+
+  - platform: generic
+    name: Side Stairs
+    stream_source: !secret camera_stream_side_stairs_url
+    still_image_url: !secret camera_image_side_stairs_url
+
+  - platform: generic
+    name: Upstairs | Entrance
+    stream_source: !secret camera_stream_upstairs_entrance_url
+    still_image_url: !secret camera_image_upstairs_entrance_url

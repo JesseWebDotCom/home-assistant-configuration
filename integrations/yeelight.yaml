@@ -1,0 +1,30 @@
+# https://www.home-assistant.io/integrations/yeelight/
+
+yeelight:
+  devices:
+    172.19.208.54:
+      name: "Theater | Aisle"                
+    172.19.208.55:
+      name: "Theater | Candy"
+    172.19.208.56:
+      name: "Biancas Room | Strip"
+  custom_effects:
+    - name: 'flicker'
+      flow_params:
+        count: 0
+        transitions:
+          - TemperatureTransition: [1900, 1000, 80]
+          - TemperatureTransition: [1900, 2000, 60]
+          - SleepTransition:       [1000]   
+    - name: 'flash'
+      flow_params:
+        count: 2
+        transitions:
+          - RGBTransition:   [0, 0, 0]
+          - SleepTransition: [100]           
+          - RGBTransition:   [255, 255, 255]
+          - SleepTransition: [100]           
+          - RGBTransition:   [0, 0, 0]
+          - SleepTransition: [100]           
+          - RGBTransition:   [255, 255, 255]
+          - SleepTransition: [500]     

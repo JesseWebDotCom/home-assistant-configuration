@@ -1,0 +1,43 @@
+# https://www.home-assistant.io/integrations/notify/
+
+notify:
+  # Setup Telegram to send notifications
+  - platform: telegram
+    name: telegram_jesse
+    api_key: !secret telegram_chatbot_api_key
+    chat_id: !secret telegram_jesse_chat_id
+
+  - platform: telegram
+    name: telegram_carina
+    api_key: !secret telegram_chatbot_api_key
+    chat_id: !secret telegram_carina_chat_id
+
+  - platform: telegram
+    name: telegram_ryan
+    api_key: !secret telegram_chatbot_api_key
+    chat_id: !secret telegram_ryan_chat_id
+
+  - platform: telegram
+    name: telegram_bianca
+    api_key: !secret telegram_chatbot_api_key
+    chat_id: !secret telegram_bianca_chat_id
+
+  - name: telegram_parents
+    platform: group
+    services:
+      - service: telegram_jesse
+      - service: telegram_carina
+
+  - name: telegram_kids
+    platform: group
+    services:
+      - service: telegram_ryan
+      - service: telegram_bianca        
+
+  - name: telegram_all
+    platform: group
+    services:
+      - service: telegram_jesse
+      - service: telegram_carina  
+      - service: telegram_ryan
+      - service: telegram_bianca

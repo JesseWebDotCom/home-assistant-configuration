@@ -1,0 +1,626 @@
+# https://www.home-assistant.io/integrations/script/
+
+script:
+  # [DINING ROOM]
+  #----------------------------------------------------------------
+  dining_room_poweroff_all:
+    alias: "Dining Room | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.dining_room_poweroff_lights
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - media_player.dining_room_speaker
+
+  dining_room_poweroff_lights:
+    alias: "Dining Room | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.dining_room_pendant
+
+  # [RYANS ROOM]
+  #----------------------------------------------------------------
+  ryans_room_poweroff_all:
+    alias: "Ryans Room | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.ryans_room_poweroff_lights
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - media_player.ryan_s_room_hub
+
+  ryans_room_poweroff_lights:
+    alias: "Ryans Room | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.ryans_room_dome
+
+  # [OFFICE]
+  #----------------------------------------------------------------
+  office_poweroff_all:
+    alias: "Office | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.office_poweroff_lights
+
+  office_poweroff_lights:
+    alias: "Office | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.office_dome
+
+  # [DOWNSTAIR BATHROOM]
+  #----------------------------------------------------------------
+
+  downstairs_bathroom_poweroff_all:
+    alias: "Downstairs Bathroom | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.downstairs_bathroom_poweroff_lights
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - switch.downstairs_bathroom_fan
+            - media_player.downstairs_bathroom_speaker
+            - media_player.downstairs_bathroom_hub
+
+  downstairs_bathroom_poweroff_lights:
+    alias: "Downstairs Bathroom | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.downstairs_bathroom_sconce
+
+  # [LIVING ROOM]
+  #----------------------------------------------------------------
+
+  living_room_poweroff_all:
+    alias: "Living Room | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.living_room_poweroff_lights
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - media_player.living_room_speaker
+      - service: remote.turn_off
+        data:
+          entity_id:
+            - remote.living_room_harmony_hub          
+
+  living_room_poweroff_lights:
+    alias: "Living Room | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.living_room_pendant
+
+  # [KITCHEN]
+  #----------------------------------------------------------------
+
+  kitchen_poweroff_all:
+    alias: "Kitchen | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.kitchen_poweroff_lights
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - media_player.kitchen_table_speaker
+            - media_player.kitchen_sink_speaker
+            - media_player.kitchen_ump
+
+  kitchen_poweroff_lights:
+    alias: "Kitchen | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - switch.kitchen_recessed
+            - switch.kitchen_pendant
+
+  kitchen_poweron_lights:
+    alias: "Kitchen | Power On Lights"
+    sequence:
+      - service: homeassistant.turn_on
+        data:
+          entity_id:
+            - switch.kitchen_recessed
+            - switch.kitchen_pendant   
+
+  # [SUNROOM]
+  #----------------------------------------------------------------
+
+  sunroom_poweroff_all:
+    alias: "Sunroom | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.sunroom_poweroff_lights
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - media_player.sunroom_cast
+
+  sunroom_poweroff_lights:
+    alias: "Sunroom | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.sunroom_left_sconce
+            - switch.sunroom_center_sconce
+            - switch.sunroom_right_sconce
+
+  sunroom_poweron_lights:
+    alias: "Sunroom | Power Off Lights"
+    sequence:
+      - service: light.turn_on
+        entity_id: light.sunroom_left_sconce
+        data:
+          brightness_pct: 100    
+      - service: homeassistant.turn_on
+        entity_id:
+          - switch.sunroom_center_sconce
+          - switch.sunroom_right_sconce
+
+  # [HOME]
+  #----------------------------------------------------------------          
+
+  home_speakers_poweroff_all:
+    alias: "Home Speakers | Power Off All"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - media_player.home_speakers
+
+  # [BIANCAS ROOM]
+  #----------------------------------------------------------------
+  biancas_room_poweroff_all:
+    alias: "Biancas Room | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.biancas_room_poweroff_lights
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - media_player.bianca_s_room_hub
+
+  biancas_room_poweroff_lights:
+    alias: "Biancas Room | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.biancas_room_dome
+            - light.biancas_room_lava_lamp
+            - light.biancas_room_strip
+
+  # [MASTER BEDROOM]
+  #----------------------------------------------------------------
+  master_bedroom_poweroff_all:
+    alias: "Master Bedroom | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.master_bedroom_poweroff_lights
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - switch.master_bedroom_ac
+            - media_player.master_bedroom_hub
+            - media_player.master_bedroom_speaker
+
+  master_bedroom_poweroff_lights:
+    alias: "Master Bedroom | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.master_bedroom_front_pendant
+            - light.master_bedroom_rear_pendant
+            - light.master_bedroom_wall_sconce
+            - light.master_bedroom_jesse_lamp
+            - light.master_bedroom_carina_lamp
+
+  # [MASTER BATHROOM]
+  #----------------------------------------------------------------
+  master_bathroom_poweroff_all:
+    alias: "Master Bathroom | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.master_bathroom_poweroff_lights
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - media_player.master_bathroom_speaker
+            - media_player.master_bathroom_hub
+
+  master_bathroom_poweroff_lights:
+    alias: "Master Bathroom | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.master_bathroom_recessed
+
+  master_bathroom_poweron_lights:
+    alias: "Master Bathroom | Power On Lights"
+    sequence:
+      - service: light.turn_on
+        entity_id: light.master_bathroom_recessed
+        data:
+          brightness_pct: 100
+
+
+  # [ISABELLAS ROOM]
+  #----------------------------------------------------------------
+
+  isabellas_room_poweroff_all:
+    alias: "Isabellas Room | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.isabellas_room_poweroff_lights
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - media_player.isabella_s_room_hub
+
+  isabellas_room_poweroff_lights:
+    alias: "Isabellas Room | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.isabellas_room_dome
+            - switch.isabellas_room_accessory_left
+            - switch.isabellas_room_accessory_right
+
+  isabellas_room_poweron_lights:
+    alias: "Isabellas Room | Power On Lights"
+    sequence:
+      - service: light.turn_on
+        entity_id: light.isabellas_room_dome
+        data:
+          brightness_pct: 100
+      - service: homeassistant.turn_on
+        entity_id:
+          - switch.isabellas_room_accessory_left
+          - switch.isabellas_room_accessory_right
+
+  # [TELEGRAM]
+  #----------------------------------------------------------------
+
+  telegram_message:
+    alias: 'Telegram Message'
+    sequence:
+      - service_template: >
+          {% if recipients == "parents" %}
+            notify.telegram_parents
+          {% elif recipients == "jesse" %}
+            notify.telegram_jesse
+          {% elif recipients == "carina" %}
+            notify.telegram_carina
+          {% elif recipients == "ryan" %}
+            notify.telegram_ryan
+          {% elif recipients == "bianca" %}
+            notify.telegram_bianca
+          {% elif recipients == "kids" %}
+            notify.telegram_kids
+          {% else %}
+            notify.telegram_all
+          {% endif %}
+        data_template:
+          title: "{{ title }}"
+          message: "{{ message }}"
+
+  telegram_photo:
+    alias: 'Telegram Photo'
+    sequence:
+      - service_template: >
+          {% if recipients == "parents" %}
+            notify.telegram_parents
+          {% elif recipients == "jesse" %}
+            notify.telegram_jesse
+          {% elif recipients == "carina" %}
+            notify.telegram_carina
+          {% elif recipients == "ryan" %}
+            notify.telegram_ryan
+          {% elif recipients == "bianca" %}
+            notify.telegram_bianca
+          {% elif recipients == "kids" %}
+            notify.telegram_kids
+          {% else %}
+            notify.telegram_all
+          {% endif %}
+        data_template:
+          title: "{{ title }}"
+          message: "{{ message }}"
+          data:
+            photo:
+              - url: "{{ url}}"
+                caption: "{{ caption }}"
+
+  telegram_video:
+    alias: 'Telegram Video'
+    sequence:
+      - service_template: >
+          {% if recipients == "parents" %}
+            notify.telegram_parents
+          {% elif recipients == "jesse" %}
+            notify.telegram_jesse
+          {% elif recipients == "carina" %}
+            notify.telegram_carina
+          {% elif recipients == "ryan" %}
+            notify.telegram_ryan
+          {% elif recipients == "bianca" %}
+            notify.telegram_bianca
+          {% elif recipients == "kids" %}
+            notify.telegram_kids
+          {% else %}
+            notify.telegram_all
+          {% endif %}
+        data_template:
+          title: "{{ title }}"
+          message: "{{ message }}"
+          data:
+            video:
+              - url: "{{ url }}"
+                caption: "{{ caption }}"
+
+  # [OUTSIDE]
+  #----------------------------------------------------------------
+
+  outside_poweroff_all:
+    alias: "Outside | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.outside_poweroff_lights
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - switch.outside_front_water
+
+  outside_poweroff_lights:
+    alias: "Outside | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.front_door_sconce
+            - switch.driveway_sconce
+            - switch.porch_sconce
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.pool_poweroff_lights
+
+  pool_poweroff_lights:
+    alias: "Pool | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.pool_spotlight
+
+  # [THEATER]
+  #----------------------------------------------------------------
+
+  theater_poweroff_all:
+    alias: "Theater | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.theater_poweroff_lights
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - media_player.theater_shield
+            - media_player.theater_mini
+            - media_player.plex_theater_shield
+      - service: remote.turn_off
+        data:
+          entity_id:
+            - remote.theater
+
+  theater_poweroff_lights:
+    alias: "Theater | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.theater_wall_sconce
+            - switch.theater_posters
+            - light.theater_candy
+            - light.theater_aisle
+
+  theater_eat:
+    alias: "Theater | Eat"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - switch.theater_posters
+            - light.theater_candy
+            - light.theater_aisle
+      - service: light.turn_on
+        entity_id: light.theater_wall_sconce
+        data:
+          brightness_pct: 1
+
+  theater_poweron_lights:
+    alias: "Theater | Power On Lights"
+    sequence:
+      - service: light.turn_on
+        entity_id: light.theater_wall_sconce
+        data:
+          brightness_pct: 100
+      - service: switch.turn_on
+        entity_id:
+          - switch.theater_posters
+      - service: light.turn_on
+        data:
+          entity_id:
+            - light.theater_candy
+            - light.theater_aisle
+          brightness_pct: 100
+          effect: LSD
+
+  theater_poweron_aisle_lights:
+    alias: 'Theater - Aisle On'
+    sequence:
+      - service: light.turn_on
+        data:
+          entity_id:
+            - light.theater_candy
+          brightness_pct: 1
+          color_name: yellow
+      - service: light.turn_on
+        data:
+          entity_id:
+            - light.theater_candy
+            - light.theater_aisle
+          brightness_pct: 1
+          color_name: red
+
+  theater_poweroff_aisle_lights:
+    alias: 'Theater - Aisle Off'
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.theater_candy
+            - light.theater_aisle
+
+  # [DOWNSTAIRS BATHROOM]
+  #----------------------------------------------------------------
+
+  downstairs_bathroom_poweroff_all:
+    alias: "Downstairs Bathroom | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.downstairs_bathroom_poweroff_lights
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - switch.downstairs_bathroom_fan
+            - media_player.downstairs_bathroom_hub
+            - media_player.downstairs_bathroom_speaker
+
+  downstairs_bathroom_poweroff_lights:
+    alias: "Downstairs Bathroom | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.downstairs_bathroom_sconce
+
+  downstairs_bathroom_poweron_lights:
+    alias: "Downstairs Bathroom | Power On Lights"
+    sequence:
+      - service: light.turn_on
+        entity_id: light.downstairs_bathroom_sconce
+        data:
+          brightness_pct: 100
+
+  # [UPSTAIRS BATHROOM]
+  #----------------------------------------------------------------
+
+  upstairs_bathroom_poweroff_all:
+    alias: "Upstairs Bathroom | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.upstairs_bathroom_poweroff_lights
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - switch.upstairs_bathroom_fan
+            - media_player.upstairs_bathroom_hub
+            - media_player.upstairs_bathroom_speaker
+
+  upstairs_bathroom_poweroff_lights:
+    alias: "Upstairs Bathroom | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.upstairs_bathroom_sconce
+
+  upstairs_bathroom_poweron_lights:
+    alias: "Upstairs Bathroom | Power On Lights"
+    sequence:
+      - service: light.turn_on
+        entity_id: light.upstairs_bathroom_sconce
+        data:
+          brightness_pct: 100
+
+  # [MUDROOM]
+  #----------------------------------------------------------------
+
+  mudroom_poweroff_all:
+    alias: "Mudroom | Power Off All"
+    sequence:
+      - service: script.turn_on
+        data:
+          entity_id:
+            - script.mudroom_poweroff_lights
+
+  mudroom_poweroff_lights:
+    alias: "Mudroom | Power Off Lights"
+    sequence:
+      - service: homeassistant.turn_off
+        data:
+          entity_id:
+            - light.mudroom_entrance_dome
+            - light.mudroom_hallway_dome
+            - switch.mudroom_closet_dome
+
+  mudroom_poweron_lights:
+    alias: "Mudroom | Power On Lights"
+    sequence:
+      - service: light.turn_on
+        entity_id: light.mudroom_entrance_dome
+        data:
+          brightness_pct: 100
+      - service: light.turn_on
+        entity_id: light.mudroom_hallway_dome
+        data:
+          brightness_pct: 100

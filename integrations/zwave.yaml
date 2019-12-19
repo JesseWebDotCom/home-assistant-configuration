@@ -1,0 +1,139 @@
+# https://www.home-assistant.io/integrations/zwave/
+
+zwave: 
+  usb_path: /dev/ttyUSB0
+  network_key: !secret zwave_network_key
+  polling_interval: 10000  
+  device_config:
+    light.biancas_room_dome:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.biancas_room_lava_lamp:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.dining_room_pendant:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.downstairs_bathroom_sconce:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.front_door_sconce:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.isabellas_room_dome:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.living_room_pendant:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.master_bedroom_carina_lamp:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.master_bedroom_front_pendant:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.master_bedroom_jesse_lamp:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.master_bedroom_rear_pendant:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.master_bedroom_wall_sconce:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.mudroom_entrance_dome:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.mudroom_hallway_dome:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.office_dome:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.playroom_dome:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.pool_spotlight:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.ryans_room_dome:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.sunroom_left_sconce:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.theater_wall_sconce:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.upstairs_attic:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.upstairs_bathroom_sconce:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.upstairs_hallway_recessed:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.upstairs_laundry:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1
+    light.upstairs_stairs:
+      refresh_value: true
+      delay: 2
+      polling_intensity: 1          
+    switch.boiler_room_pendant:
+      polling_intensity: 1
+    switch.downstairs_bathroom_fan:
+      polling_intensity: 1
+    switch.driveway_sconce:
+      polling_intensity: 1
+    switch.garage_dome:
+      polling_intensity: 1
+    switch.isabellas_room_accessory_left:
+      polling_intensity: 1
+    switch.isabellas_room_accessory_right:
+      polling_intensity: 1
+    switch.kitchen_pendant:
+      polling_intensity: 1
+    switch.kitchen_recessed2:
+      polling_intensity: 1
+    switch.master_bedroom_ac:
+      polling_intensity: 1
+    switch.mudroom_closet_dome:
+      polling_intensity: 1
+    switch.porch_sconce:
+      polling_intensity: 1
+    switch.sunroom_center_sconce:
+      polling_intensity: 1
+    switch.sunroom_right_sconce:
+      polling_intensity: 1
+    switch.theater_candy:
+      polling_intensity: 1
+    switch.theater_posters:
+      polling_intensity: 1
+    switch.upstairs_bathroom_fan:
+      polling_intensity: 1

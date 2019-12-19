@@ -1,0 +1,11 @@
+# https://www.home-assistant.io/integrations/telegram/
+
+telegram_bot:
+  # Setup Telegram to allow you to reply to your chat Bot
+  - platform: polling
+    api_key: !secret telegram_chatbot_api_key
+    allowed_chat_ids:
+      - !secret telegram_jesse_chat_id
+      - !secret telegram_carina_chat_id
+      - !secret telegram_bianca_chat_id
+      - !secret telegram_ryan_chat_id
