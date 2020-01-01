@@ -69,6 +69,21 @@ homeassistant:
     "binary_sensor.sleepnumber_*_is_in_bed":
       icon: mdi:hotel
 
+    "binary_sensor.*_door_sensor":
+      icon: mdi:door
+
+    "binary_sensor.*_motion*":
+      icon: mdi:motion-sensor      
+
+    "binary_sensor.*_occupancy":
+      icon: mdi:home
+
+    "binary_sensor.*_water_*_sensor":
+      icon: mdi:water
+
+    "input_boolean.option_auto_*":
+      icon: mdi:cogs      
+
     # [ LIGHTS ]
     # https://en.wikipedia.org/wiki/Light_fixture#Fixed
 
