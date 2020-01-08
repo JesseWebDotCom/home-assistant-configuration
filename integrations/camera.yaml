@@ -3,6 +3,11 @@
 camera:
   # Required for Google cast
   - platform: generic
+    name: Furbo
+    stream_source: !secret camera_stream_furbo_url
+    still_image_url: !secret camera_image_furbo_url
+
+  - platform: generic
     name: Garage
     stream_source: !secret camera_stream_garage_url
     still_image_url: !secret camera_image_garage_url
