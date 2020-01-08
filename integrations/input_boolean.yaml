@@ -6,6 +6,31 @@ input_boolean:
   # End user options for Home Assistant (ex. turn off notifications)
   #----------------------------------------------------------------
 
+  options_auto_theater:
+    name: Theater
+    initial: on
+    icon: mdi:theater
+
+  options_auto_downstairs_bathroom:
+    name: Downstairs Bathroom
+    initial: on
+    icon: mdi:toilet
+
+  options_auto_upstairs_bathroom:
+    name: Upstairs Bathroom
+    initial: on       
+    icon: mdi:toilet
+
+  options_auto_isabellas_room:
+    name: Isabellas Room
+    initial: on
+    icon: mdi:face-woman-outline
+
+  options_auto_biancas_room:
+    name: Biancas Room
+    initial: on
+    icon: mdi:face-woman
+
   options_lights_auto_off:
     name: Auto Off
     initial: on

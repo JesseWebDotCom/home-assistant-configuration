@@ -44,6 +44,32 @@ google_assistant:
       name: Rear Fan
       expose: true
       room: Master Bedroom
+
+    input_boolean.options_auto_biancas_room:
+      name: Automations
+      expose: true
+      room: Bianca's Room
+
+    input_boolean.options_auto_isabellas_room:
+      name: Automations
+      expose: true
+      room: Isabella's Room
+
+    input_boolean.options_auto_downstairs_bathroom:
+      name: Automations
+      expose: true
+      room: Downstairs Room
+
+    input_boolean.options_auto_upstairs_bathroom:
+      name: Automations
+      expose: true
+      room: Upstairs Room
+
+    input_boolean.options_auto_theater:
+      name: Automations
+      expose: true
+      room: Theater      
+
     light.biancas_room_dome:
       name: Ceiling Light
       expose: true
@@ -54,6 +80,7 @@ google_assistant:
       room: Bianca's Room
       aliases:
         - Lamp
+
     # ADD MANUALLY THORUGH GOOGLE HOME IPHONE APP       
     # light.biancas_room_strip:
     #   name: Strip
@@ -181,6 +208,11 @@ google_assistant:
     #  name: Volvo
     #  expose: true
     #  room: Garage
+
+    media_player.theater_universal:
+      name: TV
+      expose: true
+      room: Theater
     switch.boiler_room_pendant:
       name: Light
       expose: true
