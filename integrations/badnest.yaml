@@ -1,0 +1,14 @@
+badnest:
+  issue_token: !secret badnest_issue_token
+  cookie: !secret badnest_cookie
+  region: us
+
+climate:
+  - platform: badnest
+    scan_interval: 10
+
+camera:
+  - platform: badnest
+
+sensor:
+  - platform: badnest
