@@ -44,12 +44,21 @@ homeassistant:
 
     "binary_sensor.*_water_sensor_sensor":
       device_class: moisture
+      icon: mdi:water
 
     "switch.*_accessory_*":
       icon: mdi:power-plug
 
     "binary_sensor.*_door_sensor":
       device_class: door
+
+    " sensor.*_protect_smoke_status":
+      device_class: smoke
+      icon: mdi:fire
+
+    " sensor.*_protect_co_status":
+      device_class: gas
+      icon: mdi:skull
 
     "media_player.plex_*":  
       icon: mdi:plex  
@@ -78,11 +87,8 @@ homeassistant:
     "binary_sensor.*_occupancy":
       icon: mdi:home
 
-    "binary_sensor.*_water_*_sensor":
-      icon: mdi:water
-
     "input_boolean.option_auto_*":
-      icon: mdi:cogs      
+      icon: mdi:graph
 
     # [ LIGHTS ]
     # https://en.wikipedia.org/wiki/Light_fixture#Fixed
