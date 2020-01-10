@@ -6,20 +6,23 @@ This is my personal home automation configuration using Home Assistant (http://h
 
 **Table of Contents**
 - [Home-Assistant Configuration](#home-assistant-configuration)
-  - [Features & Benefits](#features--benefits)
-    - [!Convenience Convenience](#convenience-convenience)
-    - [!Climate Climate](#climate-climate)
-    - [!Multimedia Multimedia](#multimedia-multimedia)
-    - [!Savings Savings](#savings-savings)
-    - [!Surveillance Surveillance](#surveillance-surveillance)
+  - [Features &amp; Benefits](#features-amp-benefits)
+    - [<img src="www/images/doc/magic.png" alt="Convenience"> Convenience](#img-src%22wwwimagesdocmagicpng%22-alt%22convenience%22-convenience)
+    - [<img src="www/images/doc/thermometer.png" alt="Climate"> Climate](#img-src%22wwwimagesdocthermometerpng%22-alt%22climate%22-climate)
+    - [<img src="www/images/doc/ticket.png" alt="Multimedia"> Multimedia](#img-src%22wwwimagesdocticketpng%22-alt%22multimedia%22-multimedia)
+    - [<img src="www/images/doc/money.png" alt="Savings"> Savings](#img-src%22wwwimagesdocmoneypng%22-alt%22savings%22-savings)
+    - [<img src="www/images/doc/camcorder.png" alt="Surveillance"> Surveillance](#img-src%22wwwimagesdoccamcorderpng%22-alt%22surveillance%22-surveillance)
   - [Server](#server)
   - [Devices](#devices)
   - [Server Setup](#server-setup)
     - [Update the BIOS](#update-the-bios)
     - [Image the NUC](#image-the-nuc)
     - [ZWave](#zwave)
-    - [TensorFlow](#tensorflow)
+    - [Tensorflow](#tensorflow)
   - [Getting Smarter](#getting-smarter)
+  - [Issues &amp; Fixes](#issues-amp-fixes)
+    - [Hassio fails to boot with error &quot;Failed to start Docker Application Container Engine.&quot;](#hassio-fails-to-boot-with-error-quotfailed-to-start-docker-application-container-enginequot)
+    - [Hassio boots into the 4 menu option (autoboot, boot 1, boot 2, shell)](#hassio-boots-into-the-4-menu-option-autoboot-boot-1-boot-2-shell)
   - [Misc Tips](#misc-tips)
     - [HOMEKIT](#homekit)
     - [Yeelight](#yeelight)
@@ -74,13 +77,13 @@ Some of my devices integrated, accessed, and or controlled by the HA server:
   * [Pyle PDIC Speakers](https://www.amazon.com/gp/product/B00LRTLYIA/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B00LRTLYIA&linkId=c30676c46d8baf9d458bbb27ad0168a9)
   * [Pyle PFA300 Amp](https://www.amazon.com/gp/product/B0071HZ5LE/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B0071HZ5LE&linkId=a49e6464f65ec04e99262e100e6198d6)
 * Assistants (Speakers, Hubs)
-  * [Google Mini] (https://store.google.com/us/product/google_home_mini)
-  * [Google Nest Hub] (https://store.google.com/us/product/google_nest_hub)
+  * [Google Mini](https://store.google.com/us/product/google_home_mini)
+  * [Google Nest Hub](https://store.google.com/us/product/google_nest_hub)
 * Cars
   * BMW i3
   * Volvo xc90 
 * Door/Window
-  * [Google Nest Hello Video Doorbell] (https://store.google.com/us/product/nest_hello_doorbell)
+  * [Google Nest Hello Video Doorbell](https://store.google.com/us/product/nest_hello_doorbell)
   * [Aeotec by Aeon Labs ZW089 Recessed Door Sensor, Small, White](https://www.amazon.com/gp/product/B0151Z49BO/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B0151Z49BO&linkId=bf87da2400f219a73c7069df63801449)
   * [Ecolink Door/Window Sensor](https://www.amazon.com/gp/product/B00HPIYJWU/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B00HPIYJWU&linkId=b1a47dbe6a4844bd6648aa50e8bb637a)
   * [Dome Door/Window Sensor](https://www.amazon.com/Dome-Automation-Miniature-Z-Wave-DMWD1/dp/B01JGMZNNG/ref=sr_1_2?keywords=Dome+DMWD1&qid=1550276960&s=electronics&sr=1-2)
@@ -119,8 +122,8 @@ Some of my devices integrated, accessed, and or controlled by the HA server:
   * [Logitech Harmony Ultimate Home Black - With Harmony Home Hub](http://www.bestbuy.com/site/logitech-harmony-ultimate-home-black/8203175.p?skuId=8203175)
 * Surveillance
   * [Blue Iris Software](https://www.amazon.com/gp/product/B005DMX1OM/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B005DMX1OM&linkId=b77e3eb5ffa4d7ba52814fc3bb25874a)
-  * [Reolink 5MP PoE Camera RLC-410-5MP] (https://www.amazon.com/gp/product/B07DFKTKGG/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
-  * [Reolink PoE Camera 5MP Super HD 4X Optical Zoom RLC-511] (https://www.amazon.com/gp/product/B07GNFSWCS/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
+  * [Reolink 5MP PoE Camera RLC-410-5MP](https://www.amazon.com/gp/product/B07DFKTKGG/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
+  * [Reolink PoE Camera 5MP Super HD 4X Optical Zoom RLC-511](https://www.amazon.com/gp/product/B07GNFSWCS/ref=ppx_yo_dt_b_search_asin_title?ie=UTF8&psc=1)
   * [Foscam C1 Indoor HD 720P Wireless IP Camera with Night Vision](https://www.amazon.com/gp/product/B00T7NX6SY/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B00T7NX6SY&linkId=706e619ae45dbafcaed04ef76106ca22)
 * Valves
   * [WaterCop Z-Wave Shut-Off Valve Actuator and 3/4" Valve Smart Leak Prevention Kit](https://www.amazon.com/gp/product/B07C91B69P/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B07C91B69P&linkId=585d18af2c7d1f5509b783b00e5deabc)
@@ -192,6 +195,16 @@ Visit the following sites to get smarter on HA:
 * [Community](https://community.home-assistant.io/) - Community posts
 * [Chat](https://gitter.im/home-assistant/home-assistant) - Misc chat
 * [Reddit](https://www.reddit.com/r/homeassistant/) - Misc posts
+
+## Issues & Fixes
+### Hassio fails to boot with error "Failed to start Docker Application Container Engine."
+See issue "Hassio boots into the 4 menu option"
+
+### Hassio boots into the 4 menu option (autoboot, boot 1, boot 2, shell)
+This issue occured because my system drive was full (HA database, snapshots, etc).  To fix:
+1. Follow steps 1 and 2 above of [Image the NUC](#image-the-nuc)
+2. Open a terminal, run "sudo nautilus", and delete unneeded snapshots from hassos-data/supervisor/backup
+3. Reboot
 
 ## Misc Tips
 ### HOMEKIT
