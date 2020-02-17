@@ -40,12 +40,10 @@ secrets.yaml
 zwcfg_*
 harmony_*.conf
 zwscene.xml
+.HA_VERSION
+.com.apple.timemachine.supported
+.vscode/
 
 # ESPHome ignores
 esphome/secrets.yaml
 esphome/**/
-
-# Ignore add-on files
-
-
-# Ignore files created by IDE's
