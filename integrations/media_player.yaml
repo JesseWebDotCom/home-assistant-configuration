@@ -2,55 +2,78 @@
 
 media_player:
   # https://www.home-assistant.io/integrations/universal/
-  platform: universal
-  name: theater_universal
-  children:
-    - media_player.theater_shield
-    - media_player.playstation_4
-    - remote.theater_harmony_hub
-  commands:
-    turn_on:
-      service: remote.turn_on
-      data:
-        entity_id: remote.theater_harmony_hub
-        activity: NVidia Shield
-    turn_off:
-      service: remote.turn_on
-      data:
-        entity_id: remote.theater_harmony_hub
-        activity: PowerOff
-    volume_up:
-      service: remote.send_command
-      data:
-        entity_id: remote.theater_harmony_hub
-        device: Onkyo AV Receiver
-        command: VolumeUp
-    volume_down:
-      service: remote.send_command
-      data:
-        entity_id: remote.theater_harmony_hub
-        device: Onkyo AV Receiver
-        command: VolumeDown
-    volume_mute:
-      service: remote.send_command
-      data:
-        entity_id: remote.theater_harmony_hub
-        device: Onkyo AV Receiver
-        command: Mute
-    # select_source:
-    #   service: media_player.select_source
-    #   data_template:
-    #     entity_id: media_player.receiver
-    #     source: '{{ source }}'
-    # volume_set:
-    #   service: media_player.volume_set
-    #   data_template:
-    #     entity_id: media_player.receiver
-    #     volume_level: '{{ volume_level }}'
+  - platform: universal
+    name: theater_universal
+    children:
+      - media_player.theater_shield
+      - media_player.playstation_4
+      - remote.theater_harmony_hub
+    commands:
+      turn_on:
+        service: remote.turn_on
+        data:
+          entity_id: remote.theater_harmony_hub
+          activity: NVidia Shield
+      turn_off:
+        service: remote.turn_on
+        data:
+          entity_id: remote.theater_harmony_hub
+          activity: PowerOff
+      volume_up:
+        service: remote.send_command
+        data:
+          entity_id: remote.theater_harmony_hub
+          device: Onkyo AV Receiver
+          command: VolumeUp
+      volume_down:
+        service: remote.send_command
+        data:
+          entity_id: remote.theater_harmony_hub
+          device: Onkyo AV Receiver
+          command: VolumeDown
+      volume_mute:
+        service: remote.send_command
+        data:
+          entity_id: remote.theater_harmony_hub
+          device: Onkyo AV Receiver
+          command: Mute
+    attributes:
+      state: remote.theater_harmony_hub
 
-  attributes:
-    state: remote.theater_harmony_hub
-    # is_volume_muted: switch.living_room_mute
-    # volume_level: media_player.receiver|volume_level
-    # source: media_player.receiver|source
-    # source_list: media_player.receiver|source_list
+  - platform: universal
+    name: living_room_universal
+    children:
+      - media_player.plex_living_room_apple_tv
+      - media_player.living_room_apple_tv
+      - remote.living_room_harmony_hub
+    commands:
+      turn_on:
+        service: remote.turn_on
+        data:
+          entity_id: remote.living_room_harmony_hub
+          activity: Watch Apple TV
+      turn_off:
+        service: remote.turn_on
+        data:
+          entity_id: remote.living_room_harmony_hub
+          activity: PowerOff
+      volume_up:
+        service: remote.send_command
+        data:
+          entity_id: remote.living_room_harmony_hub
+          device: Onkyo TX-SR605
+          command: VolumeUp
+      volume_down:
+        service: remote.send_command
+        data:
+          entity_id: remote.living_room_harmony_hub
+          device: Onkyo TX-SR605
+          command: VolumeDown
+      volume_mute:
+        service: remote.send_command
+        data:
+          entity_id: remote.living_room_harmony_hub
+          device: Onkyo TX-SR605
+          command: Mute
+    attributes:
+      state: remote.living_room_harmony_hub

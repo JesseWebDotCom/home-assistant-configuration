@@ -63,31 +63,6 @@ script:
           entity_id:
             - light.office_dome
 
-  # [DOWNSTAIR BATHROOM]
-  #----------------------------------------------------------------
-
-  downstairs_bathroom_poweroff_all:
-    alias: "Downstairs Bathroom | Power Off All"
-    sequence:
-      - service: script.turn_on
-        data:
-          entity_id:
-            - script.downstairs_bathroom_poweroff_lights
-      - service: homeassistant.turn_off
-        data:
-          entity_id:
-            - switch.downstairs_bathroom_fan
-            - media_player.downstairs_bathroom_speaker
-            - media_player.downstairs_bathroom_hub
-
-  downstairs_bathroom_poweroff_lights:
-    alias: "Downstairs Bathroom | Power Off Lights"
-    sequence:
-      - service: homeassistant.turn_off
-        data:
-          entity_id:
-            - light.downstairs_bathroom_sconce
-
   # [LIVING ROOM]
   #----------------------------------------------------------------
 

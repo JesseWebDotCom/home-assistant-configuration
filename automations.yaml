@@ -1,0 +1,16 @@
+- id: '1579424530345'
+  alias: Daily Snapshot
+  description: 'Creates a full snapshot everyday'
+  initial_state: 'on'
+  trigger:
+    platform: time
+    at: '00:00:00'
+  condition:
+  - condition: time
+    weekday:
+      - mon
+  action:
+  - service: hassio.snapshot_full
+    data_template:
+      message: >
+        {{ now().strftime('%A') }}

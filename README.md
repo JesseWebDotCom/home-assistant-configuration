@@ -156,6 +156,21 @@ Some of my devices integrated, accessed, and or controlled by the HA server:
     1.  Reboot the system and remove all USB flash drives when prompted to do so.
     2.  Wait a few minutes (maybe 10) and connect: http://your_nuc_ip_address:8123
 
+### Rebuild
+* Enable advanced mode
+* Add [Community Addons Repo](https://github.com/hassio-addons/repository) to Hassio
+* Install [NGINX Proxy Manager](https://github.com/hassio-addons/addon-nginx-proxy-manager) addon
+* Restore "SSL" and "NGINX Proxy Manager" from Hassio Snapshot
+* Install "Mosquitto broker" addon
+* Install "SSH & Web Terminal" addon
+* Add HACS integration
+* Add [Bad Nest](https://github.com/USA-RedDragon/badnest) HACS repo and integration
+* Add Plex integration
+* Add Apple TV integration
+* Add Ecobee integration
+* Add Google Cast integration
+* Add Unifi integration?
+
 ### ZWave
 Device | Configuration | Details
 --|--|--

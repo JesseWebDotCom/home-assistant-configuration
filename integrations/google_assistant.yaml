@@ -2,7 +2,8 @@
 
 google_assistant:
   project_id: !secret google_assistant_project_id
-  api_key: !secret google_assistant_api_key
+  #api_key: !secret google_assistant_api_key
+  service_account: !secret google_assistant_service_account
   secure_devices_pin: !secret google_assistant_secure_devices_pin
   expose_by_default: false
   entity_config:
@@ -156,12 +157,16 @@ google_assistant:
       name: Light
       expose: true
       room: Playroom
+    switch.front_spotlight:
+      name: Front Spotlight
+      expose: true
+      room: Outside
     light.pool_spotlight:
-      name: Overhead Lights
+      name: Pool Lights
       expose: true
       room: Pool
       aliases:
-        - Spotlight
+        - Rear Spotlight
     light.ryans_room_dome:
       name: Light
       expose: true
@@ -200,6 +205,8 @@ google_assistant:
       name: Stairs Light
       expose: true
       room: Upstairs
+      aliases:
+        - Stairs
     #lock.i3_94_rex_lock:
     #  name: BMW
     #  expose: true
@@ -208,7 +215,10 @@ google_assistant:
     #  name: Volvo
     #  expose: true
     #  room: Garage
-
+    media_player.living_room_universal:
+      name: TV
+      expose: true
+      room: Living Room
     media_player.theater_universal:
       name: TV
       expose: true

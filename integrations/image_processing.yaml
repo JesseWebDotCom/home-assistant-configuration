@@ -7,7 +7,6 @@ image_processing:
       - entity_id: camera.front_door
     file_out:
       - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_latest.jpg"          
-      - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_{{ now().strftime('%Y%m%d_%H%M%S') }}.jpg"          
     model:
       graph: /config/tensorflow/model/frozen_inference_graph.pb
       categories:
@@ -51,7 +50,6 @@ image_processing:
       - entity_id: camera.front_ptz
     file_out:
       - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_latest.jpg"          
-      - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_{{ now().strftime('%Y%m%d_%H%M%S') }}.jpg"      
     model:
       graph: /config/tensorflow/model/frozen_inference_graph.pb
       categories:
@@ -90,7 +88,6 @@ image_processing:
       - entity_id: camera.driveway_rear 
     file_out:
       - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_latest.jpg"          
-      - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_{{ now().strftime('%Y%m%d_%H%M%S') }}.jpg"      
     model:
       graph: /config/tensorflow/model/frozen_inference_graph.pb
       categories:  
@@ -107,7 +104,6 @@ image_processing:
       - entity_id: camera.front_left     
     file_out:
       - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_latest.jpg"          
-      - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_{{ now().strftime('%Y%m%d_%H%M%S') }}.jpg"      
     model:
       graph: /config/tensorflow/model/frozen_inference_graph.pb
       categories:  
@@ -130,7 +126,6 @@ image_processing:
       - entity_id: camera.side_stairs     
     file_out:
       - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_latest.jpg"          
-      - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_{{ now().strftime('%Y%m%d_%H%M%S') }}.jpg"      
     model:
       graph: /config/tensorflow/model/frozen_inference_graph.pb
       categories:  
@@ -154,7 +149,6 @@ image_processing:
       - entity_id: camera.theater   
     file_out:
       - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_latest.jpg"          
-      - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_{{ now().strftime('%Y%m%d_%H%M%S') }}.jpg"      
     model:
       graph: /config/tensorflow/model/frozen_inference_graph.pb
       categories:  

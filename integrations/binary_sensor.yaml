@@ -2,6 +2,13 @@
 
 binary_sensor: 
   - platform: mqtt
+    name: "Furbo Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/furbo_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"
+
+  - platform: mqtt
     name: "House Rear Camera Motion"
     device_class: motion
     state_topic: "blue_iris/binary_sensor/house_rear_motion/state"
@@ -167,15 +174,15 @@ binary_sensor:
       master_bathroom_motion:
         device_class: motion
         friendly_name: Master Bathroom | Motion
-        value_template: "{{ is_state('sensor.master_bathroom_multisensor_burglar', '8') }}"      
+        value_template: "{{ is_state('sensor.master_bathroom_sensor_burglar', '8') }}"      
       downstairs_bathroom_motion:
         device_class: motion
         friendly_name: Downstairs Bathroom | Motion
-        value_template: "{{ is_state('sensor.downstairs_bathroom_multisensor_burglar', '8') }}"
+        value_template: "{{ is_state('sensor.downstairs_bathroom_sensor_burglar', '8') }}"
       upstairs_bathroom_motion:
         device_class: motion
         friendly_name: Upstairs Bathroom | Motion        
-        value_template: "{{ is_state('sensor.upstairs_bathroom_multisensor_burglar', '8') }}"
+        value_template: "{{ is_state('sensor.upstairs_bathroom_sensor_burglar', '8') }}"
       mudroom_motion:
         device_class: motion
         friendly_name: Mudroom | Motion        

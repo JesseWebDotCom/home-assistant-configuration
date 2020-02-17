@@ -1,6 +1,7 @@
 # https://www.home-assistant.io/docs/configuration/basic/
 
 homeassistant:
+
   customize:
     "switch.theater_posters":
       icon: mdi:account-box
@@ -51,6 +52,7 @@ homeassistant:
 
     "binary_sensor.*_door_sensor":
       device_class: door
+      icon: mdi:car-door
 
     " sensor.*_protect_smoke_status":
       device_class: smoke
@@ -77,10 +79,7 @@ homeassistant:
 
     "binary_sensor.sleepnumber_*_is_in_bed":
       icon: mdi:hotel
-
-    "binary_sensor.*_door_sensor":
-      icon: mdi:door
-
+      
     "binary_sensor.*_motion*":
       icon: mdi:motion-sensor      
 
@@ -173,3 +172,7 @@ homeassistant:
       hidden: true
     "sensor.*_power_management":
       hidden: true
+
+  # needed for camera.record
+  #whitelist_external_dirs:
+  #  - /config/www/cameras/      

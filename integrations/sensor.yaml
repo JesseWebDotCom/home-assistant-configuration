@@ -1,6 +1,15 @@
 # https://www.home-assistant.io/integrations/sensor/
 
 sensor:
+  # for my custom sense solar power wheel
+  - platform: template
+    sensors:
+      grid_power_production:
+        friendly_name: 'Grid power production'
+        unit_of_measurement: 'W'
+        value_template: >-
+          {{ (states("sensor.energy_usage") | float | int) + (states("sensor.energy_production") | float | int | abs) }}
+
   - platform: version
     name: ha_local_version
     source: local
@@ -9,6 +18,10 @@ sensor:
     name: ha_current_version
     source: hassio
     image: intel-nuc
+
+  - platform: uptime
+    name: "HA Uptime"
+    unit_of_measurement: minutes
 
   - platform: rest
     name: glances_blueiris_blueiris_cpu_percent
@@ -20,15 +33,15 @@ sensor:
     resource: http://172.19.210.11:61208/api/3/processlist/name/BlueIris.exe
     value_template: '{{ value_json["BlueIris.exe"][0]["memory_percent"] }}'   
 
-  - platform: rest
-    name: glances_blueiris_ddnsclient_cpu_percent
-    resource: http://172.19.210.11:61208/api/3/processlist/name/DDNSClient.exe
-    value_template: '{{ value_json["DDNSClient.exe"][0]["cpu_percent"] }}'
+  # - platform: rest
+  #   name: glances_blueiris_ddnsclient_cpu_percent
+  #   resource: http://172.19.210.11:61208/api/3/processlist/name/DDNSClient.exe
+  #   value_template: '{{ value_json["DDNSClient.exe"][0]["cpu_percent"] }}'
 
-  - platform: rest
-    name: glances_blueiris_ddnsclient_memory_percent
-    resource: http://172.19.210.11:61208/api/3/processlist/name/DDNSClient.exe
-    value_template: '{{ value_json["DDNSClient.exe"][0]["memory_percent"] }}'  
+  # - platform: rest
+  #   name: glances_blueiris_ddnsclient_memory_percent
+  #   resource: http://172.19.210.11:61208/api/3/processlist/name/DDNSClient.exe
+  #   value_template: '{{ value_json["DDNSClient.exe"][0]["memory_percent"] }}'  
 
   # - platform: rest
   #   name: glances_inspiron_plexmediaserver_cpu_percent

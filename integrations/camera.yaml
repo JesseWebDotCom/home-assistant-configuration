@@ -1,52 +1,76 @@
 # https://www.home-assistant.io/integrations/camera/
 
 camera:
-  # Required for Google cast
+
   - platform: generic
     name: Furbo
     stream_source: !secret camera_stream_furbo_url
     still_image_url: !secret camera_image_furbo_url
+ 
+  # FOSCAM
+  # https://www.home-assistant.io/integrations/foscam/
 
-  - platform: generic
-    name: Garage
-    stream_source: !secret camera_stream_garage_url
-    still_image_url: !secret camera_image_garage_url
-
-  - platform: generic
-    name: Playroom
-    stream_source: !secret camera_stream_playroom_url
-    still_image_url: !secret camera_image_playroom_url
-
-  - platform: generic
-    name: Sunroom
-    stream_source: !secret camera_stream_sunroom_url
-    still_image_url: !secret camera_image_sunroom_url
-
-  - platform: generic
+  - platform: foscam
     name: Kitchen
-    stream_source: !secret camera_stream_kitchen_url
-    still_image_url: !secret camera_image_kitchen_url
+    ip: !secret foscam_kitchen_ip
+    username: !secret foscam_username
+    password: !secret foscam_password
 
-  - platform: generic
+  - platform: foscam
+    name: Garage
+    ip: !secret foscam_garage_ip
+    username: !secret foscam_username
+    password: !secret foscam_password
+
+  - platform: foscam
+    name: Playroom
+    ip: !secret foscam_playroom_ip
+    username: !secret foscam_username
+    password: !secret foscam_password
+
+  - platform: foscam
+    name: Sunroom
+    ip: !secret foscam_sunroom_ip
+    username: !secret foscam_username
+    password: !secret foscam_password
+
+  - platform: foscam
     name: Isabellas Room
-    stream_source: !secret camera_stream_isabellas_room_url
-    still_image_url: !secret camera_image_isabellas_room_url
+    ip: !secret foscam_isabellas_room_ip
+    username: !secret foscam_username
+    password: !secret foscam_password
 
-  - platform: generic
+  - platform: foscam
     name: Living Room
-    stream_source: !secret camera_stream_living_room_url
-    still_image_url: !secret camera_image_living_room_url
+    ip: !secret foscam_living_room_ip
+    username: !secret foscam_username
+    password: !secret foscam_password
 
-  - platform: generic
+  - platform: foscam
     name: Dining Room
-    stream_source: !secret camera_stream_dining_room_url
-    still_image_url: !secret camera_image_dining_room_url
+    ip: !secret foscam_dining_room_ip
+    username: !secret foscam_username
+    password: !secret foscam_password
 
-  - platform: generic
+  - platform: foscam
     name: Theater
-    stream_source: !secret camera_stream_theater_url
-    still_image_url: !secret camera_image_theater_url
+    ip: !secret foscam_theater_ip
+    username: !secret foscam_username
+    password: !secret foscam_password
 
+  - platform: foscam
+    name: Upstairs | Entrance
+    ip: !secret foscam_upstairs_entrance_ip
+    username: !secret foscam_username
+    password: !secret foscam_password
+
+  - platform: foscam
+    name: Storage Room
+    ip: !secret foscam_storage_room_ip
+    username: !secret foscam_username
+    password: !secret foscam_password
+
+  # REOLINK
   - platform: generic
     name: Front | PTZ
     stream_source: !secret camera_stream_front_ptz_url
@@ -105,19 +129,9 @@ camera:
   - platform: generic
     name: Pool
     stream_source: !secret camera_stream_pool_url
-    still_image_url: !secret camera_image_pool_url
-
-  - platform: generic
-    name: Storage Room
-    stream_source: !secret camera_stream_storage_room_url
-    still_image_url: !secret camera_image_storage_room_url
+    still_image_url: !secret camera_image_pool_url  
 
   - platform: generic
     name: Side Stairs
     stream_source: !secret camera_stream_side_stairs_url
     still_image_url: !secret camera_image_side_stairs_url
-
-  - platform: generic
-    name: Upstairs | Entrance
-    stream_source: !secret camera_stream_upstairs_entrance_url
-    still_image_url: !secret camera_image_upstairs_entrance_url
