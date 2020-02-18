@@ -10,8 +10,8 @@ The guide consists of a five sections:
 ### Introduction
 *This section provides an introduction into Home Automation and Home Assistant.*
 
-1. [Introduction to Home Automation](home-automation.md)
-1. [Introduction to Home Assistant](home-assistant.md)
+1. [Introduction to Home Automation](introduction/home-automation.md)
+2. [Introduction to Home Assistant](introduction/home-assistant.md)
 
 ### The Hub
 *This section describes how to install Home Assistant on a Raspberry Pi or Intel NUC and then configure it for use.*
