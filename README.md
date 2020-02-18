@@ -15,7 +15,7 @@ This is my personal home automation configuration using Home Assistant (http://h
   - [Yeelight](#yeelight)
 
 ## Home Assistant 101
-Check out my [concise guide](home-assistant-101/README.md) on getting into the world of Home Automation, standing up your own Home Assistant server, building your own sensors, and more.
+Check out my [concise guide](/docs/home-assistant-101/README.md) on getting into the world of Home Automation, standing up your own Home Assistant server, building your own sensors, and more.
 
 ## My Server
 Here are my exact components:
