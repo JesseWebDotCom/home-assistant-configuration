@@ -4,73 +4,25 @@ This is my personal home automation configuration using Home Assistant (http://h
 
 **NOTE:** Sensitive files (ex. secrets.yaml) and folders (ex. www) have been excluded from this repository.
 
-**Table of Contents**
-- [Home-Assistant Configuration](#home-assistant-configuration)
-  - [Features &amp; Benefits](#features-amp-benefits)
-    - [<img src="www/images/doc/magic.png" alt="Convenience"> Convenience](#img-src%22wwwimagesdocmagicpng%22-alt%22convenience%22-convenience)
-    - [<img src="www/images/doc/thermometer.png" alt="Climate"> Climate](#img-src%22wwwimagesdocthermometerpng%22-alt%22climate%22-climate)
-    - [<img src="www/images/doc/ticket.png" alt="Multimedia"> Multimedia](#img-src%22wwwimagesdocticketpng%22-alt%22multimedia%22-multimedia)
-    - [<img src="www/images/doc/money.png" alt="Savings"> Savings](#img-src%22wwwimagesdocmoneypng%22-alt%22savings%22-savings)
-    - [<img src="www/images/doc/camcorder.png" alt="Surveillance"> Surveillance](#img-src%22wwwimagesdoccamcorderpng%22-alt%22surveillance%22-surveillance)
-  - [Server](#server)
-  - [Devices](#devices)
-  - [Server Setup](#server-setup)
-    - [Update the BIOS](#update-the-bios)
-    - [Image the NUC](#image-the-nuc)
-    - [ZWave](#zwave)
-    - [Tensorflow](#tensorflow)
-  - [Getting Smarter](#getting-smarter)
-  - [Issues &amp; Fixes](#issues-amp-fixes)
-    - [Hassio fails to boot with error &quot;Failed to start Docker Application Container Engine.&quot;](#hassio-fails-to-boot-with-error-quotfailed-to-start-docker-application-container-enginequot)
-    - [Hassio boots into the 4 menu option (autoboot, boot 1, boot 2, shell)](#hassio-boots-into-the-4-menu-option-autoboot-boot-1-boot-2-shell)
-  - [Misc Tips](#misc-tips)
-    - [HOMEKIT](#homekit)
-    - [Yeelight](#yeelight)
+- [Home Assistant 101](#home-assistant-101)
+- [My Server](#my-server)
+- [My Devices](#my-devices)
+- [Issues & Fixes](#issues--fixes)
+  - [Hassio fails to boot with error "Failed to start Docker Application Container Engine."](#hassio-fails-to-boot-with-error-failed-to-start-docker-application-container-engine)
+  - [Hassio boots into the 4 menu option (autoboot, boot 1, boot 2, shell)](#hassio-boots-into-the-4-menu-option-autoboot-boot-1-boot-2-shell)
+- [Misc Tips](#misc-tips)
+  - [HOMEKIT](#homekit)
+  - [Yeelight](#yeelight)
 
-## Features & Benefits
-Some of the features and benefits of my entire home setup (automation, entertainment, security, etc.).
+## Home Assistant 101
+Check out my [concise guide](home-assistant-101/README.md) on getting into the world of Home Automation, standing up your own Home Assistant server, building your own sensors, and more.
 
-### ![Convenience](www/images/doc/magic.png) Convenience
-* **Garage**
-  * _**Open/Close Alerts**_ | Sends push notifications when garage opens or closes
-  * _**Automatic Lighting**_ | Turn outdoor and indoor lights (near the garage) on and off when the garage door opens or closes (ex. Light up the driveway when I open the garage late at night)
-* **Lighting**
-  * _**Motion Lighting**_ | Turn on lights when motion detected (via motion sensor or camera)
-
-### ![Climate](www/images/doc/thermometer.png) Climate
-* **Temperature**
-  * _**Alerting**_ | Get alerts when temperature in any room gets too hot or too cold (know when your HVAC is malfunctoning)
-* **Cooling**
-  * _**Air Conditioner**_ | Turn AC on/off
-  * _**Fan Control**_ | Turn fans on/off, control speed
-* **Humidity**
-  * _**Automatic Venting**_ | Automatically turn on bathroom fan when humidity is high (i.e. someone is showering)
-
-### ![Multimedia](www/images/doc/ticket.png) Multimedia
-* **Control**
-  * _**Room/Whole House Control**_ | Control audio and video streaming in any room, change volume, track, etc, view who is streaming what, and more
-* **Audio**
-  * _**Room/Whole House Audio**_ | Play music per room, in room groups, or across the entire house
-* **Video**
-  * _**Game Time / Movie Night**_ | Sit back, use your TV remote to watch TV or play a game, and have the lights dim or turn off.  Have them turn on when you turn off the TV.
-  * _**Smart Motion Lighting**_ | Lights turn on and off whenever motion is detected - but not when you are playing a game or watching a movie.
-
-### ![Savings](www/images/doc/money.png) Savings
-* **Lighting**
-  * _**Awareness**_ | Instantly see total lights on, which ones, etc
-  * _**Indoor Light Saver**_ | Automatically turns off certain lights left on too long (ex. turn off attic lights after 15 minutes)
-
-### ![Surveillance](www/images/doc/camcorder.png) Surveillance
-* _**Fee & Cloud Free**_ | Eliminate monthly/yearly fees and cloud availability and privacy issues by running and storing recorded video locally
-* _**Video Monitoring**_ | Watch live video feeds
-* _**Continuous Recording**_ | Records everything, 24x7
-
-## Server
-Here are the exact components:
+## My Server
+Here are my exact components:
 * Intel NUC NUC7i5DNKE Core i5-7300U 8GB RAM 128GB SSD
 * [GoControl CECOMINOD016164 HUSBZB-1 USB Hub](https://www.amazon.com/gp/product/B01GJ826F8/)
 
-## Devices
+## My Devices
 Some of my devices integrated, accessed, and or controlled by the HA server:
 * Audio
   * [ChromeCast Audio v1](https://www.google.com/chromecast/speakers/)
@@ -127,89 +79,6 @@ Some of my devices integrated, accessed, and or controlled by the HA server:
   * [Foscam C1 Indoor HD 720P Wireless IP Camera with Night Vision](https://www.amazon.com/gp/product/B00T7NX6SY/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B00T7NX6SY&linkId=706e619ae45dbafcaed04ef76106ca22)
 * Valves
   * [WaterCop Z-Wave Shut-Off Valve Actuator and 3/4" Valve Smart Leak Prevention Kit](https://www.amazon.com/gp/product/B07C91B69P/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B07C91B69P&linkId=585d18af2c7d1f5509b783b00e5deabc)
-
-## Server Setup
-
-### Update the BIOS
-1. Connect a USB stick to a Windows machine (rather than Linux or MAC)
-2. Fully format the USB stick to FAT32 (disable quick format option during format)
-3. Download the latest BIOS file for your NUC and copy it to the USB stick
-4. Connect the USB stick to the NUC and power the NUC on
-5. Press F7 and follow the onscreen instructions
-
-### Image the NUC
-1. Preparing for installation
-   1. Disable NUC Secure Boot (BIOS | Advanced | Boot | Secure Boot)
-   2. Download [the Ubuntu Desktop image](http://releases.ubuntu.com/16.04.1/ubuntu-16.04.1-desktop-amd64.iso) and prepare a bootable USB flash drive.
-   3. Download [the Hassio NUC image](https://www.home-assistant.io/hassio/installation/) and copy the file (…img.gz) to the second flash drive.
-2. Boot from the Live USB flash drive
-   1. Insert the Live USB Ubuntu Desktop flash drive in the NUC.
-   2. Start the NUC and push F10 to enter the boot menu.
-   3. Select the USB flash drive as a boot option.
-   4. Select “Try Ubuntu without installing”.
-3. Image the NUC
-   1. Once the system is ready, insert the second USB flash drive which contains the Hassio disk image.
-   2.  (optional) Wipe the Nuc drive with the following command: `dd if=/dev/zero of=/dev/sda bs=1M`
-   3.  Run: 
-   `zcat /media/ubuntu/<usb disk label>/hassos_intel-nuc-2.5.img.gz | sudo dd of=/dev/sda bs=32M status=progress; sync`
-4.  Install HASSIO
-    1.  Reboot the system and remove all USB flash drives when prompted to do so.
-    2.  Wait a few minutes (maybe 10) and connect: http://your_nuc_ip_address:8123
-
-### Rebuild
-* Enable advanced mode
-* Add [Community Addons Repo](https://github.com/hassio-addons/repository) to Hassio
-* Install [NGINX Proxy Manager](https://github.com/hassio-addons/addon-nginx-proxy-manager) addon
-* Restore "SSL" and "NGINX Proxy Manager" from Hassio Snapshot
-* Install "Mosquitto broker" addon
-* Install "SSH & Web Terminal" addon
-* Add HACS integration
-* Add [Bad Nest](https://github.com/USA-RedDragon/badnest) HACS repo and integration
-* Add Plex integration
-* Add Apple TV integration
-* Add Ecobee integration
-* Add Google Cast integration
-* Add Unifi integration?
-
-### ZWave
-Device | Configuration | Details
---|--|--
-[Aeotec MultiSensor 6](https://www.amazon.com/gp/product/B0151Z8ZQY/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B0151Z8ZQY&linkId=24d3c72d09df4c49aef399d0836c2eb8)  |  On Duration = 2 Minutes (shorter and device always displays as off) | Parameter 3 = 125
-[Aeotec MultiSensor 6](https://www.amazon.com/gp/product/B0151Z8ZQY/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B0151Z8ZQY&linkId=24d3c72d09df4c49aef399d0836c2eb8)  |  Temperature Sensor Interval = 120 Seconds | Parameter 111 = 120
-[Aeotec Recessed Door Sensor](https://www.amazon.com/gp/product/B0151Z49BO/ref=as_li_tl?ie=UTF8&tag=jessewebdotco-20&camp=1789&creative=9325&linkCode=as2&creativeASIN=B0151Z49BO&linkId=bf87da2400f219a73c7069df63801449)  |  Report types = Binary and Basic Reports | Parameter 121 = 272
-[Aeotec Water Sensor](https://www.amazon.com/Aeotec-Water-Sensor-Z-Wave-Flood/dp/B00H3TJ3P4) | Report types = Sensor Binary and Battery Report | Parameter 121 = 17
-
-### Tensorflow
-1. Install and run the tensorflow addon:
-   1. Add the [tensorflow Hass.io add-ons repository](https://github.com/hunterjm/hassio-addons) to your Hass.io instance
-   2. Install the "TensorFlow Installer" add-on
-   3. Start the "TensorFlow Installer" add-on
-   4. Check the logs of the "TensorFlow Installer" add-on to see if everything went well
-   5. Restart Home Assistant for changes to take effect
-2. Download and extract this: https://github.com/robmarkcole/tensorflow_files_for_home_assistant_component
-3. Put the tensorflow folder on /config dir
-4. Download and extract this: http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v2_coco_2018_03_29.tar.gz
-5. Rename the folder “ssd_mobilenet_v2_coco_2018_03_29” to “model”
-6. Put the ‘model’ folder into /config/tensorflow dir
-7. Add the following to configuration.yaml (modifying _scan interval to # of seconds tensorflow should update and an entity_id for each of your cameras):
-```
-image_processing:
- - platform: tensorflow
-   scan_interval: 1
-   source:
-     - entity_id: camera.front_door
-   model:
-     graph: /config/tensorflow/model/frozen_inference_graph.pb
-```
-
-## Getting Smarter
-Visit the following sites to get smarter on HA:
-* [Website](https://home-assistant.io/) - Main site and reference
-* [YouTube Channel](https://www.youtube.com/channel/UCbX3YkedQunLt7EQAdVxh7w) - Youtube Channel (tutorials, talks, etc)
-* [GitHub Examples](https://github.com) - Find examples by searching for "home-assistant configuration"
-* [Community](https://community.home-assistant.io/) - Community posts
-* [Chat](https://gitter.im/home-assistant/home-assistant) - Misc chat
-* [Reddit](https://www.reddit.com/r/homeassistant/) - Misc posts
 
 ## Issues & Fixes
 ### Hassio fails to boot with error "Failed to start Docker Application Container Engine."
