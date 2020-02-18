@@ -2,5 +2,5 @@
 
 ***
 
-[Previous](install.nd) | [Next](advanced.md) |
+[Previous](install.md) | [Next](advanced.md) |
 [Table of Contents](../README.md#table-of-contents)
