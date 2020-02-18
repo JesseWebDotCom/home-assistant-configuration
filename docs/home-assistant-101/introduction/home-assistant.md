@@ -19,7 +19,7 @@ Open source | Closed
 Local privacy | Cloud stored datahome-assistant.log
 Hardware Independent | Hardware Dependent
 Cloud Independent | Cloud Dependent
-> 1,500 integrations | < 1,000 integrations
+\> 1,500 integrations | < 1,000 integrations
 Extensible | Limited
 
 ## Disadvantages
@@ -33,13 +33,13 @@ Skills, time, & patience required | As with any DIY project, there will always b
 ## Key Terms
 
 Term | Definition
---|--|--
+--|--
 [Home Assistant](https://www.home-assistant.io/faq/ha-vs-hassio/) | The Home Assistant project, program (aka Home Assistant Core), or standalone installer (formerly known as Hassio) which installs the Home Assistant Operating system, Home Assistant Core, add-on store, and more
 [Home Assistant Core](https://www.home-assistant.io/faq/ha-vs-hassio/) | The raw Home Assistant Python program
 [Home Assistant Cloud](https://www.nabucasa.com) | Aka Nuba Casa, a pay service to support the core development team and ease setup of certain components
 [Home Assistant Companion](https://companion.home-assistant.io) | The mobile app
 Entities | Every device connected to Home Assistant is represented by an "entity".  Some devices have multiple features (ex. Battery level, Smoke Level) which may be represented by additional entities.
-[Integrations](https://www.home-assistant.io/integrations/) | (formally known as components) Connectors to popular data sources, device types, and services | 
+[Integrations](https://www.home-assistant.io/integrations/) | (formally known as components) Connectors to popular data sources, device types, and services
 [Yaml](https://www.home-assistant.io/docs/configuration/yaml/) | A common markup language Home Assistant uses
 
 ## Key Shares
