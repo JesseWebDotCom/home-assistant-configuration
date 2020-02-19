@@ -8,7 +8,7 @@ Home Assistant.  It will walk you through how to build and configure a Home Assi
 The guide consists of a five sections:
 
 ### Introduction
-*This section provides an introduction into Home Automation and Home Assistant.*
+*This section provides an introduction to Home Automation and Home Assistant.*
 
 1. [Introduction to Home Automation](introduction/home-automation.md)
 2. [Introduction to Home Assistant](introduction/home-assistant.md)
