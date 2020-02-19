@@ -5,6 +5,7 @@
   - [Installing an add-on](#installing-an-add-on)
   - [Essentials: Management](#essentials-management)
 - [Code Editing](#code-editing)
+  - [Install & Configuring VS Code](#install--configuring-vs-code)
 
 ## Intital Setup
 Once the install has completed:
@@ -43,6 +44,8 @@ We'll use Visual Studio Code as our Home Assistant code editor as it has several
 - It's free
 - Home Assistant extensions for VS Code add features like auto completion
 - The editor can be run from your Home Assistant instance if running on an Intel NUC
+
+### Install & Configuring VS Code
 
 1. Follow [these instructions](https://github.com/SeanPM5/homeassistant-config/wiki/Editing-Home-Assistant-in-Visual-Studio-Code) to install VS Code and relevant extensions
 2. Open Home Asisstant, click on the circled user account icon (bottom left), and create a Long-lived access token
