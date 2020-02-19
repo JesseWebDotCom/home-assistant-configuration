@@ -5,12 +5,13 @@
 - [Key Terms](#key-terms)
 - [Key Shares](#key-shares)
 - [Default Config Files & Folders](#default-config-files--folders)
-- [Getting Smarter](#getting-smarter)
+- [More Information](#more-information)
 
-Home Assistant is an automation platform with the following benefits over popular 3rd party alternatives like Google Home, Samsung Smartthings, and Apple HomeKit.
+[Home Assistant](https://www.home-assistant.io) is an open source, vendor agnostic home automation platform with a large, continually growing number of integrations.
 
 ## Benefits
-Home Assistant has many advantages over 3rd party home automation platforms.
+Home Assistant has many benefits over today's popular 3rd party alternatives like Google Home, Samsung Smartthings, and Apple HomeKit
+
 
 | Home Assistant | 3rd Party (Ex. Apple, Google) | 
 |:--------------:|:------:|
@@ -23,7 +24,7 @@ Cloud Independent | Cloud Dependent
 Extensible | Limited
 
 ## Disadvantages
-But it also has some key disadvantages:
+But it also has some key disadvantages over today's 3rd party solutions:
 
 Disadvantage | Description | Mitigation
 --|--|--
@@ -34,12 +35,13 @@ Skills, time, & patience required | As with any DIY project, there will always b
 
 Term | Definition
 --|--
-[Home Assistant](https://www.home-assistant.io/faq/ha-vs-hassio/) | The Home Assistant project, program (aka Home Assistant Core), or standalone installer (formerly known as Hassio) which installs the Home Assistant Operating system, Home Assistant Core, add-on store, and more
+[Home Assistant](https://www.home-assistant.io/faq/ha-vs-hassio/) | Commonly refers to the Home Assistant project or standalone installer (formerly known as Hassio) which installs the Home Assistant Operating system, Home Assistant Core, add-on store, and more
 [Home Assistant Core](https://www.home-assistant.io/faq/ha-vs-hassio/) | The raw Home Assistant Python program
 [Home Assistant Cloud](https://www.nabucasa.com) | Aka Nuba Casa, a pay service to support the core development team and ease setup of certain components
 [Home Assistant Companion](https://companion.home-assistant.io) | The mobile app
 Entities | Every device connected to Home Assistant is represented by an "entity".  Some devices have multiple features (ex. Battery level, Smoke Level) which may be represented by additional entities.
 [Integrations](https://www.home-assistant.io/integrations/) | (formally known as components) Connectors to popular data sources, device types, and services
+[Services](https://www.home-assistant.io/docs/scripts/service-calls/) | Actions an integration can perform (ex. BMW Connected Drive integration has a `sound_horn` service to honk the car horn.)
 [Yaml](https://www.home-assistant.io/docs/configuration/yaml/) | A common markup language Home Assistant uses
 
 ## Key Shares
@@ -56,7 +58,7 @@ ssl | SSL certificates
 
 Name | Purpose
 --|--
-[automations.yaml](https://www.home-assistant.io/integrations/automation/) | (I used Node-RED instead, click for more info) Home Assistant yaml based automations
+[automations.yaml](https://www.home-assistant.io/integrations/automation/) | (I use Node-RED instead, [click for more info](../node-red/install.md)) Home Assistant yaml based automations
 [configuration.yaml](https://www.home-assistant.io/docs/configuration/) | The core configuration file where everything is loaded and configured
 [/deps](https://www.home-assistant.io/faq/dependencies/) | Storage area for automatically downloaded and updated dependency files
 [groups.yaml](https://www.home-assistant.io/integrations/group/) | (being phased out) Creates named collections of entities (ex. Upstairs Lights)
@@ -64,10 +66,10 @@ Name | Purpose
 home-assistant.log | Primary log file (configurable through the [logger integration](https://www.home-assistant.io/integrations/logger/))
 [scenes.yaml](https://www.home-assistant.io/integrations/scene/) | Stores "scenes" - set specfic device states by name (ex. "Reading" - sets the table lamp to 50% and turns off the recessed lighting)
 [scripts.yaml](https://www.home-assistant.io/integrations/script/) | Stores "scripts" - custom sequence of actions you can execute by name (ex. "alarm" - flashes lights, sounds the siren, and sends an alert)
-[secrets.yaml](https://www.home-assistant.io/docs/configuration/secrets/) | Stores sensitive data (ex. passwords) you can reference by name (ex. my_password)
+[secrets.yaml](https://www.home-assistant.io/docs/configuration/secrets/) | Stores sensitive data (ex. passwords) you can reference by name (ex. my_password).
 [/tts](https://www.home-assistant.io/integrations/tts/) | Text to speech engine
 
-## Getting Smarter
+## More Information
 * [Website](https://home-assistant.io/) - Main site and reference
 * [YouTube Channel](https://www.youtube.com/channel/UCbX3YkedQunLt7EQAdVxh7w) - Youtube Channel (tutorials, talks, etc)
 * [GitHub Examples](https://github.com) - Find examples by searching for "home-assistant configuration"
