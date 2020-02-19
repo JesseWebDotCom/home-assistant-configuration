@@ -3,6 +3,8 @@
 - [Building the Pi](#building-the-pi)
 - [Prepping the Installation Media](#prepping-the-installation-media)
   - [Prepping a Wireless connection](#prepping-a-wireless-connection)
+    - [Option 1: SD Card (Windows Only)](#option-1-sd-card-windows-only)
+    - [Option 2: USB Stick (Windows or Mac)](#option-2-usb-stick-windows-or-mac)
   - [Resetting a Wireless connection](#resetting-a-wireless-connection)
 - [Installing Home Assistant](#installing-home-assistant)
 
@@ -26,17 +28,31 @@ The following applies to a CanaKit Raspberry Pi 4 Kit:
 3. Use balenaEtcher to flash the downloaded image to atleast a 32GB SD card
 ![Flash SD Card](../images/etcher_pi.png)
 > TIP: You can cancel validation to save time
+![Etcher Validation](../images/etcher_validating.png)
+
 4. If your PI will use wireless networking (i.e. WIFI), follow the instructions below
+
+> NOTE: On a Mac, ignore the final "not readable" error and click `eject`
+![Etcher Not readable](../images/etcher_not_readable.png)
 
 ### Prepping a Wireless connection
 
 If your PI will use wireless networking (i.e. WIFI):
 
+#### Option 1: SD Card (Windows Only)
+1. [Prep the SD card as installation media](#prepping-the-installation-media)
+2. Insert the SD card into a Windows system (does not work on a Mac)
+3. On the SD card `hassos-boot` volume, create a text file `config\network\my-network` (with no file extension)
+4. Paste the text from **my-network file contents** (see below) into the text file (replacing `SSID_NAME` and `SSID_PASSWORD` appropriately):
+
+#### Option 2: USB Stick (Windows or Mac)
 1. Format a USB stick with a single FAT32 (aka MS-DOS FAT on a Mac) parititon named `CONFIG`
 2. In the `CONFIG` partititon, create a folder called `network`
 3. In the `network` folder, create a text file called `my-network` (with no file extension)
-4. Add the following to the text file (replacing `SSID_NAME` and `SSID_PASSWORD` appropriately):
+4. Paste the text from **my-network file contents** (see below) into the text file (replacing `SSID_NAME` and `SSID_PASSWORD` appropriately):
+5. Connect the USB stick to the Pi
 
+**my-network file contents:**  
 ```
 [connection]
 id=my-network
@@ -64,8 +80,7 @@ method=auto
 
 ### Resetting a Wireless connection
 If you need to change the name and or password that the Pi connects to:
-* Follow [Prepping a wireless connection](install-pi.md#prepping-a-wireless-connection)
-* Connect the USB stick to the Pi
+* Follow Option 2 of [Prepping a wireless connection](install-pi.md#prepping-a-wireless-connection)
 * Reboot the Pi
 
 ## Installing Home Assistant
