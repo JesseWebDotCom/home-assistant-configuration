@@ -2,6 +2,8 @@
 
 - [Intital Setup](#intital-setup)
 - [Add-ons](#add-ons)
+  - [Installing an add-on](#installing-an-add-on)
+  - [Essentials: Management](#essentials-management)
 - [Code Editing](#code-editing)
 
 ## Intital Setup
@@ -14,7 +16,21 @@ Once the install has completed:
 
 
 ## Add-ons
-Install the following add-ons, setting usernames and passwords appropriately.
+
+[Add-ons](https://www.home-assistant.io/addons/) are like apps in a Home Assistant App Store.  From running Pi-hole to Plex, add-ons provide a nice, easy way to extend the functionality of your hub.
+
+### Installing an add-on
+
+1. Select Supervisor | Add-on Store from your Home Assistant instance.
+2. If your desired add-on does NOT come from the default repositories, paste your add-on's repository link in the "Add new repository by URL" and click Add.
+3. Click on your desired add-on 
+4. Read and follow the add-on instructions (some have no instructions, others do)
+5. Click install
+
+
+### Essentials: Management
+
+These are my must have add-ons to manage your instance.  Install the following add-ons, setting usernames and passwords appropriately.
 
 Add-on | Description
 --|--
