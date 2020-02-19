@@ -1,5 +1,10 @@
 # INTRODUCTION: HOME AUTOMATION
 
+- [The Math](#the-math)
+  - [Device Control](#device-control)
+  - [Home Control](#home-control)
+  - [Home Automation](#home-automation)
+  - [Smart Home](#smart-home)
 - [Benefits and Possibilities](#benefits-and-possibilities)
   - [Convenience](#convenience)
   - [Climate](#climate)
@@ -8,14 +13,53 @@
   - [Surveillance](#surveillance)
   - [Safety](#safety)
   - [Security](#security)
-- [Key Terms](#key-terms)
 
-Home Automation controls and automates every aspect of your home.  It can perform simple actions (ex. turn on light) or complex, intelligent routines.  It can also extend to devices and data beyond your home (ex. your cars and phone, weather advisories, etc).
+## The Math
+Inspired by the [Home Assistant breakdown of the Smart Home](https://www.home-assistant.io/blog/2014/12/26/home-control-home-automation-and-the-smart-home/), here is my breakdown of how we get from single device control to the smart home of tomorrow.
+```bash
+IOT Device + Controller = Device Control
+IOT Devices + Common Controller = Home Control
+Home Control + Triggers + Conditions = Home Automation
+Home Automation + Self Learning = Smart Home
+```
+
+### Device Control
+```bash
+IOT Device + Controller = Device Control
+```
+
+IOT (Internet of Things) are networked devices you can remotely control (ex. Phillips Hue Bulb, Nest Thermostat).
+
+Unfortunately there is no common IOT communication standard, so consumers are left individually controlling their devices through separate apps and or hubs (i.e. local hardware that manages devices).
+
+### Home Control
+```bash
+IOT Devices + Common Controller = Home Control
+```
+
+The ideal solution is to have all devices communicate using a common standard.  While [efforts in this direction](https://www.connectedhomeip.com) have started, its unknown when or if it will be delivered, whether it will be effective, and whether it will be compatible with your existing and or future devices.   
+
+Until then, the next ideal solution (this is where Home Assistant shines) is to have a single controller (app, hub) capable of speaking to all your devices in the various communication standards they expect.
+
+### Home Automation
+```bash
+Home Control + Triggers + Conditions = Home Automation
+```
+Automatically controlling devices (ex. turn on driveway light) when an event occurs (ex. garage opens) under specific conditions (ex. when its dark) enables home automation.  This can even include  automations that appear to be the result of futuristic artifical intelligence but are nothing more than complex, predefined logic.
+
+This is the most we can expect from any system today.
+
+### Smart Home
+```bash
+Home Automation + Self Learning = Smart Home
+```
+Many people equate "smart home" with "home automation" but a true smart home is one that continuously learns and adapts.  It recognizes our patterns, filters out noise, and make accurate predicitions (better than we would make ourselves).
+
+There is no system today that truly delivers on this smart home vision.
+
 
 ## Benefits and Possibilities
-With a platform as extensible as [Home Assistant](http://home-assistant.io), the home 
-automation benefits and possibilities are only limited by your imagination.  
-Here are a few examples.
+With a true smart home beyond our grasp, we can still build a  powerful, automated home.  Here are a few examples of what's possible.
 
 ### Convenience
 * **Garage**
@@ -74,14 +118,6 @@ Here are a few examples.
 - Alert when a person is inside or outside
 - Send alerts that will get your attention (text, siren, flash lights, etc)
 
-## Key Terms
-
-Term | Definition | Example
---|--|--
-Hub | AKA "smart hub", this is the computer that runs your smart home - it controls your devices, runs your automations, etc. | Samsung Smartthings Hub, Wink Hub, Apple TV (for HomeKit)
-Automation | AKA "routine", a sequence of actions run when conditions are met and or triggers are activated | Turn on driveway lights (action) when garage door opens (trigger) but only if its dark outside (condition)
-Presence Detection | Detect when people are in certain locations (room, street address, etc) | Detect when someone enters the bathroom
-Devices | Hardware to be controlled through Home Automation | Kitchen Light, Living Room Apple TV
 
 ***
 
