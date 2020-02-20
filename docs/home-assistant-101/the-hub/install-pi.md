@@ -7,6 +7,8 @@
     - [Option 2: USB Stick (Windows or Mac)](#option-2-usb-stick-windows-or-mac)
   - [Resetting a Wireless connection](#resetting-a-wireless-connection)
 - [Installing Home Assistant](#installing-home-assistant)
+  - [Finding the PI's IP Address](#finding-the-pis-ip-address)
+    - [On a Mac](#on-a-mac)
 
 ## Building the Pi
 The following applies to a CanaKit Raspberry Pi 4 Kit:
@@ -84,13 +86,30 @@ If you need to change the name and or password that the Pi connects to:
 * Reboot the Pi
 
 ## Installing Home Assistant
-1. Insert the SD card
+1. Insert the SD card into the Pi's SD card reader
+    ![SD Card Reader](../images/pi_sd_reader.jpg)
     - If you need Wireless networking:
         - Follow [Prepping a wireless connection](install-pi.md#prepping-a-wireless-connection)
         - Connect the USB stick to the Pi
 2. Power on the pi
 3. Connect to http://hassio.local:8123 or http://your_pi_ip_address:8123 and wait while Home Assistant installs:
 ![Preparing Home Assistant](../images/preparing_ha.png)
+
+### Finding the PI's IP Address
+
+#### On a Mac
+1. Install Homebrew
+```bash
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+2. Install NMap
+```bash
+brew install nmap
+```
+1. Nmap scan for systems using Home Assistant port 8123(replacing `YOUR_SUBNET` in the format of X.0-255.0-255.1-254, ex. 192.168.1.1-254 to scan all address in 192.168.1.*):
+```bash
+sudo nmap --open -p 8123 YOUR_SUBNET | awk '/Nmap scan report for/{printf $5;}/MAC Address:/{print " => "substr($0, index($0,$3)) }' | sort
+``` 
 
 ***
 
