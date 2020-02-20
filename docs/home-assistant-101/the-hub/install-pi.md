@@ -44,13 +44,13 @@ If your PI will use wireless networking (i.e. WIFI):
 #### Option 1: SD Card (Windows Only)
 1. [Prep the SD card as installation media](#prepping-the-installation-media)
 2. Insert the SD card into a Windows system (does not work on a Mac)
-3. On the SD card `hassos-boot` volume, create a text file `config\network\my-network` (with no file extension)
+3. On the SD card `hassos-boot` volume, create a TXT file `config\network\my-network` (with no file extension)
 4. Paste the text from **my-network file contents** (see below) into the text file (replacing `SSID_NAME` and `SSID_PASSWORD` appropriately):
 
 #### Option 2: USB Stick (Windows or Mac)
 1. Format a USB stick with a single FAT32 (aka MS-DOS FAT on a Mac) parititon named `CONFIG`
 2. In the `CONFIG` partititon, create a folder called `network`
-3. In the `network` folder, create a text file called `my-network` (with no file extension)
+3. In the `network` folder, create a TXT file called `my-network` (with no file extension)
 4. Paste the text from **my-network file contents** (see below) into the text file (replacing `SSID_NAME` and `SSID_PASSWORD` appropriately):
 5. Connect the USB stick to the Pi
 
@@ -96,19 +96,21 @@ If you need to change the name and or password that the Pi connects to:
 ![Preparing Home Assistant](../images/preparing_ha.png)
 
 ### Finding the PI's IP Address
+Follow the instructions below to help scan your network and find you;r PI's IP address.
 
 #### On a Mac
-1. Install Homebrew
+1. Open a terminal window
+2. Install Homebrew
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
-2. Install NMap
+3. Install NMap
 ```bash
 brew install nmap
 ```
-1. Nmap scan for systems using Home Assistant port 8123(replacing `YOUR_SUBNET` in the format of X.0-255.0-255.1-254, ex. 192.168.1.1-254 to scan all address in 192.168.1.*):
+4. Nmap scan for systems using Home Assistant port 8123 (replacing `YOUR_RANGE` in the format of X.0-255.0-255.1-254, ex. 192.168.1.1-254 to scan all address in 192.168.1.*):
 ```bash
-sudo nmap --open -p 8123 YOUR_SUBNET | awk '/Nmap scan report for/{printf $5;}/MAC Address:/{print " => "substr($0, index($0,$3)) }' | sort
+sudo nmap --open -p 8123 YOUR_RANGE | awk '/Nmap scan report for/{printf $5;}/MAC Address:/{print " => "substr($0, index($0,$3)) }' | sort
 ``` 
 
 ***
