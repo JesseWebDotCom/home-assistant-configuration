@@ -31,11 +31,11 @@ The guide consists of a five sections:
 ### ESPHome, LED Strips, & DIY Sensors
 *This section describes how to create your own LED strips and motion+temperature+humidity WIFI sensors, manage them through ESPHome, and automate them through Home Assistant.*
 
-1. [Installing ESPHome](esphome-led-sensors/esphome.md)
-1. [Building the sensor](esphome-led-sensors/sensor-build.md)
-1. [Building the LED strip](esphome-led-sensors/led-build.md)
-1. [Configuring the sensor](esphome-led-sensors/sensor-configure.md)
-1. [Creating simple sensor automations](esphome-led-sensors/sensor-automate.md)
+1. [Introduction](esphome-led-sensors/introduction.md)
+2. [Installing ESPHome](esphome-led-sensors/esphome.md)
+3. [Building the sensor](esphome-led-sensors/sensor-build.md)
+4. [Configuring the sensor](esphome-led-sensors/sensor-configure.md)
+5. [Creating simple sensor automations](esphome-led-sensors/sensor-automate.md)
 
 ### Node-RED
 *This sections describes how to install and use Node-RED to create simple and advanced automations.*
