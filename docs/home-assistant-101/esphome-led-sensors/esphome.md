@@ -1,6 +1,8 @@
 # ESPHOME
 
+ESP32 (successor of ESP8266) is a low cost, low power system on chip (SoC) which you can use to make your own Home Assistant sensors, cameras, and more.
 
+ESPHome makes it easy to program these chips and integrate them into Home Assistant.
 
 ## Installing ESPHome
 
