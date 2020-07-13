@@ -12,3 +12,4 @@ camera:
 
 sensor:
   - platform: badnest
+
