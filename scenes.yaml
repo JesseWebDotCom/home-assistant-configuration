@@ -1,0 +1,69 @@
+- id: '1588997883036'
+  name: Stranger Things
+  entities:
+    light.stranger_things_hawkins:
+      brightness: 136
+      effect: None
+      effect_list:
+      - None
+      - Random
+      - Flicker
+      - Color Wipe
+      - Strobe
+      - Police
+      - Flash Green
+      - Flash Red
+      - Flash Blue
+      - Flash Yellow
+      - Rainbow
+      - Scan
+      - Twinkle
+      - Random Twinkle
+      - Fireworks
+      - Addressable Flicker
+      friendly_name: Stranger Things Hawkins
+      hs_color:
+      - 0
+      - 0
+      rgb_color:
+      - 255
+      - 255
+      - 255
+      state: 'on'
+      supported_features: 61
+      xy_color:
+      - 0.323
+      - 0.329
+    light.stranger_things_upside_down:
+      brightness: 138
+      effect: None
+      effect_list:
+      - None
+      - Random
+      - Flicker
+      - Color Wipe
+      - Strobe
+      - Police
+      - Flash Green
+      - Flash Red
+      - Flash Blue
+      - Flash Yellow
+      - Rainbow
+      - Scan
+      - Twinkle
+      - Random Twinkle
+      - Fireworks
+      - Addressable Flicker
+      friendly_name: Stranger Things Upside Down
+      hs_color:
+      - 0
+      - 100
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      state: 'on'
+      supported_features: 61
+      xy_color:
+      - 0.701
+      - 0.299
