@@ -12,8 +12,8 @@ image_processing:
       categories:
         - category: box
           area:
-            # Exclude top 10% of image
-            top: 0.1      
+            # Exclude top 20% of image
+            top: 0.2     
         - category: person
           area:
             # Exclude top 10% of image
@@ -120,10 +120,12 @@ image_processing:
     scan_interval: 40000
     source:
       - entity_id: camera.porch
+      - entity_id: camera.pool
+      - entity_id: camera.porch_under
       - entity_id: camera.rear_center
       - entity_id: camera.rear_left
       - entity_id: camera.porch_under
-      - entity_id: camera.side_stairs     
+      - entity_id: camera.side_stairs
     file_out:
       - "/config/www/cameras/{{ camera_entity.split('.')[1] }}_latest.jpg"          
     model:
