@@ -11,7 +11,7 @@ binary_sensor:
   - platform: mqtt
     name: "House Rear Camera Motion"
     device_class: motion
-    state_topic: "blue_iris/binary_sensor/house_rear_motion/state"
+    state_topic: "blue_iris/binary_sensor/rear_center_motion/state"
     payload_on: "ON"
     payload_off: "OFF"
 
@@ -58,6 +58,13 @@ binary_sensor:
     payload_off: "OFF"  
 
   - platform: mqtt
+    name: "Front PTZ Camera Motion"
+    device_class: motion
+    state_topic: "blue_iris/binary_sensor/street_motion/state"
+    payload_on: "ON"
+    payload_off: "OFF"  
+
+  - platform: mqtt
     name: "Porch Under Camera Motion"
     device_class: motion
     state_topic: "blue_iris/binary_sensor/porch_under_motion/state"
@@ -93,9 +100,9 @@ binary_sensor:
     payload_off: "OFF"       
 
   - platform: mqtt
-    name: "Front PTZ Camera Motion"
+    name: "Sreet Camera Motion"
     device_class: motion
-    state_topic: "blue_iris/binary_sensor/front_ptz_motion/state"
+    state_topic: "blue_iris/binary_sensor/street_motion/state"
     payload_on: "ON"
     payload_off: "OFF"   
 
@@ -114,11 +121,11 @@ binary_sensor:
     payload_off: "OFF"
 
   - platform: mqtt
-    name: "Storage Room Motion"
+    name: "Storage Room Camera Motion"
     device_class: motion
     state_topic: "blue_iris/binary_sensor/storage_room_motion/state"
     payload_on: "ON"
-    payload_off: "OFF"    
+    payload_off: "OFF"
 
   - platform: mqtt
     name: "Garage Camera Motion"
@@ -193,7 +200,7 @@ binary_sensor:
         value_template: "{{ is_state('sensor.sunroom_motion_burglar', '8') }}"
       theater_room_motion:
         device_class: motion
-        friendly_name: Theater | Motion (Room)        
+        friendly_name: Theater | Motion (Room)
         value_template: "{{ is_state('sensor.theater_room_motion_burglar', '8') or is_state('sensor.theater_aisle_motion_burglar', '8') }}"
       theater_aisle_motion:
         device_class: motion
@@ -202,4 +209,160 @@ binary_sensor:
       isabella_s_room_motion:
         device_class: motion
         friendly_name: Isabella's Room | Motion
-        value_template: "{{ is_state('sensor.isabella_s_room_motion_burglar', '8') }}"        
+        value_template: "{{ is_state('sensor.isabella_s_room_motion_burglar', '8') }}"
+      office_motion:
+        device_class: motion
+        friendly_name: Office | Motion (Room)
+        value_template: "{{ is_state('binary_sensor.office_left_motion', 'on') or is_state('binary_sensor.office_right_motion', 'on') }}"
+
+      yv4a221k1l1604582_tyres:
+        device_class: safety
+        friendly_name: volvo_xc90 2020 Tyres
+        value_template: "is_state('binary_sensor.yv4a221k1l1604582_front_left_tyre', 'on') or is_state('binary_sensor.yv4a221k1l1604582_front_right_tyre', 'on') or is_state('binary_sensor.yv4a221k1l1604582_rear_left_tyre', 'on') or is_state('binary_sensor.yv4a221k1l1604582_rear_right_tyre', 'on')"
+      yv4a221k1l1604582_cabindoors:
+        device_class: safety
+        friendly_name: volvo_xc90 2020 Cabin Doors
+        value_template: "is_state('binary_sensor.yv4a221k1l1604582_front_left_door', 'on') or is_state('binary_sensor.yv4a221k1l1604582_front_right_door', 'on') or is_state('binary_sensor.yv4a221k1l1604582_rear_left_door', 'on') or is_state('binary_sensor.yv4a221k1l1604582_rear_right_door', 'on')"
+      yv4a221k1l1604582_fuel:
+        device_class: safety
+        friendly_name: volvo_xc90 2020 Fuel
+        value_template: "states('sensor.yv4a221k1l1604582_fuel_level') | float < 5"
+
+      tensorflow_dining_room:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_dining_room')|float > 0 }}
+      tensorflow_driveway_front:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_driveway_front')|float > 0 }}
+      tensorflow_driveway_rear:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_driveway_rear')|float > 0 }}
+      tensorflow_front_center:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_front_center')|float > 0 }}
+      tensorflow_front_door:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_front_door')|float > 0 }}
+      tensorflow_front_left:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_front_left')|float > 0 }}
+      tensorflow_front_ptz:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_front_ptz')|float > 0 }}
+      tensorflow_front_right:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_front_right')|float > 0 }}
+      tensorflow_garage:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_garage')|float > 0 }}
+      tensorflow_isabellas_room:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_isabellas_room')|float > 0 }}
+      tensorflow_kitchen:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_kitchen')|float > 0 }}
+      tensorflow_living_room:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_living_room')|float > 0 }}
+      tensorflow_playroom:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_playroom')|float > 0 }}
+      tensorflow_pool:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_pool')|float > 0 }}
+      tensorflow_porch:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_porch')|float > 0 }}
+      tensorflow_porch_under:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_porch_under')|float > 0 }}
+      tensorflow_rear_center:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_rear_center')|float > 0 }}
+      tensorflow_rear_left:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_rear_left')|float > 0 }}
+      tensorflow_side_stairs:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_side_stairs')|float > 0 }}
+      tensorflow_storage_room:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_storage_room')|float > 0 }}
+      tensorflow_sunroom:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_sunroom')|float > 0 }}
+      tensorflow_theater:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_theater')|float > 0 }}
+      tensorflow_upstairs_entrance:
+        device_class: occupancy
+        delay_off:
+          minutes: 1
+        value_template: >-
+          {{ states('image_processing.tensorflow_upstairs_entrance')|float > 0 }}
