@@ -3,9 +3,9 @@
 yeelight:
   devices:
     172.19.208.54:
-      name: "Theater | Aisle"                
+      name: "Isabellas Room | Strip"
     172.19.208.55:
-      name: "Theater | Candy"
+      name: "Ryans Room | Strip"
     172.19.208.56:
       name: "Biancas Room | Strip"
   custom_effects:
@@ -21,10 +21,10 @@ yeelight:
         count: 2
         transitions:
           - RGBTransition:   [0, 0, 0]
-          - SleepTransition: [100]           
+          - SleepTransition: [100]
           - RGBTransition:   [255, 255, 255]
-          - SleepTransition: [100]           
+          - SleepTransition: [100]
           - RGBTransition:   [0, 0, 0]
-          - SleepTransition: [100]           
+          - SleepTransition: [100]
           - RGBTransition:   [255, 255, 255]
-          - SleepTransition: [500]     
+          - SleepTransition: [500]
